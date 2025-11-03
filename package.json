@@ -1,0 +1,48 @@
+{
+  "name": "@makmn1/material-design-token-gen",
+  "version": "0.1.0",
+  "description": "Generate Material-style tokens (color, elevation, motion, shape, typography) as a plain object.",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "peerDependencies": {
+    "@materialx/material-color-utilities": "^0.4.8"
+  },
+  "devDependencies": {
+    "@materialx/material-color-utilities": "^0.4.8",
+    "@types/node": "^24.9.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3",
+    "vitest": "^4.0.6"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "material",
+    "tokens",
+    "typography",
+    "color",
+    "design-tokens"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makmn1/material-design-token-gen"
+  }
+}
