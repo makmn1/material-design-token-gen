@@ -11,27 +11,42 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./cli": {
+      "types": "./dist/cli/index.d.ts",
+      "import": "./dist/cli/index.js"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "vite build",
     "test": "vitest run",
     "test:watch": "vitest",
     "clean": "rimraf dist",
     "prepublishOnly": "npm run clean && npm run build"
   },
+  "bin": {
+    "material-token-gen": "./dist/bin/cli.js",
+    "theme-color": "./dist/bin/theme-color.js"
+  },
   "peerDependencies": {
     "@materialx/material-color-utilities": "^0.4.8"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.9.0",
+    "prettier": "^3.3.3"
   },
   "devDependencies": {
     "@materialx/material-color-utilities": "^0.4.8",
     "@types/node": "^24.9.2",
+    "@vitest/ui": "^4.0.8",
     "rimraf": "^6.0.1",
     "semantic-release": "^25.0.1",
     "typescript": "^5.6.3",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.0.0",
     "vitest": "^4.0.6"
   },
   "license": "Apache-2.0",

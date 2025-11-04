@@ -59,7 +59,6 @@ describe("generateMotionTokens()", () => {
         expect(keys).toEqual(KEYS);
         expect(tokens).toEqual(EXPECTED_EXPRESSIVE);
 
-        // type sanity
         for (const k of keys) {
             expect(typeof tokens[k]).toBe("number");
             expect(Number.isNaN(tokens[k])).toBe(false);

@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import { generateColorTokens } from "../src";
 
 const EXPECTED_KEYS = [
-    // palette key colors
     "md.sys.color.primary-palette-key-color",
     "md.sys.color.secondary-palette-key-color",
     "md.sys.color.tertiary-palette-key-color",
@@ -10,7 +9,6 @@ const EXPECTED_KEYS = [
     "md.sys.color.neutral-variant-palette-key-color",
     "md.sys.color.error-palette-key-color",
 
-    // surface/background family
     "md.sys.color.background",
     "md.sys.color.on-background",
     "md.sys.color.surface",
@@ -32,7 +30,6 @@ const EXPECTED_KEYS = [
     "md.sys.color.scrim",
     "md.sys.color.surface-tint",
 
-    // primary
     "md.sys.color.primary",
     "md.sys.color.primary-dim",
     "md.sys.color.on-primary",
@@ -44,7 +41,6 @@ const EXPECTED_KEYS = [
     "md.sys.color.on-primary-fixed-variant",
     "md.sys.color.inverse-primary",
 
-    // secondary
     "md.sys.color.secondary",
     "md.sys.color.secondary-dim",
     "md.sys.color.on-secondary",
@@ -55,7 +51,6 @@ const EXPECTED_KEYS = [
     "md.sys.color.on-secondary-fixed",
     "md.sys.color.on-secondary-fixed-variant",
 
-    // tertiary
     "md.sys.color.tertiary",
     "md.sys.color.tertiary-dim",
     "md.sys.color.on-tertiary",
@@ -66,14 +61,12 @@ const EXPECTED_KEYS = [
     "md.sys.color.on-tertiary-fixed",
     "md.sys.color.on-tertiary-fixed-variant",
 
-    // error
     "md.sys.color.error",
     "md.sys.color.error-dim",
     "md.sys.color.on-error",
     "md.sys.color.error-container",
     "md.sys.color.on-error-container",
 
-    // text / controls
     "md.sys.color.control-activated",
     "md.sys.color.control-normal",
     "md.sys.color.control-highlight",

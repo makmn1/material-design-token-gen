@@ -58,7 +58,7 @@ export function generateColorTokens(scheme?: DynamicScheme): Record<string, stri
  */
 function toTokenKey(name: string): string {
     return name
-        .replace(/_/g, "-")                        // snake_case -> kebab-case
-        .replace(/([a-z0-9])([A-Z])/g, "$1-$2")    // camelCase -> kebab
+        .replace(/_/g, "-")
+        .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
         .toLowerCase();
 }

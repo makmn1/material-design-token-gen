@@ -11,7 +11,7 @@ export type DpUnit = "rem" | "px";
 export interface DpConvertOptions {
     /**
      * Root font size in px when outputting `rem`.
-     * @default 16
+     * @default 14
      */
     rootFontSizePx?: number;
 
@@ -30,16 +30,14 @@ export interface DpConvertOptions {
 }
 
 const DEFAULTS: Required<DpConvertOptions> = {
-    rootFontSizePx: 16,
+    rootFontSizePx: 14,
     dpPxRatio: 1,
     unit: "rem",
 };
 
-// Match all numbers followed by "dp", including decimals and negatives.
 const DP_RE = /(-?\d+(?:\.\d+)?)dp\b/g;
 
 function trimZeros(n: number): string {
-    // Up to 4 decimals; remove trailing zeros and possible trailing dot.
     return n.toFixed(4).replace(/\.?0+$/, "");
 }
 
@@ -106,6 +104,5 @@ export function convertDpInTree<T>(value: T, opts: DpConvertOptions = {}): T {
         return out as T;
     }
 
-    // numbers/booleans/etc. – leave as-is
     return value;
 }

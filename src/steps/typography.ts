@@ -5,9 +5,14 @@ export type TypographyOptions = {
     weightMedium?: number;
     weightBold?: number;
     rootFontSizePx?: number;
+    /**
+     * When true, typography tokens are generated with web units.
+     * Note: Typography tokens already use rem/em units, so this option
+     * is included for consistency but doesn't affect output.
+     * @default true
+     */
+    webUnits?: boolean;
 };
-
-// ---- unit helpers -----------------------------------------------------------
 
 const PT_TO_PX = 4 / 3;
 
@@ -41,7 +46,7 @@ type StyleRow = {
     family: "brand" | "plain";
     weight: "regular" | "medium" | "bold";
     sizePt: number;
-    trackingPt: number; // can be negative
+    trackingPt: number;
     linePt: number;
 };
 
@@ -117,11 +122,10 @@ export function generateTypographyTokens(opts: TypographyOptions = {}): Record<s
     const wRegular = opts.weightRegular ?? 400;
     const wMedium  = opts.weightMedium  ?? 500;
     const wBold    = opts.weightBold    ?? 700;
-    const rootPx   = opts.rootFontSizePx ?? 16;
+    const rootPx   = opts.rootFontSizePx ?? 14;
 
     const tokens: Record<string, string | number> = {};
 
-    // ref tokens
     tokens["md.ref.typeface.brand"] = brand;
     tokens["md.ref.typeface.plain"] = plain;
     tokens["md.ref.typeface.weight-regular"] = wRegular;
@@ -142,14 +146,12 @@ export function generateTypographyTokens(opts: TypographyOptions = {}): Record<s
     function emitStyle(prefix: string, row: StyleRow) {
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}`] = row.label;
 
-        // main properties
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.font`]        = familyPointer(row.family);
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.weight`]      = weightPointer(row.weight);
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.size`]        = toRemFromPt(row.sizePt, rootPx);
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.tracking`]    = toEmFromPt(row.trackingPt, row.sizePt);
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.line-height`] = toRemFromPt(row.linePt, rootPx);
 
-        // variable font axes (unitless)
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.wght`] = weightAxis(row.weight);
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.grad`] = 0;
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.wdth`] = 100;

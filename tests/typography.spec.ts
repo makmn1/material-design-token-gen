@@ -11,7 +11,7 @@ function strip(n: number) {
     const s = n.toString();
     return s.includes(".") ? s.replace(/\.?0+$/, "") : s;
 }
-function remFromPt(pt: number, root = 16) {
+function remFromPt(pt: number, root = 14) {
     const px = pt * PT_TO_PX;
     const rem = px / root;
     return `${strip(round(rem, 4))}rem`;
@@ -79,7 +79,7 @@ const weightPointer = (w: StyleRow["weight"]) =>
 const familyPointer = (f: StyleRow["family"]) =>
     f === "brand" ? "md.ref.typeface.brand" : "md.ref.typeface.plain";
 
-function expectedTokens(root = 16) {
+function expectedTokens(root = 14) {
     const expected: Record<string, string | number> = {};
 
     // refs
@@ -120,13 +120,17 @@ function expectedTokens(root = 16) {
 
 describe("generateTypographyTokens()", () => {
     it("emits ALL baseline + emphasized tokens with spec-correct values (455) and nothing extra", () => {
-        const tokens = generateTypographyTokens(); // defaults: Roboto, weights 400/500/700, root 16
-        const exp = expectedTokens(16);
+        const tokens = generateTypographyTokens({ webUnits: true });
+        const exp = expectedTokens(14);
 
-        // exact key count
         expect(Object.keys(tokens).length).toBe(455);
-        // exact deep equality (also ensures no extras)
         expect(tokens).toEqual(exp);
+    });
+
+    it("accepts webUnits option (though it doesn't affect output since typography already uses rem/em)", () => {
+        const tokens1 = generateTypographyTokens({ webUnits: true });
+        const tokens2 = generateTypographyTokens({ webUnits: false });
+        expect(tokens1).toEqual(tokens2);
     });
 
     it("keeps pointer tokens stable when overriding ref values", () => {
@@ -138,26 +142,21 @@ describe("generateTypographyTokens()", () => {
             weightBold:    710,
         });
 
-        // ref values changed
         expect(tokens["md.ref.typeface.brand"]).toBe("Inter");
         expect(tokens["md.ref.typeface.plain"]).toBe("Roboto Flex");
         expect(tokens["md.ref.typeface.weight-regular"]).toBe(410);
         expect(tokens["md.ref.typeface.weight-medium"]).toBe(510);
         expect(tokens["md.ref.typeface.weight-bold"]).toBe(710);
 
-        // pointers remain pointers
         expect(tokens["md.sys.typescale.display-large.font"]).toBe("md.ref.typeface.brand");
         expect(tokens["md.sys.typescale.title-medium.weight"]).toBe("md.ref.typeface.weight-medium");
         expect(tokens["md.sys.typescale.emphasized.title-medium.weight"]).toBe("md.ref.typeface.weight-bold");
     });
 
     it("uses rootFontSizePx to convert pt→rem", () => {
-        const tokens = generateTypographyTokens({ rootFontSizePx: 20 }); // larger root → smaller rems
-        // display-large: 57pt → 76px → 3.8rem @ 20px root
+        const tokens = generateTypographyTokens({ rootFontSizePx: 20 });
         expect(tokens["md.sys.typescale.display-large.size"]).toBe("3.8rem");
-        // line-height 64pt → 85.3333px → 4.2667rem @ 20px
         expect(tokens["md.sys.typescale.display-large.line-height"]).toBe("4.2667rem");
-        // tracking uses em; -0.25 / 57
         expect(tokens["md.sys.typescale.display-large.tracking"]).toBe("-0.0044em");
     });
 });
