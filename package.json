@@ -60,5 +60,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/makmn1/material-design-token-gen"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
