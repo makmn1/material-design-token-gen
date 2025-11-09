@@ -112,7 +112,7 @@ const EMPH: StyleRow[] = [
  * ```ts
  * import { generateTypographyTokens } from "@makmn1/material-design-token-gen";
  * const type = generateTypographyTokens();
- * // type["md.sys.typescale.display-large.size"] -> "3.5625rem" (57pt -> 76px -> 4.75rem ? depending on your mapping)
+ * // type["md.sys.typescale.display-large.size"] -> "3.5625rem" (57pt -> 76px -> 4.75rem ? depending on the mapping)
  * // type["md.sys.typescale.display-large.font"] -> "md.ref.typeface.brand"
  * ```
  */
