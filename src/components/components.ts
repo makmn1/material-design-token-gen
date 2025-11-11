@@ -1,6 +1,7 @@
 import { convertDpInTree } from "../util/dp";
 import { buttonTokens } from "./tokens/buttonTokens";
 import { appBarTokens } from "./tokens/appBarTokens";
+import { badgeTokens } from "./tokens/badgeTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -8,6 +9,7 @@ const COMPONENT_TOKENS: Array<{
 }> = [
     { name: "button", value: buttonTokens },
     { name: "app-bar", value: appBarTokens },
+    { name: "badge", value: badgeTokens },
 ];
 
 /**

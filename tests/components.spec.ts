@@ -54,12 +54,14 @@ describe("generateComponentTokens()", () => {
         const tokens1 = generateComponentTokens({ excludes: ["button"] });
         expect(tokens1).not.toHaveProperty("button");
         expect(tokens1).toHaveProperty("app-bar");
+        expect(tokens1).toHaveProperty("badge");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["button", "app-bar"],
+            excludes: ["button", "app-bar", "badge"],
         });
         expect(tokens2).not.toHaveProperty("button");
         expect(tokens2).not.toHaveProperty("app-bar");
+        expect(tokens2).not.toHaveProperty("badge");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -194,12 +196,57 @@ describe("generateComponentTokens()", () => {
         const tokens1 = generateComponentTokens({ excludes: ["app-bar"] });
         expect(tokens1).not.toHaveProperty("app-bar");
         expect(tokens1).toHaveProperty("button");
+        expect(tokens1).toHaveProperty("badge");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["app-bar", "button"],
+            excludes: ["app-bar", "button", "badge"],
         });
         expect(tokens2).not.toHaveProperty("app-bar");
         expect(tokens2).not.toHaveProperty("button");
+        expect(tokens2).not.toHaveProperty("badge");
+        expect(Object.keys(tokens2).length).toBe(0);
+    });
+
+    it("loads all badge token groups correctly (representative sample)", () => {
+        const tokens = generateComponentTokens();
+
+        expect(tokens.badge).toBeDefined();
+
+        const sampleTokens = [
+            { key: "md.comp.badge.color", expected: "md.sys.color.error" },
+            { key: "md.comp.badge.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.badge.size", expected: "0.4286rem" },
+            { key: "md.comp.badge.large.color", expected: "md.sys.color.error" },
+            { key: "md.comp.badge.large.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.badge.large.size", expected: "1.1429rem" },
+            { key: "md.comp.badge.large.label.text.color", expected: "md.sys.color.on-error" },
+            { key: "md.comp.badge.large.label.text.font", expected: "md.sys.typescale.label-small.font" },
+            { key: "md.comp.badge.large.label.text.line.height", expected: "md.sys.typescale.label-small.line-height" },
+            { key: "md.comp.badge.large.label.text.size", expected: "md.sys.typescale.label-small.size" },
+            { key: "md.comp.badge.large.label.text.tracking", expected: "md.sys.typescale.label-small.tracking" },
+            { key: "md.comp.badge.large.label.text.weight", expected: "md.sys.typescale.label-small.weight" },
+            { key: "md.comp.badge.large.max.width", expected: "2.4286rem" },
+            { key: "md.comp.badge.small.distance.from.top.trailing.icon.corner.to.leading.badge.corner", expected: "0.4286rem" },
+            { key: "md.comp.badge.large.distance.from.top.trailing.icon.corner.to.bottom.trailing.badge.corner", expected: "1rem" },
+        ];
+
+        for (const { key, expected } of sampleTokens) {
+            expect(tokens.badge[key]).toBe(expected);
+        }
+    });
+
+    it("excludes badge tokens when 'badge' is in excludes array", () => {
+        const tokens1 = generateComponentTokens({ excludes: ["badge"] });
+        expect(tokens1).not.toHaveProperty("badge");
+        expect(tokens1).toHaveProperty("button");
+        expect(tokens1).toHaveProperty("app-bar");
+
+        const tokens2 = generateComponentTokens({
+            excludes: ["badge", "button", "app-bar"],
+        });
+        expect(tokens2).not.toHaveProperty("badge");
+        expect(tokens2).not.toHaveProperty("button");
+        expect(tokens2).not.toHaveProperty("app-bar");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 });
