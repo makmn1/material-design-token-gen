@@ -55,13 +55,15 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).not.toHaveProperty("button");
         expect(tokens1).toHaveProperty("app-bar");
         expect(tokens1).toHaveProperty("badge");
+        expect(tokens1).toHaveProperty("button-group");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["button", "app-bar", "badge"],
+            excludes: ["button", "app-bar", "badge", "button-group"],
         });
         expect(tokens2).not.toHaveProperty("button");
         expect(tokens2).not.toHaveProperty("app-bar");
         expect(tokens2).not.toHaveProperty("badge");
+        expect(tokens2).not.toHaveProperty("button-group");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -197,13 +199,15 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).not.toHaveProperty("app-bar");
         expect(tokens1).toHaveProperty("button");
         expect(tokens1).toHaveProperty("badge");
+        expect(tokens1).toHaveProperty("button-group");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["app-bar", "button", "badge"],
+            excludes: ["app-bar", "button", "badge", "button-group"],
         });
         expect(tokens2).not.toHaveProperty("app-bar");
         expect(tokens2).not.toHaveProperty("button");
         expect(tokens2).not.toHaveProperty("badge");
+        expect(tokens2).not.toHaveProperty("button-group");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -240,13 +244,61 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).not.toHaveProperty("badge");
         expect(tokens1).toHaveProperty("button");
         expect(tokens1).toHaveProperty("app-bar");
+        expect(tokens1).toHaveProperty("button-group");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["badge", "button", "app-bar"],
+            excludes: ["badge", "button", "app-bar", "button-group"],
         });
         expect(tokens2).not.toHaveProperty("badge");
         expect(tokens2).not.toHaveProperty("button");
         expect(tokens2).not.toHaveProperty("app-bar");
+        expect(tokens2).not.toHaveProperty("button-group");
+        expect(Object.keys(tokens2).length).toBe(0);
+    });
+
+    it("loads all button group token groups correctly (representative sample)", () => {
+        const tokens = generateComponentTokens();
+
+        expect(tokens["button-group"]).toBeDefined();
+
+        const sampleTokens = [
+            { key: "md.comp.button-group.xsmall.container.height", expected: "2.2857rem" },
+            { key: "md.comp.button-group.xsmall.between.space", expected: "1.2857rem" },
+            { key: "md.comp.button-group.xsmall.pressed.motion.spring.dampening", expected: "md.sys.motion.spring.fast.spatial.damping" },
+            { key: "md.comp.button-group.xsmall.pressed.width.multiplier", expected: "15%" },
+            { key: "md.comp.button-group.small.container.height", expected: "2.8571rem" },
+            { key: "md.comp.button-group.medium.container.height", expected: "4rem" },
+            { key: "md.comp.button-group.large.container.height", expected: "6.8571rem" },
+            { key: "md.comp.button-group.xlarge.container.height", expected: "9.7143rem" },
+            { key: "md.comp.button-group.connected.xsmall.container.height", expected: "2.2857rem" },
+            { key: "md.comp.button-group.connected.xsmall.space.between.buttons", expected: "0.1429rem" },
+            { key: "md.comp.button-group.connected.xsmall.container.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.button-group.connected.xsmall.inner.corner.size", expected: "md.sys.shape.corner-value.small" },
+            { key: "md.comp.button-group.connected.xsmall.pressed.inner.corner.size", expected: "md.sys.shape.corner-value.extra-small" },
+            { key: "md.comp.button-group.connected.xsmall.selected.inner.corner.size", expected: "50%" },
+            { key: "md.comp.button-group.connected.large.inner.corner.size", expected: "md.sys.shape.corner-value.large" },
+            { key: "md.comp.button-group.connected.xlarge.inner.corner.size", expected: "md.sys.shape.corner-value.large-increased" },
+        ];
+
+        for (const { key, expected } of sampleTokens) {
+            expect(tokens["button-group"][key]).toBe(expected);
+        }
+    });
+
+    it("excludes button group tokens when 'button-group' is in excludes array", () => {
+        const tokens1 = generateComponentTokens({ excludes: ["button-group"] });
+        expect(tokens1).not.toHaveProperty("button-group");
+        expect(tokens1).toHaveProperty("button");
+        expect(tokens1).toHaveProperty("app-bar");
+        expect(tokens1).toHaveProperty("badge");
+
+        const tokens2 = generateComponentTokens({
+            excludes: ["button-group", "button", "app-bar", "badge"],
+        });
+        expect(tokens2).not.toHaveProperty("button-group");
+        expect(tokens2).not.toHaveProperty("button");
+        expect(tokens2).not.toHaveProperty("app-bar");
+        expect(tokens2).not.toHaveProperty("badge");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 });

@@ -2,6 +2,7 @@ import { convertDpInTree } from "../util/dp";
 import { buttonTokens } from "./tokens/buttonTokens";
 import { appBarTokens } from "./tokens/appBarTokens";
 import { badgeTokens } from "./tokens/badgeTokens";
+import { buttonGroupTokens } from "./tokens/buttonGroupTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -10,6 +11,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "button", value: buttonTokens },
     { name: "app-bar", value: appBarTokens },
     { name: "badge", value: badgeTokens },
+    { name: "button-group", value: buttonGroupTokens },
 ];
 
 /**
