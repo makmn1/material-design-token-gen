@@ -29,6 +29,7 @@ const ALL_COMPONENTS = [
     "search",
     "bottom-sheet",
     "side-sheet",
+    "slider",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -599,6 +600,26 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.side-sheet.docked.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
             { key: "md.comp.side-sheet.docked.action.focus.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
             { key: "md.comp.side-sheet.docked.action.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+        ],
+    },
+    {
+        name: "slider",
+        key: "slider",
+        sampleTokens: [
+            { key: "md.comp.slider.stop.indicator.size", expected: "0.2857rem" },
+            { key: "md.comp.slider.stop.indicator.color.selected", expected: "md.sys.color.on-primary" },
+            { key: "md.comp.slider.active.track.height", expected: "1.1429rem" },
+            { key: "md.comp.slider.active.track.inner.corner.size", expected: "0.1429rem" },
+            { key: "md.comp.slider.active.track.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.slider.handle.height", expected: "3.1429rem" },
+            { key: "md.comp.slider.disabled.active.track.opacity", expected: 0.38 },
+            { key: "md.comp.slider.focus.handle.width", expected: "0.1429rem" },
+            { key: "md.comp.slider.value.indicator.label.font", expected: "md.sys.typescale.label-large.font" },
+            { key: "md.comp.slider.xsmall.active.track.height", expected: "1.1429rem" },
+            { key: "md.comp.slider.small.active.track.height", expected: "1.7143rem" },
+            { key: "md.comp.slider.medium.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.slider.large.active.handle.height", expected: "4.8571rem" },
+            { key: "md.comp.slider.xlarge.icon.size", expected: "2.2857rem" },
         ],
     },
 ];

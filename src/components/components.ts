@@ -26,6 +26,7 @@ import { radioButtonTokens } from "./tokens/radioButtonTokens";
 import { searchTokens } from "./tokens/searchTokens";
 import { bottomSheetTokens } from "./tokens/bottomSheetTokens";
 import { sideSheetTokens } from "./tokens/sideSheetTokens";
+import { sliderTokens } from "./tokens/sliderTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -58,6 +59,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "search", value: searchTokens },
     { name: "bottom-sheet", value: bottomSheetTokens },
     { name: "side-sheet", value: sideSheetTokens },
+    { name: "slider", value: sliderTokens },
 ];
 
 /**
