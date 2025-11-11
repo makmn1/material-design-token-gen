@@ -19,6 +19,7 @@ const ALL_COMPONENTS = [
     "time-picker",
     "dialog",
     "divider",
+    "list",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -391,6 +392,36 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
         sampleTokens: [
             { key: "md.comp.divider.container.thickness", expected: "0.0714rem" },
             { key: "md.comp.divider.container.color", expected: "md.sys.color.outline-variant" },
+        ],
+    },
+    {
+        name: "list",
+        key: "list",
+        sampleTokens: [
+            { key: "md.comp.list.list.item.container.color", expected: "md.sys.color.surface" },
+            { key: "md.comp.list.list.item.selected.container.color", expected: "md.sys.color.secondary-container" },
+            { key: "md.comp.list.three.lines.list.item.container.height", expected: "6.2857rem" },
+            { key: "md.comp.list.one.line.list.item.container.height", expected: "4rem" },
+            { key: "md.comp.list.list.item.leading.space", expected: "1.1429rem" },
+            { key: "md.comp.list.list.item.trailing.space", expected: "1.1429rem" },
+            { key: "md.comp.list.list.item.leading.icon.width", expected: "7.1429rem" },
+            { key: "md.comp.list.list.item.small.leading.icon.height", expected: "4rem" },
+            { key: "md.comp.list.list.item.large.leading.icon.color", expected: "4.9286rem" },
+            { key: "md.comp.list.list.item.leading.icon.shape", expected: "md.sys.shape.corner.none" },
+            { key: "md.comp.list.list.item.trailing.icon.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.list.list.item.unselected.trailing.icon.color", expected: "md.sys.color.on-surface" },
+            { key: "md.comp.list.list.item.divider.leading.space", expected: "1.1429rem" },
+            { key: "md.comp.list.list.item.leading.avatar.size", expected: "2.8571rem" },
+            { key: "md.comp.list.list.item.leading.image.width", expected: "4rem" },
+            { key: "md.comp.list.list.item.trailing.supporting.text.font", expected: "md.sys.typescale.label-small.font" },
+            { key: "md.comp.list.list.item.disabled.label.text.opacity", expected: 0.38 },
+            { key: "md.comp.list.list.item.disabled.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.list.list.item.hover.leading.icon.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.list.list.item.selected.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.list.list.item.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "md.comp.list.list.item.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.list.list.item.dragged.container.color", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.list.list.item.dragged.state.layer.opacity", expected: "md.sys.state.dragged.state-layer-opacity" },
         ],
     },
 ];

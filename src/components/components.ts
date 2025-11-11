@@ -16,6 +16,7 @@ import { datePickerTokens } from "./tokens/datePickerTokens";
 import { timePickerTokens } from "./tokens/timePickerTokens";
 import { dialogTokens } from "./tokens/dialogTokens";
 import { dividerTokens } from "./tokens/dividerTokens";
+import { listTokens } from "./tokens/listTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -38,6 +39,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "time-picker", value: timePickerTokens },
     { name: "dialog", value: dialogTokens },
     { name: "divider", value: dividerTokens },
+    { name: "list", value: listTokens },
 ];
 
 /**
