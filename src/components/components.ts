@@ -12,6 +12,7 @@ import { cardTokens } from "./tokens/cardTokens";
 import { carouselTokens } from "./tokens/carouselTokens";
 import { checkboxTokens } from "./tokens/checkboxTokens";
 import { chipTokens } from "./tokens/chipTokens";
+import { datePickerTokens } from "./tokens/datePickerTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -30,6 +31,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "carousel", value: carouselTokens },
     { name: "checkbox", value: checkboxTokens },
     { name: "chip", value: chipTokens },
+    { name: "date-picker", value: datePickerTokens },
 ];
 
 /**

@@ -15,6 +15,7 @@ const ALL_COMPONENTS = [
     "carousel",
     "checkbox",
     "chip",
+    "date-picker",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -317,6 +318,27 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.chip.suggestion.hover.leading.icon.color", expected: "md.sys.color.primary" },
             { key: "md.comp.chip.suggestion.elevated.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
             { key: "md.comp.chip.suggestion.dragged.state.layer.opacity", expected: "md.sys.state.dragged.state-layer-opacity" },
+        ],
+    },
+    {
+        name: "date-picker",
+        key: "date-picker",
+        sampleTokens: [
+            { key: "md.comp.date-picker.docker.container.color", expected: "md.sys.color.surface-container-high" },
+            { key: "md.comp.date-picker.docker.container.width", expected: "25.7143rem" },
+            { key: "md.comp.date-picker.docker.menu.button.label.text.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.date-picker.docker.date.unselected.outside.month.label.text.opacity", expected: 0.38 },
+            { key: "md.comp.date-picker.docker.menu.button.icon.size", expected: "1.2857rem" },
+            { key: "md.comp.date-picker.docker.date.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.date-picker.docker.menu.list.item.selected.pressed.leading.icon.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.date-picker.modal.container.height", expected: "37.4286rem" },
+            { key: "md.comp.date-picker.modal.range.selection.active.indicator.container.color", expected: "md.sys.color.secondary-container" },
+            { key: "md.comp.date-picker.modal.range.selection.month.subhead.font", expected: "md.sys.typescale.title-small.font" },
+            { key: "md.comp.date-picker.modal.range.selection.date.in.range.hover.state.layer.color", expected: "md.sys.color.on-primary-container" },
+            { key: "md.comp.date-picker.modal.year.selection.year.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.date-picker.modal-input.container.width", expected: "23.4286rem" },
+            { key: "md.comp.date-picker.modal-input.header.headline.font", expected: "md.sys.typescale.headline-large.font" },
+            { key: "md.comp.date-picker.modal-input.header.supporting.text.tracking", expected: "md.sys.typescale.label-large.tracking" },
         ],
     },
 ];
