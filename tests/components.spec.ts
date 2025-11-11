@@ -34,6 +34,7 @@ const ALL_COMPONENTS = [
     "switch",
     "tabs",
     "text-field",
+    "toolbar",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -706,6 +707,33 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.text-field.filled.error.supporting.text.color", expected: "md.sys.color.error" },
             { key: "md.comp.text-field.filled.error.focus.caret.color", expected: "md.sys.color.error" },
             { key: "md.comp.text-field.filled.error.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+        ],
+    },
+    {
+        name: "toolbar",
+        key: "toolbar",
+        sampleTokens: [
+            { key: "md.comp.toolbar.standard.container.color", expected: "md.sys.color.surface-container" },
+            { key: "md.comp.toolbar.standard.button.container.color.selected", expected: "md.sys.color.secondary-container" },
+            { key: "md.comp.toolbar.standard.icon.color.selected", expected: "md.sys.color.on-secondary-container" },
+            { key: "md.comp.toolbar.standard.container.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.toolbar.standard.disabled.icon.opacity", expected: 0.38 },
+            { key: "md.comp.toolbar.standard.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.toolbar.standard.focus.state.layer.color.selected", expected: "md.sys.color.on-secondary-container" },
+            { key: "md.comp.toolbar.standard.pressed.icon.color.selected", expected: "md.sys.color.on-secondary-container" },
+            { key: "md.comp.toolbar.vibrant.container.color", expected: "md.sys.color.primary-container" },
+            { key: "md.comp.toolbar.vibrant.icon.color.selected", expected: "md.sys.color.on-surface" },
+            { key: "md.comp.toolbar.vibrant.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.toolbar.vibrant.focus.state.layer.color.selected", expected: "md.sys.color.on-surface" },
+            { key: "md.comp.toolbar.vibrant.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.toolbar.docked.container.height", expected: "4.5714rem" },
+            { key: "md.comp.toolbar.docked.max.space.between.actions", expected: "2.2857rem" },
+            { key: "md.comp.toolbar.floating.container.height.horizontal", expected: "4.5714rem" },
+            { key: "md.comp.toolbar.floating.margin.from.screen.edge.vertical", expected: "1.7143rem" },
+            { key: "md.comp.toolbar.floating.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.toolbar.floating.fab.standard.container.color", expected: "md.sys.color.secondary-container" },
+            { key: "md.comp.toolbar.floating.fab.expanded.container.width", expected: "4rem" },
+            { key: "md.comp.toolbar.floating.fab.collapsed.container.height", expected: "5.7143rem" },
         ],
     },
 ];

@@ -31,6 +31,7 @@ import { snackbarTokens } from "./tokens/snackbarTokens";
 import { switchTokens } from "./tokens/switchTokens";
 import { tabsTokens } from "./tokens/tabsTokens";
 import { textFieldTokens } from "./tokens/textFieldTokens";
+import { toolbarTokens } from "./tokens/toolbarTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -68,6 +69,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "switch", value: switchTokens },
     { name: "tabs", value: tabsTokens },
     { name: "text-field", value: textFieldTokens },
+    { name: "toolbar", value: toolbarTokens },
 ];
 
 /**
