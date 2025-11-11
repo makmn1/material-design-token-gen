@@ -17,6 +17,7 @@ import { timePickerTokens } from "./tokens/timePickerTokens";
 import { dialogTokens } from "./tokens/dialogTokens";
 import { dividerTokens } from "./tokens/dividerTokens";
 import { listTokens } from "./tokens/listTokens";
+import { loadingIndicatorTokens } from "./tokens/loadingIndicatorTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -40,6 +41,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "dialog", value: dialogTokens },
     { name: "divider", value: dividerTokens },
     { name: "list", value: listTokens },
+    { name: "loading-indicator", value: loadingIndicatorTokens },
 ];
 
 /**

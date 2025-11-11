@@ -490,10 +490,6 @@ export const buttonSizeXLarge: Record<string, string | number> = {
   "md.comp.button.xlarge.selected.container.shape.square": "md.sys.shape.corner.full",
 };
 
-/**
- * Flattened object containing all button tokens merged together.
- * This is the preferred export for use in component generation.
- */
 export const buttonTokens: Record<string, string | number> = Object.assign(
   {},
   buttonColorDefaultEnabled,

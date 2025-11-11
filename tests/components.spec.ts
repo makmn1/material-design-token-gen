@@ -20,6 +20,7 @@ const ALL_COMPONENTS = [
     "dialog",
     "divider",
     "list",
+    "loading-indicator",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -422,6 +423,19 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.list.list.item.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
             { key: "md.comp.list.list.item.dragged.container.color", expected: "md.sys.elevation.level4" },
             { key: "md.comp.list.list.item.dragged.state.layer.opacity", expected: "md.sys.state.dragged.state-layer-opacity" },
+        ],
+    },
+    {
+        name: "loading-indicator",
+        key: "loading-indicator",
+        sampleTokens: [
+            { key: "md.comp.loading-indicator.active.indicator.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.loading-indicator.contained.container.color", expected: "md.sys.color.primary-container" },
+            { key: "md.comp.loading-indicator.contained.active.indicator.color", expected: "md.sys.color.on-primary-container" },
+            { key: "md.comp.loading-indicator.container.width", expected: "2.7143rem" },
+            { key: "md.comp.loading-indicator.container.height", expected: "3.4286rem" },
+            { key: "md.comp.loading-indicator.active.indicator.size", expected: "3.4286rem" },
+            { key: "md.comp.loading-indicator.container.shape", expected: "md.sys.shape.corner.full" },
         ],
     },
 ];
