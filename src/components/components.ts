@@ -11,6 +11,7 @@ import { splitButtonTokens } from "./tokens/splitButtonTokens";
 import { cardTokens } from "./tokens/cardTokens";
 import { carouselTokens } from "./tokens/carouselTokens";
 import { checkboxTokens } from "./tokens/checkboxTokens";
+import { chipTokens } from "./tokens/chipTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -28,6 +29,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "card", value: cardTokens },
     { name: "carousel", value: carouselTokens },
     { name: "checkbox", value: checkboxTokens },
+    { name: "chip", value: chipTokens },
 ];
 
 /**

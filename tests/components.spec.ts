@@ -14,6 +14,7 @@ const ALL_COMPONENTS = [
     "card",
     "carousel",
     "checkbox",
+    "chip",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -289,6 +290,33 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.checkbox.unselected.pressed.state.layer.color", expected: "md.sys.color.primary" },
             { key: "md.comp.checkbox.selected.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
             { key: "md.comp.checkbox.error.pressed.state.layer.color", expected: "md.sys.color.error" },
+        ],
+    },
+    {
+        name: "chip",
+        key: "chip",
+        sampleTokens: [
+            { key: "md.comp.chip.assist.container.height", expected: "2.2857rem" },
+            { key: "md.comp.chip.assist.elevated.container.shadow.color", expected: "md.sys.color.shadow" },
+            { key: "md.comp.chip.assist.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.chip.assist.focus.indicator.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
+            { key: "md.comp.chip.assist.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.chip.assist.dragged.state.layer.opacity", expected: "md.sys.state.dragged.state-layer-opacity" },
+            { key: "md.comp.chip.filter.container.height", expected: "2.2857rem" },
+            { key: "md.comp.chip.filter.unselected.outline.width", expected: "0.0714rem" },
+            { key: "md.comp.chip.filter.selected.outline.width", expected: 0 },
+            { key: "md.comp.chip.filter.elevated.container.shadow.color", expected: "md.sys.color.shadow" },
+            { key: "md.comp.chip.filter.selected.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.chip.filter.selected.dragged.state.layer.opacity", expected: "md.sys.state.dragged.state-layer-opacity" },
+            { key: "md.comp.chip.input.with.avatar.avatar.size", expected: "1.7143rem" },
+            { key: "md.comp.chip.input.trailing.icon.size", expected: "1.2857rem" },
+            { key: "md.comp.chip.input.with.trailing.icon.selected.hover.trailing.icon.color", expected: "md.sys.color.on-secondary-container" },
+            { key: "md.comp.chip.input.with.trailing.icon.unselected.pressed.trailing.icon.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.chip.input.with.trailing.icon.disabled.trailing.icon.opacity", expected: 0.38 },
+            { key: "md.comp.chip.suggestion.container.height", expected: "2.2857rem" },
+            { key: "md.comp.chip.suggestion.hover.leading.icon.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.chip.suggestion.elevated.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.chip.suggestion.dragged.state.layer.opacity", expected: "md.sys.state.dragged.state-layer-opacity" },
         ],
     },
 ];
