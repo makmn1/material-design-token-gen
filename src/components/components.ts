@@ -27,6 +27,7 @@ import { searchTokens } from "./tokens/searchTokens";
 import { bottomSheetTokens } from "./tokens/bottomSheetTokens";
 import { sideSheetTokens } from "./tokens/sideSheetTokens";
 import { sliderTokens } from "./tokens/sliderTokens";
+import { snackbarTokens } from "./tokens/snackbarTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -60,6 +61,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "bottom-sheet", value: bottomSheetTokens },
     { name: "side-sheet", value: sideSheetTokens },
     { name: "slider", value: sliderTokens },
+    { name: "snackbar", value: snackbarTokens },
 ];
 
 /**

@@ -30,6 +30,7 @@ const ALL_COMPONENTS = [
     "bottom-sheet",
     "side-sheet",
     "slider",
+    "snackbar",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -620,6 +621,26 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.slider.medium.icon.size", expected: "1.7143rem" },
             { key: "md.comp.slider.large.active.handle.height", expected: "4.8571rem" },
             { key: "md.comp.slider.xlarge.icon.size", expected: "2.2857rem" },
+        ],
+    },
+    {
+        name: "snackbar",
+        key: "snackbar",
+        sampleTokens: [
+            { key: "md.comp.snackbar.container.color", expected: "md.sys.color.inverse-surface" },
+            { key: "md.comp.snackbar.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.snackbar.container.single.line.height", expected: "3.4286rem" },
+            { key: "md.comp.snackbar.container.two.lines.height", expected: "4.8571rem" },
+            { key: "md.comp.snackbar.label.text.font", expected: "md.sys.typescale.label-large.font" },
+            { key: "md.comp.snackbar.label.text.tracking", expected: "md.sys.typescale.label-large.tracking" },
+            { key: "md.comp.snackbar.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.snackbar.supporting.text.weight", expected: "md.sys.typescale.body-medium.weight" },
+            { key: "md.comp.snackbar.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.snackbar.icon.hover.state.layer.color", expected: "md.sys.color.inverse-on-surface" },
+            { key: "md.comp.snackbar.focus.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.snackbar.icon.focus.state.layer.color", expected: "md.sys.color.inverse-on-surface" },
+            { key: "md.comp.snackbar.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.snackbar.icon.pressed.state.layer.color", expected: "md.sys.color.inverse-on-surface" },
         ],
     },
 ];
