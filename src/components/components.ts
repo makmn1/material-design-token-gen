@@ -1,41 +1,14 @@
 import { convertDpInTree } from "../util/dp";
-import {
-    buttonColorDefaultEnabled,
-    buttonColorDefaultDisabled,
-    buttonColorDefaultHovered,
-    buttonColorDefaultFocused,
-    buttonColorDefaultPressed,
-    buttonColorFilledEnabled,
-    buttonColorFilledDisabled,
-    buttonColorFilledHovered,
-    buttonColorFilledFocused,
-    buttonColorFilledPressed,
-    buttonColorElevatedEnabled,
-    buttonColorElevatedDisabled,
-    buttonColorElevatedHovered,
-    buttonColorElevatedFocused,
-    buttonColorElevatedPressed,
-    buttonColorTonalEnabled,
-    buttonColorTonalDisabled,
-    buttonColorTonalHovered,
-    buttonColorTonalFocused,
-    buttonColorTonalPressed,
-    buttonColorOutlinedEnabled,
-    buttonColorOutlinedDisabled,
-    buttonColorOutlinedHovered,
-    buttonColorOutlinedFocused,
-    buttonColorOutlinedPressed,
-    buttonColorTextEnabled,
-    buttonColorTextDisabled,
-    buttonColorTextHovered,
-    buttonColorTextFocused,
-    buttonColorTextPressed,
-    buttonSizeXsmall,
-    buttonSizeSmall,
-    buttonSizeMedium,
-    buttonSizeLarge,
-    buttonSizeXLarge,
-} from "./tokens/buttonTokens";
+import { buttonTokens } from "./tokens/buttonTokens";
+import { appBarTokens } from "./tokens/appBarTokens";
+
+const COMPONENT_TOKENS: Array<{
+    name: string;
+    value: Record<string, string | number>;
+}> = [
+    { name: "button", value: buttonTokens },
+    { name: "app-bar", value: appBarTokens },
+];
 
 /**
  * Options for generating component tokens.
@@ -118,59 +91,28 @@ export function generateComponentTokens(
         unit = "rem",
     } = options;
 
-    const result: Record<string, Record<string, string | number>> = {};
+    const filtered = COMPONENT_TOKENS.filter(
+        (entry) => !excludes.includes(entry.name),
+    );
 
-    if (!excludes.includes("button")) {
-        const buttonTokens = Object.assign(
-            {},
-            buttonColorDefaultEnabled,
-            buttonColorDefaultDisabled,
-            buttonColorDefaultHovered,
-            buttonColorDefaultFocused,
-            buttonColorDefaultPressed,
-            buttonColorFilledEnabled,
-            buttonColorFilledDisabled,
-            buttonColorFilledHovered,
-            buttonColorFilledFocused,
-            buttonColorFilledPressed,
-            buttonColorElevatedEnabled,
-            buttonColorElevatedDisabled,
-            buttonColorElevatedHovered,
-            buttonColorElevatedFocused,
-            buttonColorElevatedPressed,
-            buttonColorTonalEnabled,
-            buttonColorTonalDisabled,
-            buttonColorTonalHovered,
-            buttonColorTonalFocused,
-            buttonColorTonalPressed,
-            buttonColorOutlinedEnabled,
-            buttonColorOutlinedDisabled,
-            buttonColorOutlinedHovered,
-            buttonColorOutlinedFocused,
-            buttonColorOutlinedPressed,
-            buttonColorTextEnabled,
-            buttonColorTextDisabled,
-            buttonColorTextHovered,
-            buttonColorTextFocused,
-            buttonColorTextPressed,
-            buttonSizeXsmall,
-            buttonSizeSmall,
-            buttonSizeMedium,
-            buttonSizeLarge,
-            buttonSizeXLarge,
-        );
+    const converted = webUnits
+        ? filtered.map((entry) => ({
+              name: entry.name,
+              value: convertDpInTree(entry.value, {
+                  rootFontSizePx,
+                  dpPxRatio,
+                  unit,
+              }) as Record<string, string | number>,
+          }))
+        : filtered;
 
-        if (webUnits) {
-            const converted = convertDpInTree(buttonTokens, {
-                rootFontSizePx,
-                dpPxRatio,
-                unit,
-            });
-            result.button = converted as Record<string, string | number>;
-        } else {
-            result.button = buttonTokens;
-        }
-    }
+    const result = converted.reduce(
+        (acc, entry) => {
+            acc[entry.name] = entry.value;
+            return acc;
+        },
+        {} as Record<string, Record<string, string | number>>,
+    );
 
     return result;
 }

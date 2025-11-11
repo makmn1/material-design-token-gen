@@ -489,3 +489,46 @@ export const buttonSizeXLarge: Record<string, string | number> = {
   "md.comp.button.xlarge.selected.container.shape.round": "md.sys.shape.corner.extra-large",
   "md.comp.button.xlarge.selected.container.shape.square": "md.sys.shape.corner.full",
 };
+
+/**
+ * Flattened object containing all button tokens merged together.
+ * This is the preferred export for use in component generation.
+ */
+export const buttonTokens: Record<string, string | number> = Object.assign(
+  {},
+  buttonColorDefaultEnabled,
+  buttonColorDefaultDisabled,
+  buttonColorDefaultHovered,
+  buttonColorDefaultFocused,
+  buttonColorDefaultPressed,
+  buttonColorFilledEnabled,
+  buttonColorFilledDisabled,
+  buttonColorFilledHovered,
+  buttonColorFilledFocused,
+  buttonColorFilledPressed,
+  buttonColorElevatedEnabled,
+  buttonColorElevatedDisabled,
+  buttonColorElevatedHovered,
+  buttonColorElevatedFocused,
+  buttonColorElevatedPressed,
+  buttonColorTonalEnabled,
+  buttonColorTonalDisabled,
+  buttonColorTonalHovered,
+  buttonColorTonalFocused,
+  buttonColorTonalPressed,
+  buttonColorOutlinedEnabled,
+  buttonColorOutlinedDisabled,
+  buttonColorOutlinedHovered,
+  buttonColorOutlinedFocused,
+  buttonColorOutlinedPressed,
+  buttonColorTextEnabled,
+  buttonColorTextDisabled,
+  buttonColorTextHovered,
+  buttonColorTextFocused,
+  buttonColorTextPressed,
+  buttonSizeXsmall,
+  buttonSizeSmall,
+  buttonSizeMedium,
+  buttonSizeLarge,
+  buttonSizeXLarge,
+);

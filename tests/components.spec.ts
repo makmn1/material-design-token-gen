@@ -53,12 +53,13 @@ describe("generateComponentTokens()", () => {
     it("excludes button tokens when 'button' is in excludes array", () => {
         const tokens1 = generateComponentTokens({ excludes: ["button"] });
         expect(tokens1).not.toHaveProperty("button");
-        expect(Object.keys(tokens1).length).toBe(0);
+        expect(tokens1).toHaveProperty("app-bar");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["button", "card", "textfield"],
+            excludes: ["button", "app-bar"],
         });
         expect(tokens2).not.toHaveProperty("button");
+        expect(tokens2).not.toHaveProperty("app-bar");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -158,6 +159,48 @@ describe("generateComponentTokens()", () => {
         expect(tokens2).toHaveProperty("button");
         expect(tokens2.button).toBeDefined();
         expect(Object.keys(tokens2.button).length).toBeGreaterThan(0);
+    });
+
+    it("loads all app bar token groups correctly (representative sample)", () => {
+        const tokens = generateComponentTokens();
+
+        expect(tokens["app-bar"]).toBeDefined();
+
+        const sampleTokens = [
+            { key: "md.comp.app-bar.container.color", expected: "md.sys.color.surface" },
+            { key: "md.comp.app-bar.container.elevation", expected: "md.sys.elevation.level0" },
+            { key: "md.comp.app-bar.container.elevation.on.scroll", expected: "md.sys.elevation.level2" },
+            { key: "md.comp.app-bar.title.text", expected: "md.sys.color.on-surface" },
+            { key: "md.comp.app-bar.icon.spacing", expected: 0 },
+            { key: "md.comp.app-bar.left.padding", expected: "0.2857rem" },
+            { key: "md.comp.app-bar.container.shape", expected: "md.sys.shape.corner.none" },
+            { key: "md.comp.app-bar.avatar.size", expected: "2.2857rem" },
+            { key: "md.comp.app-bar.small.container.height", expected: "4.5714rem" },
+            { key: "md.comp.app-bar.small.title.font.name", expected: "md.sys.typescale.title-large.font" },
+            { key: "md.comp.app-bar.medium.flexible.container.height", expected: "8rem" },
+            { key: "md.comp.app-bar.medium.title.font.size", expected: "md.sys.typescale.headline-medium.size" },
+            { key: "md.comp.app-bar.large.flexible.container.height", expected: "8.5714rem" },
+            { key: "md.comp.app-bar.large.title.font.name", expected: "md.sys.typescale.display-small.font" },
+            { key: "md.comp.app-bar.search.container.color", expected: "md.sys.color.surface-container" },
+            { key: "md.comp.app-bar.search.container.height", expected: "4rem" },
+        ];
+
+        for (const { key, expected } of sampleTokens) {
+            expect(tokens["app-bar"][key]).toBe(expected);
+        }
+    });
+
+    it("excludes app bar tokens when 'app-bar' is in excludes array", () => {
+        const tokens1 = generateComponentTokens({ excludes: ["app-bar"] });
+        expect(tokens1).not.toHaveProperty("app-bar");
+        expect(tokens1).toHaveProperty("button");
+
+        const tokens2 = generateComponentTokens({
+            excludes: ["app-bar", "button"],
+        });
+        expect(tokens2).not.toHaveProperty("app-bar");
+        expect(tokens2).not.toHaveProperty("button");
+        expect(Object.keys(tokens2).length).toBe(0);
     });
 });
 
