@@ -23,6 +23,7 @@ const ALL_COMPONENTS = [
     "loading-indicator",
     "progress-indicator",
     "menu",
+    "navigation-bar",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -465,6 +466,27 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.menu.focus.indicator.color", expected: "md.sys.color.secondary" },
             { key: "md.comp.menu.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
             { key: "md.comp.menu.focus.indicator.offset", expected: "md.sys.state.focus-indicator.inner-offset" },
+        ],
+    },
+    {
+        name: "navigation-bar",
+        key: "navigation-bar",
+        sampleTokens: [
+            { key: "md.comp.nav.bar.container.elevation", expected: "md.sys.elevation.level2" },
+            { key: "md.comp.nav.bar.container.color", expected: "md.sys.color.surface-container" },
+            { key: "md.comp.nav.bar.item.active.label.text.color", expected: "md.sys.color.secondary" },
+            { key: "md.comp.nav.bar.item.inactive.label.text.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.nav.bar.item.active.hovered.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.nav.bar.item.space.between.icon.label.space", expected: "0.2857rem" },
+            { key: "md.comp.nav.bar.item.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.nav.bar.space.between.items", expected: 0 },
+            { key: "md.comp.nav.bar.height", expected: "4.5714rem" },
+            { key: "md.comp.nav.bar.item.vertical.active.indicator.height", expected: "2.2857rem" },
+            { key: "md.comp.nav.bar.item.vertical.active.indicator.width", expected: "4rem" },
+            { key: "md.comp.nav.bar.item.vertical.container.between.space", expected: "0.4286rem" },
+            { key: "md.comp.nav.bar.item.horizontal.active.indicator.height", expected: "2.8571rem" },
+            { key: "md.comp.nav.bar.item.horizontal.active.indicator.leading.space", expected: "1.1429rem" },
+            { key: "md.comp.nav.bar.item.horizontal.active.indicator.icon.label.space", expected: "0.2857rem" },
         ],
     },
 ];

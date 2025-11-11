@@ -20,6 +20,7 @@ import { listTokens } from "./tokens/listTokens";
 import { loadingIndicatorTokens } from "./tokens/loadingIndicatorTokens";
 import { progressIndicatorTokens } from "./tokens/progressIndicatorTokens";
 import { menuTokens } from "./tokens/menuTokens";
+import { navigationBarTokens } from "./tokens/navigationBarTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -46,6 +47,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "loading-indicator", value: loadingIndicatorTokens },
     { name: "progress-indicator", value: progressIndicatorTokens },
     { name: "menu", value: menuTokens },
+    { name: "navigation-bar", value: navigationBarTokens },
 ];
 
 /**
