@@ -31,6 +31,7 @@ const ALL_COMPONENTS = [
     "side-sheet",
     "slider",
     "snackbar",
+    "switch",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -641,6 +642,26 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.snackbar.icon.focus.state.layer.color", expected: "md.sys.color.inverse-on-surface" },
             { key: "md.comp.snackbar.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
             { key: "md.comp.snackbar.icon.pressed.state.layer.color", expected: "md.sys.color.inverse-on-surface" },
+        ],
+    },
+    {
+        name: "switch",
+        key: "switch",
+        sampleTokens: [
+            { key: "md.comp.switch.selected.icon.color", expected: "md.sys.color.on-primary-container" },
+            { key: "md.comp.switch.track.height", expected: "2.2857rem" },
+            { key: "md.comp.switch.track.width", expected: "3.7143rem" },
+            { key: "md.comp.switch.track.outline.width", expected: "0.1429rem" },
+            { key: "md.comp.switch.selected.track.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.switch.unselected.handle.height", expected: "1.1429rem" },
+            { key: "md.comp.switch.pressed.handle.width", expected: "2rem" },
+            { key: "md.comp.switch.state.layer.size", expected: "2.8571rem" },
+            { key: "md.comp.switch.disabled.selected.icon.opacity", expected: 0.38 },
+            { key: "md.comp.switch.disabled.track.opacity", expected: 0.12 },
+            { key: "md.comp.switch.selected.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.switch.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "md.comp.switch.unselected.focus.state.layer.color", expected: "md.sys.color.on-surface" },
+            { key: "md.comp.switch.selected.pressed.handle.color", expected: "md.sys.color.primary-container" },
         ],
     },
 ];

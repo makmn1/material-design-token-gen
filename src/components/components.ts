@@ -28,6 +28,7 @@ import { bottomSheetTokens } from "./tokens/bottomSheetTokens";
 import { sideSheetTokens } from "./tokens/sideSheetTokens";
 import { sliderTokens } from "./tokens/sliderTokens";
 import { snackbarTokens } from "./tokens/snackbarTokens";
+import { switchTokens } from "./tokens/switchTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -62,6 +63,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "side-sheet", value: sideSheetTokens },
     { name: "slider", value: sliderTokens },
     { name: "snackbar", value: snackbarTokens },
+    { name: "switch", value: switchTokens },
 ];
 
 /**
