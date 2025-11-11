@@ -35,6 +35,7 @@ const ALL_COMPONENTS = [
     "tabs",
     "text-field",
     "toolbar",
+    "tooltip",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -734,6 +735,25 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.toolbar.floating.fab.standard.container.color", expected: "md.sys.color.secondary-container" },
             { key: "md.comp.toolbar.floating.fab.expanded.container.width", expected: "4rem" },
             { key: "md.comp.toolbar.floating.fab.collapsed.container.height", expected: "5.7143rem" },
+        ],
+    },
+    {
+        name: "tooltip",
+        key: "tooltip",
+        sampleTokens: [
+            { key: "md.comp.tooltip.plain.container.color", expected: "md.sys.color.inverse-surface" },
+            { key: "md.comp.tooltip.plain.container.shape", expected: "md.sys.shape.corner.extra-small" },
+            { key: "md.comp.tooltip.plain.supporting.text.font", expected: "md.sys.typescale.body-small.font" },
+            { key: "md.comp.tooltip.plain.supporting.text.weight", expected: "md.sys.typescale.body-small.weight" },
+            { key: "md.comp.tooltip.plain.supporting.text.color", expected: "md.sys.color.inverse-on-surface" },
+            { key: "md.comp.tooltip.rich.container.elevation", expected: "md.sys.elevation.level2" },
+            { key: "md.comp.tooltip.rich.container.shadow.color", expected: "md.sys.color.shadow" },
+            { key: "md.comp.tooltip.rich.action.label.text.tracking", expected: "md.sys.typescale.label-large.tracking" },
+            { key: "md.comp.tooltip.rich.subhead.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.tooltip.rich.supporting.text.size", expected: "md.sys.typescale.body-medium.size" },
+            { key: "md.comp.tooltip.rich.action.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.tooltip.rich.action.focus.state.layer.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.tooltip.rich.action.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
         ],
     },
 ];
