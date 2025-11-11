@@ -26,6 +26,7 @@ const ALL_COMPONENTS = [
     "navigation-bar",
     "navigation-rail",
     "radio-button",
+    "search",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -538,6 +539,27 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.radio-button.unselected.focus.state.layer.color", expected: "md.sys.color.on-surface" },
             { key: "md.comp.radio-button.selected.pressed.state.layer.color", expected: "md.sys.color.on-surface" },
             { key: "md.comp.radio-button.unselected.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+        ],
+    },
+    {
+        name: "search",
+        key: "search",
+        sampleTokens: [
+            { key: "md.comp.search.avatar.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.search.avatar.size", expected: "2.1429rem" },
+            { key: "md.comp.search.container.color", expected: "md.sys.color.surface-container-high" },
+            { key: "md.comp.search.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.search.container.height", expected: "4rem" },
+            { key: "md.comp.search.leading.icon.color", expected: "md.sys.color.on-surface" },
+            { key: "md.comp.search.trailing.icon.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.search.supporting.text.font", expected: "md.sys.typescale.body-large.font" },
+            { key: "md.comp.search.supporting.text.tracking", expected: "md.sys.typescale.body-large.tracking" },
+            { key: "md.comp.search.input.text.font", expected: "md.sys.typescale.body-large.font" },
+            { key: "md.comp.search.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.search.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.search.focus.indicator.color", expected: "md.sys.color.secondary" },
+            { key: "md.comp.search.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "md.comp.search.focus.indicator.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
         ],
     },
 ];
