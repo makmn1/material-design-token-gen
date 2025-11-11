@@ -10,6 +10,7 @@ const ALL_COMPONENTS = [
     "extended-fab",
     "fab-menu",
     "icon-button",
+    "split-button",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -193,6 +194,28 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.icon-button.medium.container.shape.square", expected: "md.sys.shape.corner.large" },
             { key: "md.comp.icon-button.large.icon.size", expected: "2.2857rem" },
             { key: "md.comp.icon-button.xlarge.outline.width", expected: "0.2143rem" },
+        ],
+    },
+    {
+        name: "split-button",
+        key: "split-button",
+        sampleTokens: [
+            { key: "md.comp.split-button.xsmall.container.height", expected: "2.2857rem" },
+            { key: "md.comp.split-button.xsmall.between.space", expected: "0.1429rem" },
+            { key: "md.comp.split-button.xsmall.container.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.split-button.xsmall.inner.corner.size", expected: "md.sys.shape.corner-value.extra-small" },
+            { key: "md.comp.split-button.xsmall.outer.corner.size", expected: "50%" },
+            { key: "md.comp.split-button.small.container.height", expected: "2.8571rem" },
+            { key: "md.comp.split-button.small.leading.button.leading.space", expected: "1.1429rem" },
+            { key: "md.comp.split-button.small.trailing.button.icon.size", expected: "1.5714rem" },
+            { key: "md.comp.split-button.medium.container.height", expected: "4rem" },
+            { key: "md.comp.split-button.medium.leading.button.trailing.space", expected: "1.7143rem" },
+            { key: "md.comp.split-button.medium.trailing.button.leading.space", expected: "1.0714rem" },
+            { key: "md.comp.split-button.large.container.height", expected: "6.8571rem" },
+            { key: "md.comp.split-button.large.trailing.button.icon.size", expected: "2.7143rem" },
+            { key: "md.comp.split-button.large.inner.corner.hovered.size", expected: "md.sys.shape.corner-value.large-increased" },
+            { key: "md.comp.split-button.xlarge.container.height", expected: "9.7143rem" },
+            { key: "md.comp.split-button.xlarge.trailing.button.inner.corner.selected.size", expected: "50%" },
         ],
     },
 ];

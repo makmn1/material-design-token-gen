@@ -9,8 +9,7 @@ Instruction for AI tools on generating component CSS styles.
 5. Each table in the component's tokens markdown file should be placed in its own variable with an appropriate name
 6. The file should export all the token variables in one Object to be imported in ./src/components/components.ts
 7. Update ./src/components/components.ts to include the tokens from the new file in the output unless the file is in the excludes array
-8. Update ./tests/components.spec.ts with two tests. One test asserts a representative sample of tokens from the new component. 
-The other test asserts that it's appropriately excluded when in the excludes array.
+8. Update ./tests/components.spec.ts by adding the new component to the paramterized tests.
 9. If in plan mode, ask any clarifying questions to the user if needed
 
 ## Deriving a name
