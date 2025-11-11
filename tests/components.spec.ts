@@ -13,6 +13,7 @@ const ALL_COMPONENTS = [
     "split-button",
     "card",
     "carousel",
+    "checkbox",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -263,6 +264,31 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.carousel.item.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
             { key: "md.comp.carousel.item.disabled.container.opacity", expected: 0.38 },
             { key: "md.comp.carousel.item.disabled.outline.opacity", expected: 0.12 },
+        ],
+    },
+    {
+        name: "checkbox",
+        key: "checkbox",
+        sampleTokens: [
+            { key: "md.comp.checkbox.container.size", expected: "1.2857rem" },
+            { key: "md.comp.checkbox.container.shape", expected: "0.1429rem" },
+            { key: "md.comp.checkbox.unselected.outline.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.checkbox.unselected.outline.width", expected: "0.1429rem" },
+            { key: "md.comp.checkbox.selected.container.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.checkbox.selected.outline.width", expected: 0 },
+            { key: "md.comp.checkbox.selected.icon.color", expected: "md.sys.color.on-primary" },
+            { key: "md.comp.checkbox.state.layer.size", expected: "2.8571rem" },
+            { key: "md.comp.checkbox.unselected.disabled.container.opacity", expected: 0.38 },
+            { key: "md.comp.checkbox.selected.disabled.container.opacity", expected: 0.38 },
+            { key: "md.comp.checkbox.selected.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.checkbox.error.hover.state.layer.color", expected: "md.sys.color.error" },
+            { key: "md.comp.checkbox.focus.indicator.color", expected: "md.sys.color.secondary" },
+            { key: "md.comp.checkbox.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "md.comp.checkbox.selected.focus.container.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.checkbox.unselected.focus.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.checkbox.unselected.pressed.state.layer.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.checkbox.selected.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.checkbox.error.pressed.state.layer.color", expected: "md.sys.color.error" },
         ],
     },
 ];
