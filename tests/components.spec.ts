@@ -56,14 +56,16 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("app-bar");
         expect(tokens1).toHaveProperty("badge");
         expect(tokens1).toHaveProperty("button-group");
+        expect(tokens1).toHaveProperty("fab");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["button", "app-bar", "badge", "button-group"],
+            excludes: ["button", "app-bar", "badge", "button-group", "fab"],
         });
         expect(tokens2).not.toHaveProperty("button");
         expect(tokens2).not.toHaveProperty("app-bar");
         expect(tokens2).not.toHaveProperty("badge");
         expect(tokens2).not.toHaveProperty("button-group");
+        expect(tokens2).not.toHaveProperty("fab");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -200,14 +202,16 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("button");
         expect(tokens1).toHaveProperty("badge");
         expect(tokens1).toHaveProperty("button-group");
+        expect(tokens1).toHaveProperty("fab");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["app-bar", "button", "badge", "button-group"],
+            excludes: ["app-bar", "button", "badge", "button-group", "fab"],
         });
         expect(tokens2).not.toHaveProperty("app-bar");
         expect(tokens2).not.toHaveProperty("button");
         expect(tokens2).not.toHaveProperty("badge");
         expect(tokens2).not.toHaveProperty("button-group");
+        expect(tokens2).not.toHaveProperty("fab");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -245,14 +249,16 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("button");
         expect(tokens1).toHaveProperty("app-bar");
         expect(tokens1).toHaveProperty("button-group");
+        expect(tokens1).toHaveProperty("fab");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["badge", "button", "app-bar", "button-group"],
+            excludes: ["badge", "button", "app-bar", "button-group", "fab"],
         });
         expect(tokens2).not.toHaveProperty("badge");
         expect(tokens2).not.toHaveProperty("button");
         expect(tokens2).not.toHaveProperty("app-bar");
         expect(tokens2).not.toHaveProperty("button-group");
+        expect(tokens2).not.toHaveProperty("fab");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -291,14 +297,62 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("button");
         expect(tokens1).toHaveProperty("app-bar");
         expect(tokens1).toHaveProperty("badge");
+        expect(tokens1).toHaveProperty("fab");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["button-group", "button", "app-bar", "badge"],
+            excludes: ["button-group", "button", "app-bar", "badge", "fab"],
         });
         expect(tokens2).not.toHaveProperty("button-group");
         expect(tokens2).not.toHaveProperty("button");
         expect(tokens2).not.toHaveProperty("app-bar");
         expect(tokens2).not.toHaveProperty("badge");
+        expect(tokens2).not.toHaveProperty("fab");
+        expect(Object.keys(tokens2).length).toBe(0);
+    });
+
+    it("loads all FAB token groups correctly (representative sample)", () => {
+        const tokens = generateComponentTokens();
+
+        expect(tokens.fab).toBeDefined();
+
+        const sampleTokens = [
+            { key: "md.comp.fab.container.height", expected: "4rem" },
+            { key: "md.comp.fab.container.width", expected: "4rem" },
+            { key: "md.comp.fab.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.fab.container.shape", expected: "md.sys.shape.corner.large" },
+            { key: "md.comp.fab.medium.container.height", expected: "5.7143rem" },
+            { key: "md.comp.fab.large.container.height", expected: "6.8571rem" },
+            { key: "md.comp.fab.tonal.primary.container.color", expected: "md.sys.color.primary-container" },
+            { key: "md.comp.fab.tonal.primary.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.fab.tonal.primary.focused.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.fab.tonal.secondary.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.fab.primary.container.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.fab.primary.focused.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.fab.secondary.hovered.container.elevation", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.fab.tertiary.pressed.container.elevation", expected: "md.sys.elevation.level3" },
+        ];
+
+        for (const { key, expected } of sampleTokens) {
+            expect(tokens.fab[key]).toBe(expected);
+        }
+    });
+
+    it("excludes FAB tokens when 'fab' is in excludes array", () => {
+        const tokens1 = generateComponentTokens({ excludes: ["fab"] });
+        expect(tokens1).not.toHaveProperty("fab");
+        expect(tokens1).toHaveProperty("button");
+        expect(tokens1).toHaveProperty("app-bar");
+        expect(tokens1).toHaveProperty("badge");
+        expect(tokens1).toHaveProperty("button-group");
+
+        const tokens2 = generateComponentTokens({
+            excludes: ["fab", "button", "app-bar", "badge", "button-group"],
+        });
+        expect(tokens2).not.toHaveProperty("fab");
+        expect(tokens2).not.toHaveProperty("button");
+        expect(tokens2).not.toHaveProperty("app-bar");
+        expect(tokens2).not.toHaveProperty("badge");
+        expect(tokens2).not.toHaveProperty("button-group");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 });

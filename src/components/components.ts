@@ -3,6 +3,7 @@ import { buttonTokens } from "./tokens/buttonTokens";
 import { appBarTokens } from "./tokens/appBarTokens";
 import { badgeTokens } from "./tokens/badgeTokens";
 import { buttonGroupTokens } from "./tokens/buttonGroupTokens";
+import { fabTokens } from "./tokens/fabTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -12,6 +13,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "app-bar", value: appBarTokens },
     { name: "badge", value: badgeTokens },
     { name: "button-group", value: buttonGroupTokens },
+    { name: "fab", value: fabTokens },
 ];
 
 /**
