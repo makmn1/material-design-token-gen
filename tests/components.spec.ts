@@ -58,9 +58,10 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("button-group");
         expect(tokens1).toHaveProperty("fab");
         expect(tokens1).toHaveProperty("extended-fab");
+        expect(tokens1).toHaveProperty("fab-menu");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["button", "app-bar", "badge", "button-group", "fab", "extended-fab"],
+            excludes: ["button", "app-bar", "badge", "button-group", "fab", "extended-fab", "fab-menu"],
         });
         expect(tokens2).not.toHaveProperty("button");
         expect(tokens2).not.toHaveProperty("app-bar");
@@ -68,6 +69,7 @@ describe("generateComponentTokens()", () => {
         expect(tokens2).not.toHaveProperty("button-group");
         expect(tokens2).not.toHaveProperty("fab");
         expect(tokens2).not.toHaveProperty("extended-fab");
+        expect(tokens2).not.toHaveProperty("fab-menu");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -206,9 +208,10 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("button-group");
         expect(tokens1).toHaveProperty("fab");
         expect(tokens1).toHaveProperty("extended-fab");
+        expect(tokens1).toHaveProperty("fab-menu");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["app-bar", "button", "badge", "button-group", "fab", "extended-fab"],
+            excludes: ["app-bar", "button", "badge", "button-group", "fab", "extended-fab", "fab-menu"],
         });
         expect(tokens2).not.toHaveProperty("app-bar");
         expect(tokens2).not.toHaveProperty("button");
@@ -216,6 +219,7 @@ describe("generateComponentTokens()", () => {
         expect(tokens2).not.toHaveProperty("button-group");
         expect(tokens2).not.toHaveProperty("fab");
         expect(tokens2).not.toHaveProperty("extended-fab");
+        expect(tokens2).not.toHaveProperty("fab-menu");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -255,9 +259,10 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("button-group");
         expect(tokens1).toHaveProperty("fab");
         expect(tokens1).toHaveProperty("extended-fab");
+        expect(tokens1).toHaveProperty("fab-menu");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["badge", "button", "app-bar", "button-group", "fab", "extended-fab"],
+            excludes: ["badge", "button", "app-bar", "button-group", "fab", "extended-fab", "fab-menu"],
         });
         expect(tokens2).not.toHaveProperty("badge");
         expect(tokens2).not.toHaveProperty("button");
@@ -265,6 +270,7 @@ describe("generateComponentTokens()", () => {
         expect(tokens2).not.toHaveProperty("button-group");
         expect(tokens2).not.toHaveProperty("fab");
         expect(tokens2).not.toHaveProperty("extended-fab");
+        expect(tokens2).not.toHaveProperty("fab-menu");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -305,9 +311,10 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("badge");
         expect(tokens1).toHaveProperty("fab");
         expect(tokens1).toHaveProperty("extended-fab");
+        expect(tokens1).toHaveProperty("fab-menu");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["button-group", "button", "app-bar", "badge", "fab", "extended-fab"],
+            excludes: ["button-group", "button", "app-bar", "badge", "fab", "extended-fab", "fab-menu"],
         });
         expect(tokens2).not.toHaveProperty("button-group");
         expect(tokens2).not.toHaveProperty("button");
@@ -315,6 +322,7 @@ describe("generateComponentTokens()", () => {
         expect(tokens2).not.toHaveProperty("badge");
         expect(tokens2).not.toHaveProperty("fab");
         expect(tokens2).not.toHaveProperty("extended-fab");
+        expect(tokens2).not.toHaveProperty("fab-menu");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -353,9 +361,10 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("badge");
         expect(tokens1).toHaveProperty("button-group");
         expect(tokens1).toHaveProperty("extended-fab");
+        expect(tokens1).toHaveProperty("fab-menu");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["fab", "button", "app-bar", "badge", "button-group", "extended-fab"],
+            excludes: ["fab", "button", "app-bar", "badge", "button-group", "extended-fab", "fab-menu"],
         });
         expect(tokens2).not.toHaveProperty("fab");
         expect(tokens2).not.toHaveProperty("button");
@@ -363,6 +372,7 @@ describe("generateComponentTokens()", () => {
         expect(tokens2).not.toHaveProperty("badge");
         expect(tokens2).not.toHaveProperty("button-group");
         expect(tokens2).not.toHaveProperty("extended-fab");
+        expect(tokens2).not.toHaveProperty("fab-menu");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 
@@ -402,9 +412,10 @@ describe("generateComponentTokens()", () => {
         expect(tokens1).toHaveProperty("badge");
         expect(tokens1).toHaveProperty("button-group");
         expect(tokens1).toHaveProperty("fab");
+        expect(tokens1).toHaveProperty("fab-menu");
 
         const tokens2 = generateComponentTokens({
-            excludes: ["extended-fab", "button", "app-bar", "badge", "button-group", "fab"],
+            excludes: ["extended-fab", "button", "app-bar", "badge", "button-group", "fab", "fab-menu"],
         });
         expect(tokens2).not.toHaveProperty("extended-fab");
         expect(tokens2).not.toHaveProperty("button");
@@ -412,6 +423,58 @@ describe("generateComponentTokens()", () => {
         expect(tokens2).not.toHaveProperty("badge");
         expect(tokens2).not.toHaveProperty("button-group");
         expect(tokens2).not.toHaveProperty("fab");
+        expect(tokens2).not.toHaveProperty("fab-menu");
+        expect(Object.keys(tokens2).length).toBe(0);
+    });
+
+    it("loads all FAB menu token groups correctly (representative sample)", () => {
+        const tokens = generateComponentTokens();
+
+        expect(tokens["fab-menu"]).toBeDefined();
+
+        const sampleTokens = [
+            { key: "md.comp.fab-menu.close.button.container.height", expected: "4rem" },
+            { key: "md.comp.fab-menu.close.width", expected: "4rem" },
+            { key: "md.comp.fab-menu.close.button.icon.size", expected: "1.4286rem" },
+            { key: "md.comp.fab-menu.close.button.container.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.fab-menu.menu.item.container.height", expected: "4rem" },
+            { key: "md.comp.fab-menu.menu.item.label.text.font.name", expected: "md.sys.typescale.body-large.font" },
+            { key: "md.comp.fab-menu.menu.item.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.fab-menu.primary.close.button.container.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.fab-menu.primary.close.button.hovered.container.elevation", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.fab-menu.primary.close.button.focused.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.fab-menu.secondary.close.button.pressed.icon.color", expected: "md.sys.color.on-secondary" },
+            { key: "md.comp.fab-menu.primary.list.item.container.color", expected: "md.sys.color.primary-container" },
+            { key: "md.comp.fab-menu.primary.list.item.hovered.container.elevation", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.fab-menu.secondary.list.item.focused.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.fab-menu.tertiary.list.item.pressed.label.text.color", expected: "md.sys.color.on-tertiary-container" },
+        ];
+
+        for (const { key, expected } of sampleTokens) {
+            expect(tokens["fab-menu"][key]).toBe(expected);
+        }
+    });
+
+    it("excludes FAB menu tokens when 'fab-menu' is in excludes array", () => {
+        const tokens1 = generateComponentTokens({ excludes: ["fab-menu"] });
+        expect(tokens1).not.toHaveProperty("fab-menu");
+        expect(tokens1).toHaveProperty("button");
+        expect(tokens1).toHaveProperty("app-bar");
+        expect(tokens1).toHaveProperty("badge");
+        expect(tokens1).toHaveProperty("button-group");
+        expect(tokens1).toHaveProperty("fab");
+        expect(tokens1).toHaveProperty("extended-fab");
+
+        const tokens2 = generateComponentTokens({
+            excludes: ["fab-menu", "button", "app-bar", "badge", "button-group", "fab", "extended-fab"],
+        });
+        expect(tokens2).not.toHaveProperty("fab-menu");
+        expect(tokens2).not.toHaveProperty("button");
+        expect(tokens2).not.toHaveProperty("app-bar");
+        expect(tokens2).not.toHaveProperty("badge");
+        expect(tokens2).not.toHaveProperty("button-group");
+        expect(tokens2).not.toHaveProperty("fab");
+        expect(tokens2).not.toHaveProperty("extended-fab");
         expect(Object.keys(tokens2).length).toBe(0);
     });
 });
