@@ -28,6 +28,7 @@ const ALL_COMPONENTS = [
     "radio-button",
     "search",
     "bottom-sheet",
+    "side-sheet",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -578,6 +579,26 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.bottom-sheet.focus.indicator.color", expected: "md.sys.color.secondary" },
             { key: "md.comp.bottom-sheet.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
             { key: "md.comp.bottom-sheet.focus.indicator.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
+        ],
+    },
+    {
+        name: "side-sheet",
+        key: "side-sheet",
+        sampleTokens: [
+            { key: "md.comp.side-sheet.docked.modal.container.color", expected: "md.sys.color.surface-container-low" },
+            { key: "md.comp.side-sheet.docked.standard.container.color", expected: "md.sys.color.surface" },
+            { key: "md.comp.side-sheet.docked.modal.container.elevation", expected: "md.sys.elevation.level1" },
+            { key: "md.comp.side-sheet.docked.standard.container.elevation", expected: "md.sys.elevation.level0" },
+            { key: "md.comp.side-sheet.docked.container.height", expected: "100%" },
+            { key: "md.comp.side-sheet.docked.container.width", expected: "18.2857rem" },
+            { key: "md.comp.side-sheet.docked.modal.container.shape", expected: "md.sys.shape.corner.large.start" },
+            { key: "md.comp.side-sheet.docked.headline.font", expected: "md.sys.typescale.title-large.font" },
+            { key: "md.comp.side-sheet.docked.headline.tracking", expected: "md.sys.typescale.title-large.tracking" },
+            { key: "md.comp.side-sheet.docked.divider.color", expected: "md.sys.color.outline" },
+            { key: "md.comp.side-sheet.docked.action.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.side-sheet.docked.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "md.comp.side-sheet.docked.action.focus.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.side-sheet.docked.action.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
         ],
     },
 ];
