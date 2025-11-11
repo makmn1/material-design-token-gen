@@ -17,6 +17,7 @@ const ALL_COMPONENTS = [
     "chip",
     "date-picker",
     "time-picker",
+    "dialog",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -361,6 +362,26 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.time-picker.input.focus.indicator.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
             { key: "md.comp.time-picker.input.time.input.field.focus.outline.width", expected: "0.1429rem" },
             { key: "md.comp.time-picker.input.period.selector.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+        ],
+    },
+    {
+        name: "dialog",
+        key: "dialog",
+        sampleTokens: [
+            { key: "md.comp.dialog.basic.container.color", expected: "md.sys.color.surface-container-high" },
+            { key: "md.comp.dialog.basic.headline.font", expected: "md.sys.typescale.headline-small.font" },
+            { key: "md.comp.dialog.basic.supporting.text.weight", expected: "md.sys.typescale.body-medium.weight" },
+            { key: "md.comp.dialog.basic.action.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.dialog.basic.action.focus.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.dialog.basic.action.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.dialog.full-screen.container.shape", expected: "md.sys.shape.corner.none" },
+            { key: "md.comp.dialog.full-screen.header.container.height", expected: "4rem" },
+            { key: "md.comp.dialog.full-screen.header.container.surface.tint.layer.color", expected: "md.sys.color.surface-tint" },
+            { key: "md.comp.dialog.full-screen.header.action.label.text.font", expected: "md.sys.typescale.label-large.font" },
+            { key: "md.comp.dialog.full-screen.header.headline.tracking", expected: "md.sys.typescale.title-large.tracking" },
+            { key: "md.comp.dialog.full-screen.header.action.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.dialog.full-screen.header.action.focus.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.dialog.full-screen.header.action.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
         ],
     },
 ];
