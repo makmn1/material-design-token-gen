@@ -24,6 +24,7 @@ import { navigationBarTokens } from "./tokens/navigationBarTokens";
 import { navigationRailTokens } from "./tokens/navigationRailTokens";
 import { radioButtonTokens } from "./tokens/radioButtonTokens";
 import { searchTokens } from "./tokens/searchTokens";
+import { bottomSheetTokens } from "./tokens/bottomSheetTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -54,6 +55,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "navigation-rail", value: navigationRailTokens },
     { name: "radio-button", value: radioButtonTokens },
     { name: "search", value: searchTokens },
+    { name: "bottom-sheet", value: bottomSheetTokens },
 ];
 
 /**

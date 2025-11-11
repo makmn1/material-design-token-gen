@@ -27,6 +27,7 @@ const ALL_COMPONENTS = [
     "navigation-rail",
     "radio-button",
     "search",
+    "bottom-sheet",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -560,6 +561,23 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.search.focus.indicator.color", expected: "md.sys.color.secondary" },
             { key: "md.comp.search.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
             { key: "md.comp.search.focus.indicator.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
+        ],
+    },
+    {
+        name: "bottom-sheet",
+        key: "bottom-sheet",
+        sampleTokens: [
+            { key: "md.comp.bottom-sheet.docked.container.color", expected: "md.sys.color.surface-container-low" },
+            { key: "md.comp.bottom-sheet.docked.modal.container.elevation", expected: "md.sys.elevation.level1" },
+            { key: "md.comp.bottom-sheet.docked.standard.container.elevation", expected: "md.sys.elevation.level1" },
+            { key: "md.comp.bottom-sheet.docked.container.shape", expected: "md.sys.shape.corner.extra-large.top" },
+            { key: "md.comp.bottom-sheet.docked.minimized.container.shape", expected: "md.sys.shape.corner.none" },
+            { key: "md.comp.bottom-sheet.docked.drag.handle.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.bottom-sheet.docked.drag.handle.width", expected: "2.2857rem" },
+            { key: "md.comp.bottom-sheet.docked.drag.handle.height", expected: "0.2857rem" },
+            { key: "md.comp.bottom-sheet.focus.indicator.color", expected: "md.sys.color.secondary" },
+            { key: "md.comp.bottom-sheet.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "md.comp.bottom-sheet.focus.indicator.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
         ],
     },
 ];
