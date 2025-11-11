@@ -18,6 +18,7 @@ const ALL_COMPONENTS = [
     "date-picker",
     "time-picker",
     "dialog",
+    "divider",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -382,6 +383,14 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.dialog.full-screen.header.action.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
             { key: "md.comp.dialog.full-screen.header.action.focus.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
             { key: "md.comp.dialog.full-screen.header.action.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+        ],
+    },
+    {
+        name: "divider",
+        key: "divider",
+        sampleTokens: [
+            { key: "md.comp.divider.container.thickness", expected: "0.0714rem" },
+            { key: "md.comp.divider.container.color", expected: "md.sys.color.outline-variant" },
         ],
     },
 ];
