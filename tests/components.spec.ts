@@ -11,6 +11,7 @@ const ALL_COMPONENTS = [
     "fab-menu",
     "icon-button",
     "split-button",
+    "card",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -216,6 +217,32 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.split-button.large.inner.corner.hovered.size", expected: "md.sys.shape.corner-value.large-increased" },
             { key: "md.comp.split-button.xlarge.container.height", expected: "9.7143rem" },
             { key: "md.comp.split-button.xlarge.trailing.button.inner.corner.selected.size", expected: "50%" },
+        ],
+    },
+    {
+        name: "card",
+        key: "card",
+        sampleTokens: [
+            { key: "md.comp.card.elevated.container.color", expected: "md.sys.color.surface-container-low" },
+            { key: "md.comp.card.elevated.container.elevation", expected: "md.sys.elevation.level1" },
+            { key: "md.comp.card.elevated.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.card.elevated.disabled.container.opacity", expected: 0.38 },
+            { key: "md.comp.card.elevated.hover.container.elevation", expected: "md.sys.elevation.level2" },
+            { key: "md.comp.card.elevated.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.card.elevated.focus.indicator.color", expected: "md.sys.color.secondary" },
+            { key: "md.comp.card.elevated.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.card.elevated.dragged.container.elevation", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.card.filled.container.color", expected: "md.sys.color.surface-container-highest" },
+            { key: "md.comp.card.filled.container.elevation", expected: "md.sys.elevation.level0" },
+            { key: "md.comp.card.filled.disabled.container.color", expected: "md.sys.color.surface-variant" },
+            { key: "md.comp.card.filled.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "md.comp.card.outlined.container.color", expected: "md.sys.color.surface" },
+            { key: "md.comp.card.outlined.outline.width", expected: "0.0714rem" },
+            { key: "md.comp.card.outlined.outline.color", expected: "md.sys.color.outline-variant" },
+            { key: "md.comp.card.outlined.disabled.outline.opacity", expected: 0.12 },
+            { key: "md.comp.card.outlined.hover.outline.color", expected: "md.sys.color.outline-variant" },
+            { key: "md.comp.card.outlined.focus.outline.color", expected: "md.sys.color.on-surface" },
+            { key: "md.comp.card.outlined.dragged.outline.color", expected: "md.sys.color.outline-variant" },
         ],
     },
 ];
