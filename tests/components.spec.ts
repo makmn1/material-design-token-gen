@@ -16,6 +16,7 @@ const ALL_COMPONENTS = [
     "checkbox",
     "chip",
     "date-picker",
+    "time-picker",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -339,6 +340,27 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.date-picker.modal-input.container.width", expected: "23.4286rem" },
             { key: "md.comp.date-picker.modal-input.header.headline.font", expected: "md.sys.typescale.headline-large.font" },
             { key: "md.comp.date-picker.modal-input.header.supporting.text.tracking", expected: "md.sys.typescale.label-large.tracking" },
+        ],
+    },
+    {
+        name: "time-picker",
+        key: "time-picker",
+        sampleTokens: [
+            { key: "md.comp.time-picker.dial.container.color", expected: "md.sys.color.surface-container-high" },
+            { key: "md.comp.time-picker.dial.clock.dial.container.size", expected: "18.2857rem" },
+            { key: "md.comp.time-picker.dial.time.selector.24h.vertical.container.width", expected: "8.1429rem" },
+            { key: "md.comp.time-picker.dial.period.selector.outline.width", expected: "0.0714rem" },
+            { key: "md.comp.time-picker.dial.clock.dial.selector.track.container.width", expected: "0.1429rem" },
+            { key: "md.comp.time-picker.dial.period.selector.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.time-picker.dial.period.selector.focus.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.time-picker.dial.period.selector.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.time-picker.dial.period.selector.unselected.pressed.label.text.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.time-picker.input.container.shape", expected: "md.sys.shape.corner.extra-large" },
+            { key: "md.comp.time-picker.input.time.input.field.container.width", expected: "6.8571rem" },
+            { key: "md.comp.time-picker.input.period.selector.container.height", expected: "5.1429rem" },
+            { key: "md.comp.time-picker.input.focus.indicator.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
+            { key: "md.comp.time-picker.input.time.input.field.focus.outline.width", expected: "0.1429rem" },
+            { key: "md.comp.time-picker.input.period.selector.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
         ],
     },
 ];
