@@ -33,6 +33,7 @@ const ALL_COMPONENTS = [
     "snackbar",
     "switch",
     "tabs",
+    "text-field",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -683,6 +684,28 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.tabs.secondary.navigation.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
             { key: "md.comp.tabs.secondary.navigation.focus.indicator.offset", expected: "md.sys.state.focus-indicator.inner-offset" },
             { key: "md.comp.tabs.secondary.navigation.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+        ],
+    },
+    {
+        name: "text-field",
+        key: "text-field",
+        sampleTokens: [
+            { key: "md.comp.text-field.filled.container.color", expected: "md.sys.color.surface-container-highest" },
+            { key: "md.comp.text-field.filled.container.shape", expected: "md.sys.shape.corner.extra-small.top" },
+            { key: "md.comp.text-field.filled.label.text.tracking", expected: "md.sys.typescale.body-large.tracking" },
+            { key: "md.comp.text-field.filled.label.text.populated.line.height", expected: "md.sys.typescale.body-small.line-height" },
+            { key: "md.comp.text-field.filled.leading.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.text-field.filled.active.indicator.height", expected: "0.0714rem" },
+            { key: "md.comp.text-field.filled.supporting.text.weight", expected: "md.sys.typescale.body-small.weight" },
+            { key: "md.comp.text-field.filled.input.text.prefix.color", expected: "md.sys.color.on-surface-variant" },
+            { key: "md.comp.text-field.filled.caret.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.text-field.filled.disabled.container.opacity", expected: 0.04 },
+            { key: "md.comp.text-field.filled.disabled.leading.icon.opacity", expected: 0.38 },
+            { key: "md.comp.text-field.filled.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.text-field.filled.focus.active.indicator.height", expected: "0.1429rem" },
+            { key: "md.comp.text-field.filled.error.supporting.text.color", expected: "md.sys.color.error" },
+            { key: "md.comp.text-field.filled.error.focus.caret.color", expected: "md.sys.color.error" },
+            { key: "md.comp.text-field.filled.error.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
         ],
     },
 ];

@@ -30,6 +30,7 @@ import { sliderTokens } from "./tokens/sliderTokens";
 import { snackbarTokens } from "./tokens/snackbarTokens";
 import { switchTokens } from "./tokens/switchTokens";
 import { tabsTokens } from "./tokens/tabsTokens";
+import { textFieldTokens } from "./tokens/textFieldTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -66,6 +67,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "snackbar", value: snackbarTokens },
     { name: "switch", value: switchTokens },
     { name: "tabs", value: tabsTokens },
+    { name: "text-field", value: textFieldTokens },
 ];
 
 /**
