@@ -12,6 +12,7 @@ const ALL_COMPONENTS = [
     "icon-button",
     "split-button",
     "card",
+    "carousel",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -243,6 +244,25 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.card.outlined.hover.outline.color", expected: "md.sys.color.outline-variant" },
             { key: "md.comp.card.outlined.focus.outline.color", expected: "md.sys.color.on-surface" },
             { key: "md.comp.card.outlined.dragged.outline.color", expected: "md.sys.color.outline-variant" },
+        ],
+    },
+    {
+        name: "carousel",
+        key: "carousel",
+        sampleTokens: [
+            { key: "md.comp.carousel.item.outline.color", expected: "md.sys.color.outline" },
+            { key: "md.comp.carousel.item.outline.width", expected: "0.0714rem" },
+            { key: "md.comp.carousel.item.container.color", expected: "md.sys.color.surface" },
+            { key: "md.comp.carousel.item.container.elevation", expected: "md.sys.elevation.level0" },
+            { key: "md.comp.carousel.item.container.shape", expected: "md.sys.shape.corner.extra-large" },
+            { key: "md.comp.carousel.item.hover.container.elevation", expected: "md.sys.elevation.level1" },
+            { key: "md.comp.carousel.item.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.carousel.item.focus.indicator.color", expected: "md.sys.color.secondary" },
+            { key: "md.comp.carousel.focus.indicator.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
+            { key: "md.comp.carousel.item.focus.outline.color", expected: "md.sys.color.on-surface" },
+            { key: "md.comp.carousel.item.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.carousel.item.disabled.container.opacity", expected: 0.38 },
+            { key: "md.comp.carousel.item.disabled.outline.opacity", expected: 0.12 },
         ],
     },
 ];

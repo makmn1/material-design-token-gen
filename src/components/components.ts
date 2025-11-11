@@ -9,6 +9,7 @@ import { fabMenuTokens } from "./tokens/fabMenuTokens";
 import { iconButtonTokens } from "./tokens/iconButtonTokens";
 import { splitButtonTokens } from "./tokens/splitButtonTokens";
 import { cardTokens } from "./tokens/cardTokens";
+import { carouselTokens } from "./tokens/carouselTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -24,6 +25,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "icon-button", value: iconButtonTokens },
     { name: "split-button", value: splitButtonTokens },
     { name: "card", value: cardTokens },
+    { name: "carousel", value: carouselTokens },
 ];
 
 /**
