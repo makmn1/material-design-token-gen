@@ -32,6 +32,7 @@ const ALL_COMPONENTS = [
     "slider",
     "snackbar",
     "switch",
+    "tabs",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -662,6 +663,26 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.switch.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
             { key: "md.comp.switch.unselected.focus.state.layer.color", expected: "md.sys.color.on-surface" },
             { key: "md.comp.switch.selected.pressed.handle.color", expected: "md.sys.color.primary-container" },
+        ],
+    },
+    {
+        name: "tabs",
+        key: "tabs",
+        sampleTokens: [
+            { key: "md.comp.tabs.primary.navigation.container.color", expected: "md.sys.color.surface" },
+            { key: "md.comp.tabs.primary.navigation.container.height", expected: "3.4286rem" },
+            { key: "md.comp.tabs.primary.navigation.container.with.icon.label.text.height", expected: "4.5714rem" },
+            { key: "md.comp.tabs.primary.navigation.label.text.active.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.tabs.primary.navigation.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.tabs.primary.navigation.active.indicator.height", expected: "0.2143rem" },
+            { key: "md.comp.tabs.primary.navigation.hover.inactive.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.tabs.primary.navigation.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "md.comp.tabs.primary.navigation.pressed.inactive.state.layer.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.tabs.secondary.navigation.container.shadow.color", expected: "md.sys.color.shadow" },
+            { key: "md.comp.tabs.secondary.navigation.active.indicator.height", expected: "0.1429rem" },
+            { key: "md.comp.tabs.secondary.navigation.hover.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.tabs.secondary.navigation.focus.indicator.offset", expected: "md.sys.state.focus-indicator.inner-offset" },
+            { key: "md.comp.tabs.secondary.navigation.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
         ],
     },
 ];
