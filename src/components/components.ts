@@ -22,6 +22,7 @@ import { progressIndicatorTokens } from "./tokens/progressIndicatorTokens";
 import { menuTokens } from "./tokens/menuTokens";
 import { navigationBarTokens } from "./tokens/navigationBarTokens";
 import { navigationRailTokens } from "./tokens/navigationRailTokens";
+import { radioButtonTokens } from "./tokens/radioButtonTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -50,6 +51,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "menu", value: menuTokens },
     { name: "navigation-bar", value: navigationBarTokens },
     { name: "navigation-rail", value: navigationRailTokens },
+    { name: "radio-button", value: radioButtonTokens },
 ];
 
 /**
