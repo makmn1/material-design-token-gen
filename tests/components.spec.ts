@@ -22,6 +22,7 @@ const ALL_COMPONENTS = [
     "list",
     "loading-indicator",
     "progress-indicator",
+    "menu",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -452,6 +453,18 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.progress-indicator.linear.wave.amplitude", expected: "0.2143rem" },
             { key: "md.comp.progress-indicator.circular.size", expected: "2.8571rem" },
             { key: "md.comp.progress-indicator.circular.active.indicator.wave.amplitude", expected: "0.1143rem" },
+        ],
+    },
+    {
+        name: "menu",
+        key: "menu",
+        sampleTokens: [
+            { key: "md.comp.menu.container.color", expected: "md.sys.color.surface-container" },
+            { key: "md.comp.menu.container.elevation", expected: "md.sys.elevation.level2" },
+            { key: "md.comp.menu.container.shape", expected: "md.sys.shape.corner.extra-small" },
+            { key: "md.comp.menu.focus.indicator.color", expected: "md.sys.color.secondary" },
+            { key: "md.comp.menu.focus.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "md.comp.menu.focus.indicator.offset", expected: "md.sys.state.focus-indicator.inner-offset" },
         ],
     },
 ];
