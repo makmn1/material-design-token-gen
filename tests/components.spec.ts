@@ -1,28 +1,30 @@
 import { describe, it, expect } from "vitest";
 import {generateComponentTokens} from "../src/components/components";
 
-describe("generateComponentTokens()", () => {
-    it("generates button tokens by default (no excludes, webUnits=true)", () => {
-        const tokens = generateComponentTokens();
+const ALL_COMPONENTS = [
+    "button",
+    "app-bar",
+    "badge",
+    "button-group",
+    "fab",
+    "extended-fab",
+    "fab-menu",
+    "icon-button",
+] as const;
 
-        expect(tokens).toHaveProperty("button");
-        expect(tokens.button).toBeDefined();
-        expect(typeof tokens.button).toBe("object");
+type ComponentName = typeof ALL_COMPONENTS[number];
 
-        const buttonTokenKeys = Object.keys(tokens.button);
-        expect(buttonTokenKeys.length).toBeGreaterThan(0);
+interface ComponentTestData {
+    name: ComponentName;
+    key: string;
+    sampleTokens: Array<{ key: string; expected: string | number }>;
+}
 
-        for (const value of Object.values(tokens.button)) {
-            expect(typeof value === "string" || typeof value === "number").toBe(true);
-        }
-    });
-
-    it("loads all button token groups correctly (representative sample)", () => {
-        const tokens = generateComponentTokens();
-
-        expect(tokens.button).toBeDefined();
-
-        const sampleTokens = [
+const COMPONENT_TEST_DATA: ComponentTestData[] = [
+    {
+        name: "button",
+        key: "button",
+        sampleTokens: [
             { key: "md.comp.button.container.color", expected: "md.sys.color.primary" },
             { key: "md.comp.button.disabled.container.color", expected: "md.sys.color.on-surface" },
             { key: "md.comp.button.hovered.container.state.layer.color", expected: "md.sys.color.on-primary" },
@@ -43,36 +45,193 @@ describe("generateComponentTokens()", () => {
             { key: "md.comp.button.medium.container.height", expected: "4rem" },
             { key: "md.comp.button.large.container.height", expected: "6.8571rem" },
             { key: "md.comp.button.xlarge.container.height", expected: "9.7143rem" },
-        ];
+        ],
+    },
+    {
+        name: "app-bar",
+        key: "app-bar",
+        sampleTokens: [
+            { key: "md.comp.app-bar.container.color", expected: "md.sys.color.surface" },
+            { key: "md.comp.app-bar.container.elevation", expected: "md.sys.elevation.level0" },
+            { key: "md.comp.app-bar.container.elevation.on.scroll", expected: "md.sys.elevation.level2" },
+            { key: "md.comp.app-bar.title.text", expected: "md.sys.color.on-surface" },
+            { key: "md.comp.app-bar.icon.spacing", expected: 0 },
+            { key: "md.comp.app-bar.left.padding", expected: "0.2857rem" },
+            { key: "md.comp.app-bar.container.shape", expected: "md.sys.shape.corner.none" },
+            { key: "md.comp.app-bar.avatar.size", expected: "2.2857rem" },
+            { key: "md.comp.app-bar.small.container.height", expected: "4.5714rem" },
+            { key: "md.comp.app-bar.small.title.font.name", expected: "md.sys.typescale.title-large.font" },
+            { key: "md.comp.app-bar.medium.flexible.container.height", expected: "8rem" },
+            { key: "md.comp.app-bar.medium.title.font.size", expected: "md.sys.typescale.headline-medium.size" },
+            { key: "md.comp.app-bar.large.flexible.container.height", expected: "8.5714rem" },
+            { key: "md.comp.app-bar.large.title.font.name", expected: "md.sys.typescale.display-small.font" },
+            { key: "md.comp.app-bar.search.container.color", expected: "md.sys.color.surface-container" },
+            { key: "md.comp.app-bar.search.container.height", expected: "4rem" },
+        ],
+    },
+    {
+        name: "badge",
+        key: "badge",
+        sampleTokens: [
+            { key: "md.comp.badge.color", expected: "md.sys.color.error" },
+            { key: "md.comp.badge.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.badge.size", expected: "0.4286rem" },
+            { key: "md.comp.badge.large.color", expected: "md.sys.color.error" },
+            { key: "md.comp.badge.large.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.badge.large.size", expected: "1.1429rem" },
+            { key: "md.comp.badge.large.label.text.color", expected: "md.sys.color.on-error" },
+            { key: "md.comp.badge.large.label.text.font", expected: "md.sys.typescale.label-small.font" },
+            { key: "md.comp.badge.large.label.text.line.height", expected: "md.sys.typescale.label-small.line-height" },
+            { key: "md.comp.badge.large.label.text.size", expected: "md.sys.typescale.label-small.size" },
+            { key: "md.comp.badge.large.label.text.tracking", expected: "md.sys.typescale.label-small.tracking" },
+            { key: "md.comp.badge.large.label.text.weight", expected: "md.sys.typescale.label-small.weight" },
+            { key: "md.comp.badge.large.max.width", expected: "2.4286rem" },
+            { key: "md.comp.badge.small.distance.from.top.trailing.icon.corner.to.leading.badge.corner", expected: "0.4286rem" },
+            { key: "md.comp.badge.large.distance.from.top.trailing.icon.corner.to.bottom.trailing.badge.corner", expected: "1rem" },
+        ],
+    },
+    {
+        name: "button-group",
+        key: "button-group",
+        sampleTokens: [
+            { key: "md.comp.button-group.xsmall.container.height", expected: "2.2857rem" },
+            { key: "md.comp.button-group.xsmall.between.space", expected: "1.2857rem" },
+            { key: "md.comp.button-group.xsmall.pressed.motion.spring.dampening", expected: "md.sys.motion.spring.fast.spatial.damping" },
+            { key: "md.comp.button-group.xsmall.pressed.width.multiplier", expected: "15%" },
+            { key: "md.comp.button-group.small.container.height", expected: "2.8571rem" },
+            { key: "md.comp.button-group.medium.container.height", expected: "4rem" },
+            { key: "md.comp.button-group.large.container.height", expected: "6.8571rem" },
+            { key: "md.comp.button-group.xlarge.container.height", expected: "9.7143rem" },
+            { key: "md.comp.button-group.connected.xsmall.container.height", expected: "2.2857rem" },
+            { key: "md.comp.button-group.connected.xsmall.space.between.buttons", expected: "0.1429rem" },
+            { key: "md.comp.button-group.connected.xsmall.container.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.button-group.connected.xsmall.inner.corner.size", expected: "md.sys.shape.corner-value.small" },
+            { key: "md.comp.button-group.connected.xsmall.pressed.inner.corner.size", expected: "md.sys.shape.corner-value.extra-small" },
+            { key: "md.comp.button-group.connected.xsmall.selected.inner.corner.size", expected: "50%" },
+            { key: "md.comp.button-group.connected.large.inner.corner.size", expected: "md.sys.shape.corner-value.large" },
+            { key: "md.comp.button-group.connected.xlarge.inner.corner.size", expected: "md.sys.shape.corner-value.large-increased" },
+        ],
+    },
+    {
+        name: "fab",
+        key: "fab",
+        sampleTokens: [
+            { key: "md.comp.fab.container.height", expected: "4rem" },
+            { key: "md.comp.fab.container.width", expected: "4rem" },
+            { key: "md.comp.fab.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.fab.container.shape", expected: "md.sys.shape.corner.large" },
+            { key: "md.comp.fab.medium.container.height", expected: "5.7143rem" },
+            { key: "md.comp.fab.large.container.height", expected: "6.8571rem" },
+            { key: "md.comp.fab.tonal.primary.container.color", expected: "md.sys.color.primary-container" },
+            { key: "md.comp.fab.tonal.primary.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.fab.tonal.primary.focused.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.fab.tonal.secondary.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.fab.primary.container.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.fab.primary.focused.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.fab.secondary.hovered.container.elevation", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.fab.tertiary.pressed.container.elevation", expected: "md.sys.elevation.level3" },
+        ],
+    },
+    {
+        name: "extended-fab",
+        key: "extended-fab",
+        sampleTokens: [
+            { key: "md.comp.extended-fab.small.container.height", expected: "4rem" },
+            { key: "md.comp.extended-fab.small.label.text.font.name", expected: "md.sys.typescale.body-large.font" },
+            { key: "md.comp.extended-fab.small.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.extended-fab.small.container.shape", expected: "md.sys.shape.corner.large" },
+            { key: "md.comp.extended-fab.medium.container.height", expected: "5.7143rem" },
+            { key: "md.comp.extended-fab.large.container.height", expected: "6.8571rem" },
+            { key: "md.comp.extended-fab.tonal.primary.container.color", expected: "md.sys.color.primary-container" },
+            { key: "md.comp.extended-fab.tonal.primary.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.extended-fab.tonal.primary.hovered.container.elevation", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.extended-fab.tonal.primary.focused.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.extended-fab.tonal.secondary.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
+            { key: "md.comp.extended-fab.primary.container.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.extended-fab.primary.hovered.container.elevation", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.extended-fab.secondary.focused.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.extended-fab.tertiary.pressed.container.elevation", expected: "md.sys.elevation.level3" },
+        ],
+    },
+    {
+        name: "fab-menu",
+        key: "fab-menu",
+        sampleTokens: [
+            { key: "md.comp.fab-menu.close.button.container.height", expected: "4rem" },
+            { key: "md.comp.fab-menu.close.width", expected: "4rem" },
+            { key: "md.comp.fab-menu.close.button.icon.size", expected: "1.4286rem" },
+            { key: "md.comp.fab-menu.close.button.container.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.fab-menu.menu.item.container.height", expected: "4rem" },
+            { key: "md.comp.fab-menu.menu.item.label.text.font.name", expected: "md.sys.typescale.body-large.font" },
+            { key: "md.comp.fab-menu.menu.item.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.fab-menu.primary.close.button.container.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.fab-menu.primary.close.button.hovered.container.elevation", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.fab-menu.primary.close.button.focused.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
+            { key: "md.comp.fab-menu.secondary.close.button.pressed.icon.color", expected: "md.sys.color.on-secondary" },
+            { key: "md.comp.fab-menu.primary.list.item.container.color", expected: "md.sys.color.primary-container" },
+            { key: "md.comp.fab-menu.primary.list.item.hovered.container.elevation", expected: "md.sys.elevation.level4" },
+            { key: "md.comp.fab-menu.secondary.list.item.focused.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "md.comp.fab-menu.tertiary.list.item.pressed.label.text.color", expected: "md.sys.color.on-tertiary-container" },
+        ],
+    },
+    {
+        name: "icon-button",
+        key: "icon-button",
+        sampleTokens: [
+            { key: "md.comp.icon-button.container.height", expected: "2.8571rem" },
+            { key: "md.comp.icon-button.icon.size", expected: "1.7143rem" },
+            { key: "md.comp.icon-button.container.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.icon-button.container.color.toggle.unselected", expected: "md.sys.color.surface-container" },
+            { key: "md.comp.icon-button.disabled.container.opacity", expected: 0.1 },
+            { key: "md.comp.icon-button.disabled.icon.opacity", expected: 0.38 },
+            { key: "md.comp.icon-button.hovered.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
+            { key: "md.comp.icon-button.filled.container.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.icon-button.tonal.container.color.toggle.selected", expected: "md.sys.color.secondary" },
+            { key: "md.comp.icon-button.outlined.container.color.toggle.selected", expected: "md.sys.color.inverse-surface" },
+            { key: "md.comp.icon-button.xsmall.container.height", expected: "2.2857rem" },
+            { key: "md.comp.icon-button.small.outline.width", expected: "0.0714rem" },
+            { key: "md.comp.icon-button.medium.container.shape.square", expected: "md.sys.shape.corner.large" },
+            { key: "md.comp.icon-button.large.icon.size", expected: "2.2857rem" },
+            { key: "md.comp.icon-button.xlarge.outline.width", expected: "0.2143rem" },
+        ],
+    },
+];
 
-        for (const { key, expected } of sampleTokens) {
-            expect(tokens.button[key]).toBe(expected);
+describe("generateComponentTokens()", () => {
+    it.each(COMPONENT_TEST_DATA)(
+        "loads all $name token groups correctly (representative sample)",
+        ({ key: componentKey, sampleTokens }) => {
+            const tokens = generateComponentTokens();
+            const componentTokens = tokens[componentKey as keyof typeof tokens];
+
+            expect(componentTokens).toBeDefined();
+
+            for (const { key: tokenKey, expected } of sampleTokens) {
+                expect(componentTokens[tokenKey]).toBe(expected);
+            }
         }
-    });
+    );
 
-    it("excludes button tokens when 'button' is in excludes array", () => {
-        const tokens1 = generateComponentTokens({ excludes: ["button"] });
-        expect(tokens1).not.toHaveProperty("button");
-        expect(tokens1).toHaveProperty("app-bar");
-        expect(tokens1).toHaveProperty("badge");
-        expect(tokens1).toHaveProperty("button-group");
-        expect(tokens1).toHaveProperty("fab");
-        expect(tokens1).toHaveProperty("extended-fab");
-        expect(tokens1).toHaveProperty("fab-menu");
-        expect(tokens1).toHaveProperty("icon-button");
+    it.each(COMPONENT_TEST_DATA)(
+        "excludes $name tokens when component is in excludes array",
+        ({ name, key }) => {
+            const tokens = generateComponentTokens({ excludes: [name] });
+            expect(tokens).not.toHaveProperty(name);
 
-        const tokens2 = generateComponentTokens({
-            excludes: ["button", "app-bar", "badge", "button-group", "fab", "extended-fab", "fab-menu", "icon-button"],
-        });
-        expect(tokens2).not.toHaveProperty("button");
-        expect(tokens2).not.toHaveProperty("app-bar");
-        expect(tokens2).not.toHaveProperty("badge");
-        expect(tokens2).not.toHaveProperty("button-group");
-        expect(tokens2).not.toHaveProperty("fab");
-        expect(tokens2).not.toHaveProperty("extended-fab");
-        expect(tokens2).not.toHaveProperty("fab-menu");
-        expect(tokens2).not.toHaveProperty("icon-button");
-        expect(Object.keys(tokens2).length).toBe(0);
+            // Verify all other components are still present
+            const otherComponents = ALL_COMPONENTS.filter((c) => c !== name);
+            for (const component of otherComponents) {
+                expect(tokens).toHaveProperty(component);
+            }
+        }
+    );
+
+    it("excludes all components when all are in excludes array", () => {
+        const tokens = generateComponentTokens({ excludes: [...ALL_COMPONENTS] });
+        expect(Object.keys(tokens).length).toBe(0);
+        for (const component of ALL_COMPONENTS) {
+            expect(tokens).not.toHaveProperty(component);
+        }
     });
 
     it("converts dp to rem when webUnits is true (default)", () => {
@@ -163,386 +322,13 @@ describe("generateComponentTokens()", () => {
 
     it("generates all tokens when excludes is omitted or empty", () => {
         const tokens1 = generateComponentTokens();
-        expect(tokens1).toHaveProperty("button");
-        expect(tokens1.button).toBeDefined();
-        expect(Object.keys(tokens1.button).length).toBeGreaterThan(0);
-
         const tokens2 = generateComponentTokens({ excludes: [] });
-        expect(tokens2).toHaveProperty("button");
-        expect(tokens2.button).toBeDefined();
-        expect(Object.keys(tokens2.button).length).toBeGreaterThan(0);
-    });
 
-    it("loads all app bar token groups correctly (representative sample)", () => {
-        const tokens = generateComponentTokens();
-
-        expect(tokens["app-bar"]).toBeDefined();
-
-        const sampleTokens = [
-            { key: "md.comp.app-bar.container.color", expected: "md.sys.color.surface" },
-            { key: "md.comp.app-bar.container.elevation", expected: "md.sys.elevation.level0" },
-            { key: "md.comp.app-bar.container.elevation.on.scroll", expected: "md.sys.elevation.level2" },
-            { key: "md.comp.app-bar.title.text", expected: "md.sys.color.on-surface" },
-            { key: "md.comp.app-bar.icon.spacing", expected: 0 },
-            { key: "md.comp.app-bar.left.padding", expected: "0.2857rem" },
-            { key: "md.comp.app-bar.container.shape", expected: "md.sys.shape.corner.none" },
-            { key: "md.comp.app-bar.avatar.size", expected: "2.2857rem" },
-            { key: "md.comp.app-bar.small.container.height", expected: "4.5714rem" },
-            { key: "md.comp.app-bar.small.title.font.name", expected: "md.sys.typescale.title-large.font" },
-            { key: "md.comp.app-bar.medium.flexible.container.height", expected: "8rem" },
-            { key: "md.comp.app-bar.medium.title.font.size", expected: "md.sys.typescale.headline-medium.size" },
-            { key: "md.comp.app-bar.large.flexible.container.height", expected: "8.5714rem" },
-            { key: "md.comp.app-bar.large.title.font.name", expected: "md.sys.typescale.display-small.font" },
-            { key: "md.comp.app-bar.search.container.color", expected: "md.sys.color.surface-container" },
-            { key: "md.comp.app-bar.search.container.height", expected: "4rem" },
-        ];
-
-        for (const { key, expected } of sampleTokens) {
-            expect(tokens["app-bar"][key]).toBe(expected);
+        for (const component of ALL_COMPONENTS) {
+            expect(tokens1).toHaveProperty(component);
+            expect(tokens2).toHaveProperty(component);
+            expect(tokens1[component as keyof typeof tokens1]).toBeDefined();
+            expect(Object.keys(tokens1[component as keyof typeof tokens1] as Record<string, unknown>).length).toBeGreaterThan(0);
         }
-    });
-
-    it("excludes app bar tokens when 'app-bar' is in excludes array", () => {
-        const tokens1 = generateComponentTokens({ excludes: ["app-bar"] });
-        expect(tokens1).not.toHaveProperty("app-bar");
-        expect(tokens1).toHaveProperty("button");
-        expect(tokens1).toHaveProperty("badge");
-        expect(tokens1).toHaveProperty("button-group");
-        expect(tokens1).toHaveProperty("fab");
-        expect(tokens1).toHaveProperty("extended-fab");
-        expect(tokens1).toHaveProperty("fab-menu");
-        expect(tokens1).toHaveProperty("icon-button");
-
-        const tokens2 = generateComponentTokens({
-            excludes: ["app-bar", "button", "badge", "button-group", "fab", "extended-fab", "fab-menu", "icon-button"],
-        });
-        expect(tokens2).not.toHaveProperty("app-bar");
-        expect(tokens2).not.toHaveProperty("button");
-        expect(tokens2).not.toHaveProperty("badge");
-        expect(tokens2).not.toHaveProperty("button-group");
-        expect(tokens2).not.toHaveProperty("fab");
-        expect(tokens2).not.toHaveProperty("extended-fab");
-        expect(tokens2).not.toHaveProperty("fab-menu");
-        expect(tokens2).not.toHaveProperty("icon-button");
-        expect(Object.keys(tokens2).length).toBe(0);
-    });
-
-    it("loads all badge token groups correctly (representative sample)", () => {
-        const tokens = generateComponentTokens();
-
-        expect(tokens.badge).toBeDefined();
-
-        const sampleTokens = [
-            { key: "md.comp.badge.color", expected: "md.sys.color.error" },
-            { key: "md.comp.badge.shape", expected: "md.sys.shape.corner.full" },
-            { key: "md.comp.badge.size", expected: "0.4286rem" },
-            { key: "md.comp.badge.large.color", expected: "md.sys.color.error" },
-            { key: "md.comp.badge.large.shape", expected: "md.sys.shape.corner.full" },
-            { key: "md.comp.badge.large.size", expected: "1.1429rem" },
-            { key: "md.comp.badge.large.label.text.color", expected: "md.sys.color.on-error" },
-            { key: "md.comp.badge.large.label.text.font", expected: "md.sys.typescale.label-small.font" },
-            { key: "md.comp.badge.large.label.text.line.height", expected: "md.sys.typescale.label-small.line-height" },
-            { key: "md.comp.badge.large.label.text.size", expected: "md.sys.typescale.label-small.size" },
-            { key: "md.comp.badge.large.label.text.tracking", expected: "md.sys.typescale.label-small.tracking" },
-            { key: "md.comp.badge.large.label.text.weight", expected: "md.sys.typescale.label-small.weight" },
-            { key: "md.comp.badge.large.max.width", expected: "2.4286rem" },
-            { key: "md.comp.badge.small.distance.from.top.trailing.icon.corner.to.leading.badge.corner", expected: "0.4286rem" },
-            { key: "md.comp.badge.large.distance.from.top.trailing.icon.corner.to.bottom.trailing.badge.corner", expected: "1rem" },
-        ];
-
-        for (const { key, expected } of sampleTokens) {
-            expect(tokens.badge[key]).toBe(expected);
-        }
-    });
-
-    it("excludes badge tokens when 'badge' is in excludes array", () => {
-        const tokens1 = generateComponentTokens({ excludes: ["badge"] });
-        expect(tokens1).not.toHaveProperty("badge");
-        expect(tokens1).toHaveProperty("button");
-        expect(tokens1).toHaveProperty("app-bar");
-        expect(tokens1).toHaveProperty("button-group");
-        expect(tokens1).toHaveProperty("fab");
-        expect(tokens1).toHaveProperty("extended-fab");
-        expect(tokens1).toHaveProperty("fab-menu");
-        expect(tokens1).toHaveProperty("icon-button");
-
-        const tokens2 = generateComponentTokens({
-            excludes: ["badge", "button", "app-bar", "button-group", "fab", "extended-fab", "fab-menu", "icon-button"],
-        });
-        expect(tokens2).not.toHaveProperty("badge");
-        expect(tokens2).not.toHaveProperty("button");
-        expect(tokens2).not.toHaveProperty("app-bar");
-        expect(tokens2).not.toHaveProperty("button-group");
-        expect(tokens2).not.toHaveProperty("fab");
-        expect(tokens2).not.toHaveProperty("extended-fab");
-        expect(tokens2).not.toHaveProperty("fab-menu");
-        expect(tokens2).not.toHaveProperty("icon-button");
-        expect(Object.keys(tokens2).length).toBe(0);
-    });
-
-    it("loads all button group token groups correctly (representative sample)", () => {
-        const tokens = generateComponentTokens();
-
-        expect(tokens["button-group"]).toBeDefined();
-
-        const sampleTokens = [
-            { key: "md.comp.button-group.xsmall.container.height", expected: "2.2857rem" },
-            { key: "md.comp.button-group.xsmall.between.space", expected: "1.2857rem" },
-            { key: "md.comp.button-group.xsmall.pressed.motion.spring.dampening", expected: "md.sys.motion.spring.fast.spatial.damping" },
-            { key: "md.comp.button-group.xsmall.pressed.width.multiplier", expected: "15%" },
-            { key: "md.comp.button-group.small.container.height", expected: "2.8571rem" },
-            { key: "md.comp.button-group.medium.container.height", expected: "4rem" },
-            { key: "md.comp.button-group.large.container.height", expected: "6.8571rem" },
-            { key: "md.comp.button-group.xlarge.container.height", expected: "9.7143rem" },
-            { key: "md.comp.button-group.connected.xsmall.container.height", expected: "2.2857rem" },
-            { key: "md.comp.button-group.connected.xsmall.space.between.buttons", expected: "0.1429rem" },
-            { key: "md.comp.button-group.connected.xsmall.container.shape", expected: "md.sys.shape.corner.full" },
-            { key: "md.comp.button-group.connected.xsmall.inner.corner.size", expected: "md.sys.shape.corner-value.small" },
-            { key: "md.comp.button-group.connected.xsmall.pressed.inner.corner.size", expected: "md.sys.shape.corner-value.extra-small" },
-            { key: "md.comp.button-group.connected.xsmall.selected.inner.corner.size", expected: "50%" },
-            { key: "md.comp.button-group.connected.large.inner.corner.size", expected: "md.sys.shape.corner-value.large" },
-            { key: "md.comp.button-group.connected.xlarge.inner.corner.size", expected: "md.sys.shape.corner-value.large-increased" },
-        ];
-
-        for (const { key, expected } of sampleTokens) {
-            expect(tokens["button-group"][key]).toBe(expected);
-        }
-    });
-
-    it("excludes button group tokens when 'button-group' is in excludes array", () => {
-        const tokens1 = generateComponentTokens({ excludes: ["button-group"] });
-        expect(tokens1).not.toHaveProperty("button-group");
-        expect(tokens1).toHaveProperty("button");
-        expect(tokens1).toHaveProperty("app-bar");
-        expect(tokens1).toHaveProperty("badge");
-        expect(tokens1).toHaveProperty("fab");
-        expect(tokens1).toHaveProperty("extended-fab");
-        expect(tokens1).toHaveProperty("fab-menu");
-        expect(tokens1).toHaveProperty("icon-button");
-
-        const tokens2 = generateComponentTokens({
-            excludes: ["button-group", "button", "app-bar", "badge", "fab", "extended-fab", "fab-menu", "icon-button"],
-        });
-        expect(tokens2).not.toHaveProperty("button-group");
-        expect(tokens2).not.toHaveProperty("button");
-        expect(tokens2).not.toHaveProperty("app-bar");
-        expect(tokens2).not.toHaveProperty("badge");
-        expect(tokens2).not.toHaveProperty("fab");
-        expect(tokens2).not.toHaveProperty("extended-fab");
-        expect(tokens2).not.toHaveProperty("fab-menu");
-        expect(tokens2).not.toHaveProperty("icon-button");
-        expect(Object.keys(tokens2).length).toBe(0);
-    });
-
-    it("loads all FAB token groups correctly (representative sample)", () => {
-        const tokens = generateComponentTokens();
-
-        expect(tokens.fab).toBeDefined();
-
-        const sampleTokens = [
-            { key: "md.comp.fab.container.height", expected: "4rem" },
-            { key: "md.comp.fab.container.width", expected: "4rem" },
-            { key: "md.comp.fab.icon.size", expected: "1.7143rem" },
-            { key: "md.comp.fab.container.shape", expected: "md.sys.shape.corner.large" },
-            { key: "md.comp.fab.medium.container.height", expected: "5.7143rem" },
-            { key: "md.comp.fab.large.container.height", expected: "6.8571rem" },
-            { key: "md.comp.fab.tonal.primary.container.color", expected: "md.sys.color.primary-container" },
-            { key: "md.comp.fab.tonal.primary.container.elevation", expected: "md.sys.elevation.level3" },
-            { key: "md.comp.fab.tonal.primary.focused.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
-            { key: "md.comp.fab.tonal.secondary.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
-            { key: "md.comp.fab.primary.container.color", expected: "md.sys.color.primary" },
-            { key: "md.comp.fab.primary.focused.container.elevation", expected: "md.sys.elevation.level3" },
-            { key: "md.comp.fab.secondary.hovered.container.elevation", expected: "md.sys.elevation.level4" },
-            { key: "md.comp.fab.tertiary.pressed.container.elevation", expected: "md.sys.elevation.level3" },
-        ];
-
-        for (const { key, expected } of sampleTokens) {
-            expect(tokens.fab[key]).toBe(expected);
-        }
-    });
-
-    it("excludes FAB tokens when 'fab' is in excludes array", () => {
-        const tokens1 = generateComponentTokens({ excludes: ["fab"] });
-        expect(tokens1).not.toHaveProperty("fab");
-        expect(tokens1).toHaveProperty("button");
-        expect(tokens1).toHaveProperty("app-bar");
-        expect(tokens1).toHaveProperty("badge");
-        expect(tokens1).toHaveProperty("button-group");
-        expect(tokens1).toHaveProperty("extended-fab");
-        expect(tokens1).toHaveProperty("fab-menu");
-        expect(tokens1).toHaveProperty("icon-button");
-
-        const tokens2 = generateComponentTokens({
-            excludes: ["fab", "button", "app-bar", "badge", "button-group", "extended-fab", "fab-menu", "icon-button"],
-        });
-        expect(tokens2).not.toHaveProperty("fab");
-        expect(tokens2).not.toHaveProperty("button");
-        expect(tokens2).not.toHaveProperty("app-bar");
-        expect(tokens2).not.toHaveProperty("badge");
-        expect(tokens2).not.toHaveProperty("button-group");
-        expect(tokens2).not.toHaveProperty("extended-fab");
-        expect(tokens2).not.toHaveProperty("fab-menu");
-        expect(tokens2).not.toHaveProperty("icon-button");
-        expect(Object.keys(tokens2).length).toBe(0);
-    });
-
-    it("loads all Extended FAB token groups correctly (representative sample)", () => {
-        const tokens = generateComponentTokens();
-
-        expect(tokens["extended-fab"]).toBeDefined();
-
-        const sampleTokens = [
-            { key: "md.comp.extended-fab.small.container.height", expected: "4rem" },
-            { key: "md.comp.extended-fab.small.label.text.font.name", expected: "md.sys.typescale.body-large.font" },
-            { key: "md.comp.extended-fab.small.icon.size", expected: "1.7143rem" },
-            { key: "md.comp.extended-fab.small.container.shape", expected: "md.sys.shape.corner.large" },
-            { key: "md.comp.extended-fab.medium.container.height", expected: "5.7143rem" },
-            { key: "md.comp.extended-fab.large.container.height", expected: "6.8571rem" },
-            { key: "md.comp.extended-fab.tonal.primary.container.color", expected: "md.sys.color.primary-container" },
-            { key: "md.comp.extended-fab.tonal.primary.container.elevation", expected: "md.sys.elevation.level3" },
-            { key: "md.comp.extended-fab.tonal.primary.hovered.container.elevation", expected: "md.sys.elevation.level4" },
-            { key: "md.comp.extended-fab.tonal.primary.focused.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
-            { key: "md.comp.extended-fab.tonal.secondary.pressed.state.layer.opacity", expected: "md.sys.state.pressed.state-layer-opacity" },
-            { key: "md.comp.extended-fab.primary.container.color", expected: "md.sys.color.primary" },
-            { key: "md.comp.extended-fab.primary.hovered.container.elevation", expected: "md.sys.elevation.level4" },
-            { key: "md.comp.extended-fab.secondary.focused.container.elevation", expected: "md.sys.elevation.level3" },
-            { key: "md.comp.extended-fab.tertiary.pressed.container.elevation", expected: "md.sys.elevation.level3" },
-        ];
-
-        for (const { key, expected } of sampleTokens) {
-            expect(tokens["extended-fab"][key]).toBe(expected);
-        }
-    });
-
-    it("excludes Extended FAB tokens when 'extended-fab' is in excludes array", () => {
-        const tokens1 = generateComponentTokens({ excludes: ["extended-fab"] });
-        expect(tokens1).not.toHaveProperty("extended-fab");
-        expect(tokens1).toHaveProperty("button");
-        expect(tokens1).toHaveProperty("app-bar");
-        expect(tokens1).toHaveProperty("badge");
-        expect(tokens1).toHaveProperty("button-group");
-        expect(tokens1).toHaveProperty("fab");
-        expect(tokens1).toHaveProperty("fab-menu");
-        expect(tokens1).toHaveProperty("icon-button");
-
-        const tokens2 = generateComponentTokens({
-            excludes: ["extended-fab", "button", "app-bar", "badge", "button-group", "fab", "fab-menu", "icon-button"],
-        });
-        expect(tokens2).not.toHaveProperty("extended-fab");
-        expect(tokens2).not.toHaveProperty("button");
-        expect(tokens2).not.toHaveProperty("app-bar");
-        expect(tokens2).not.toHaveProperty("badge");
-        expect(tokens2).not.toHaveProperty("button-group");
-        expect(tokens2).not.toHaveProperty("fab");
-        expect(tokens2).not.toHaveProperty("fab-menu");
-        expect(tokens2).not.toHaveProperty("icon-button");
-        expect(Object.keys(tokens2).length).toBe(0);
-    });
-
-    it("loads all FAB menu token groups correctly (representative sample)", () => {
-        const tokens = generateComponentTokens();
-
-        expect(tokens["fab-menu"]).toBeDefined();
-
-        const sampleTokens = [
-            { key: "md.comp.fab-menu.close.button.container.height", expected: "4rem" },
-            { key: "md.comp.fab-menu.close.width", expected: "4rem" },
-            { key: "md.comp.fab-menu.close.button.icon.size", expected: "1.4286rem" },
-            { key: "md.comp.fab-menu.close.button.container.shape", expected: "md.sys.shape.corner.full" },
-            { key: "md.comp.fab-menu.menu.item.container.height", expected: "4rem" },
-            { key: "md.comp.fab-menu.menu.item.label.text.font.name", expected: "md.sys.typescale.body-large.font" },
-            { key: "md.comp.fab-menu.menu.item.icon.size", expected: "1.7143rem" },
-            { key: "md.comp.fab-menu.primary.close.button.container.color", expected: "md.sys.color.primary" },
-            { key: "md.comp.fab-menu.primary.close.button.hovered.container.elevation", expected: "md.sys.elevation.level4" },
-            { key: "md.comp.fab-menu.primary.close.button.focused.state.layer.opacity", expected: "md.sys.state.focus.state-layer-opacity" },
-            { key: "md.comp.fab-menu.secondary.close.button.pressed.icon.color", expected: "md.sys.color.on-secondary" },
-            { key: "md.comp.fab-menu.primary.list.item.container.color", expected: "md.sys.color.primary-container" },
-            { key: "md.comp.fab-menu.primary.list.item.hovered.container.elevation", expected: "md.sys.elevation.level4" },
-            { key: "md.comp.fab-menu.secondary.list.item.focused.container.elevation", expected: "md.sys.elevation.level3" },
-            { key: "md.comp.fab-menu.tertiary.list.item.pressed.label.text.color", expected: "md.sys.color.on-tertiary-container" },
-        ];
-
-        for (const { key, expected } of sampleTokens) {
-            expect(tokens["fab-menu"][key]).toBe(expected);
-        }
-    });
-
-    it("excludes FAB menu tokens when 'fab-menu' is in excludes array", () => {
-        const tokens1 = generateComponentTokens({ excludes: ["fab-menu"] });
-        expect(tokens1).not.toHaveProperty("fab-menu");
-        expect(tokens1).toHaveProperty("button");
-        expect(tokens1).toHaveProperty("app-bar");
-        expect(tokens1).toHaveProperty("badge");
-        expect(tokens1).toHaveProperty("button-group");
-        expect(tokens1).toHaveProperty("fab");
-        expect(tokens1).toHaveProperty("extended-fab");
-        expect(tokens1).toHaveProperty("icon-button");
-
-        const tokens2 = generateComponentTokens({
-            excludes: ["fab-menu", "button", "app-bar", "badge", "button-group", "fab", "extended-fab", "icon-button"],
-        });
-        expect(tokens2).not.toHaveProperty("fab-menu");
-        expect(tokens2).not.toHaveProperty("button");
-        expect(tokens2).not.toHaveProperty("app-bar");
-        expect(tokens2).not.toHaveProperty("badge");
-        expect(tokens2).not.toHaveProperty("button-group");
-        expect(tokens2).not.toHaveProperty("fab");
-        expect(tokens2).not.toHaveProperty("extended-fab");
-        expect(tokens2).not.toHaveProperty("icon-button");
-        expect(Object.keys(tokens2).length).toBe(0);
-    });
-
-    it("loads all Icon button token groups correctly (representative sample)", () => {
-        const tokens = generateComponentTokens();
-
-        expect(tokens["icon-button"]).toBeDefined();
-
-        const sampleTokens = [
-            { key: "md.comp.icon-button.container.height", expected: "2.8571rem" },
-            { key: "md.comp.icon-button.icon.size", expected: "1.7143rem" },
-            { key: "md.comp.icon-button.container.color", expected: "md.sys.color.primary" },
-            { key: "md.comp.icon-button.container.color.toggle.unselected", expected: "md.sys.color.surface-container" },
-            { key: "md.comp.icon-button.disabled.container.opacity", expected: 0.1 },
-            { key: "md.comp.icon-button.disabled.icon.opacity", expected: 0.38 },
-            { key: "md.comp.icon-button.hovered.state.layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
-            { key: "md.comp.icon-button.filled.container.color", expected: "md.sys.color.primary" },
-            { key: "md.comp.icon-button.tonal.container.color.toggle.selected", expected: "md.sys.color.secondary" },
-            { key: "md.comp.icon-button.outlined.container.color.toggle.selected", expected: "md.sys.color.inverse-surface" },
-            { key: "md.comp.icon-button.xsmall.container.height", expected: "2.2857rem" },
-            { key: "md.comp.icon-button.small.outline.width", expected: "0.0714rem" },
-            { key: "md.comp.icon-button.medium.container.shape.square", expected: "md.sys.shape.corner.large" },
-            { key: "md.comp.icon-button.large.icon.size", expected: "2.2857rem" },
-            { key: "md.comp.icon-button.xlarge.outline.width", expected: "0.2143rem" },
-        ];
-
-        for (const { key, expected } of sampleTokens) {
-            expect(tokens["icon-button"][key]).toBe(expected);
-        }
-    });
-
-    it("excludes Icon button tokens when 'icon-button' is in excludes array", () => {
-        const tokens1 = generateComponentTokens({ excludes: ["icon-button"] });
-        expect(tokens1).not.toHaveProperty("icon-button");
-        expect(tokens1).toHaveProperty("button");
-        expect(tokens1).toHaveProperty("app-bar");
-        expect(tokens1).toHaveProperty("badge");
-        expect(tokens1).toHaveProperty("button-group");
-        expect(tokens1).toHaveProperty("fab");
-        expect(tokens1).toHaveProperty("extended-fab");
-        expect(tokens1).toHaveProperty("fab-menu");
-
-        const tokens2 = generateComponentTokens({
-            excludes: ["icon-button", "button", "app-bar", "badge", "button-group", "fab", "extended-fab", "fab-menu"],
-        });
-        expect(tokens2).not.toHaveProperty("icon-button");
-        expect(tokens2).not.toHaveProperty("button");
-        expect(tokens2).not.toHaveProperty("app-bar");
-        expect(tokens2).not.toHaveProperty("badge");
-        expect(tokens2).not.toHaveProperty("button-group");
-        expect(tokens2).not.toHaveProperty("fab");
-        expect(tokens2).not.toHaveProperty("extended-fab");
-        expect(tokens2).not.toHaveProperty("fab-menu");
-        expect(Object.keys(tokens2).length).toBe(0);
     });
 });
-
