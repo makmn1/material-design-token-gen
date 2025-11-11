@@ -18,6 +18,7 @@ import { dialogTokens } from "./tokens/dialogTokens";
 import { dividerTokens } from "./tokens/dividerTokens";
 import { listTokens } from "./tokens/listTokens";
 import { loadingIndicatorTokens } from "./tokens/loadingIndicatorTokens";
+import { progressIndicatorTokens } from "./tokens/progressIndicatorTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -42,6 +43,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "divider", value: dividerTokens },
     { name: "list", value: listTokens },
     { name: "loading-indicator", value: loadingIndicatorTokens },
+    { name: "progress-indicator", value: progressIndicatorTokens },
 ];
 
 /**

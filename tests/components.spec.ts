@@ -21,6 +21,7 @@ const ALL_COMPONENTS = [
     "divider",
     "list",
     "loading-indicator",
+    "progress-indicator",
 ] as const;
 
 type ComponentName = typeof ALL_COMPONENTS[number];
@@ -436,6 +437,21 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.loading-indicator.container.height", expected: "3.4286rem" },
             { key: "md.comp.loading-indicator.active.indicator.size", expected: "3.4286rem" },
             { key: "md.comp.loading-indicator.container.shape", expected: "md.sys.shape.corner.full" },
+        ],
+    },
+    {
+        name: "progress-indicator",
+        key: "progress-indicator",
+        sampleTokens: [
+            { key: "md.comp.progress-indicator.active.indicator.color", expected: "md.sys.color.primary" },
+            { key: "md.comp.progress-indicator.track.color", expected: "md.sys.color.secondary-container" },
+            { key: "md.comp.progress-indicator.stop.indicator.shape", expected: "md.sys.shape.corner.full" },
+            { key: "md.comp.progress-indicator.linear.height", expected: "0.2857rem" },
+            { key: "md.comp.progress-indicator.linear.with.wave.height", expected: "0.7143rem" },
+            { key: "md.comp.progress-indicator.linear.stop.indicator.trailing.space", expected: 0 },
+            { key: "md.comp.progress-indicator.linear.wave.amplitude", expected: "0.2143rem" },
+            { key: "md.comp.progress-indicator.circular.size", expected: "2.8571rem" },
+            { key: "md.comp.progress-indicator.circular.active.indicator.wave.amplitude", expected: "0.1143rem" },
         ],
     },
 ];
