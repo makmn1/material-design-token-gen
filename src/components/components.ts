@@ -6,6 +6,7 @@ import { buttonGroupTokens } from "./tokens/buttonGroupTokens";
 import { fabTokens } from "./tokens/fabTokens";
 import { extendedFabTokens } from "./tokens/extendedFabTokens";
 import { fabMenuTokens } from "./tokens/fabMenuTokens";
+import { iconButtonTokens } from "./tokens/iconButtonTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -18,6 +19,7 @@ const COMPONENT_TOKENS: Array<{
     { name: "fab", value: fabTokens },
     { name: "extended-fab", value: extendedFabTokens },
     { name: "fab-menu", value: fabMenuTokens },
+    { name: "icon-button", value: iconButtonTokens },
 ];
 
 /**
