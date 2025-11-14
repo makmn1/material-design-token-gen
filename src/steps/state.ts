@@ -7,11 +7,6 @@ export interface StateOptions {
      */
     webUnits?: boolean;
     /**
-     * Root font size in pixels used when converting to `rem`.
-     * @default 16
-     */
-    rootFontSizePx?: number;
-    /**
      * Device-independent pixel ratio for the web conversion.
      * @default 1
      */
@@ -52,7 +47,6 @@ export interface StateOptions {
 export function generateStateTokens(opts: StateOptions = {}): Record<string, number | string> {
     const {
         webUnits = true,
-        rootFontSizePx = 16,
         dpPxRatio = 1,
         unit = "rem"
     } = opts;
@@ -67,7 +61,7 @@ export function generateStateTokens(opts: StateOptions = {}): Record<string, num
     };
 
     if (webUnits) {
-        const dpOptions: DpConvertOptions = { rootFontSizePx, dpPxRatio, unit };
+        const dpOptions: DpConvertOptions = { dpPxRatio, unit };
         const converted: Record<string, number | string> = {};
         for (const [key, value] of Object.entries(tokens)) {
             if (typeof value === "number") {

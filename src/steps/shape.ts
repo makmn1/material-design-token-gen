@@ -35,11 +35,6 @@ export interface ShapeOptions {
      */
     webUnits?: boolean;
     /**
-     * Root font size in pixels used when converting to `rem`.
-     * @default 16
-     */
-    rootFontSizePx?: number;
-    /**
      * Device-independent pixel ratio for the web conversion.
      * @default 1
      */
@@ -72,7 +67,6 @@ export interface ShapeOptions {
 export function generateShapeTokens(opts: ShapeOptions = {}): Record<string, string | number> {
     const {
         webUnits = true,
-        rootFontSizePx = 16,
         dpPxRatio = 1,
         unit = "rem"
     } = opts;
@@ -80,7 +74,7 @@ export function generateShapeTokens(opts: ShapeOptions = {}): Record<string, str
     const tokens = { ...SHAPE_TOKENS };
 
     if (webUnits) {
-        const dpOptions: DpConvertOptions = { rootFontSizePx, dpPxRatio, unit };
+        const dpOptions: DpConvertOptions = { dpPxRatio, unit };
         const converted: Record<string, string | number> = {};
         for (const [key, value] of Object.entries(tokens)) {
             if (value === "Circular") {

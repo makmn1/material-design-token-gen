@@ -36,12 +36,10 @@ export async function generateFromScaffold(
     const { generateFiles = true } = options;
 
     const expressiveMotion = answers.motionVariant === "Expressive (2025)";
-    const rootFontSizePx = answers.typography?.rootFontSizePx ?? 16;
 
     const nonColorBundle = generateTokens({
         expressiveMotion,
         webUnits: true,
-        rootFontSizePx,
         include: {
             typography: true,
             elevation: true,
@@ -74,7 +72,6 @@ export async function generateFromScaffold(
                 dynamicScheme: lightScheme,
                 expressiveMotion,
                 webUnits: true,
-                rootFontSizePx,
                 include: { colors: true },
             });
             const colorFiles = await generateColorFiles(
@@ -92,7 +89,6 @@ export async function generateFromScaffold(
                 dynamicScheme: darkScheme,
                 expressiveMotion,
                 webUnits: true,
-                rootFontSizePx,
                 include: { colors: true },
             });
             const colorFiles = await generateColorFiles(
@@ -107,7 +103,6 @@ export async function generateFromScaffold(
         const lightBundle = generateTokens({
             expressiveMotion,
             webUnits: true,
-            rootFontSizePx,
             include: { colors: true },
         });
         const lightFiles = await generateColorFiles(
@@ -121,7 +116,6 @@ export async function generateFromScaffold(
         const darkBundle = generateTokens({
             expressiveMotion,
             webUnits: true,
-            rootFontSizePx,
             include: { colors: true },
             dynamicScheme: DynamicScheme.from({
                 isDark: true,
@@ -159,7 +153,6 @@ export async function generateFromScaffold(
     if (answers.wantsComponentStyles) {
         const componentTokens = generateComponentTokens({
             webUnits: true,
-            rootFontSizePx,
         });
         const componentDir = path.join(outputPath, "components");
         const componentFiles = await generateComponentFiles(

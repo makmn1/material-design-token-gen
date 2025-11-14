@@ -41,7 +41,6 @@ describe("generateFromScaffold", () => {
             typography: {
                 brandTypeface: "Inter",
                 plainTypeface: "Roboto",
-                rootFontSizePx: 16,
                 weightRegular: 400,
                 weightMedium: 500,
                 weightBold: 700,

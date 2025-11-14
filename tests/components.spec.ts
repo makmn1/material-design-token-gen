@@ -817,15 +817,6 @@ describe("generateComponentTokens()", () => {
         );
     });
 
-    it("respects custom rootFontSizePx", () => {
-        const tokens = generateComponentTokens({
-            rootFontSizePx: 16,
-            webUnits: true,
-        });
-
-        expect(tokens.button["md.comp.button.container.height"]).toBe("2.5rem");
-        expect(tokens.button["md.comp.button.icon.size"]).toBe("1.25rem");
-    });
 
     it("respects custom dpPxRatio", () => {
         const tokens = generateComponentTokens({

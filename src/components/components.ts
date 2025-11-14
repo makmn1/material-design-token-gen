@@ -94,13 +94,6 @@ export interface GenerateComponentTokensOptions {
     webUnits?: boolean;
 
     /**
-     * Root font size in pixels used when converting to `rem`.
-     * `rem = (dp * dpPxRatio) / rootFontSizePx`
-     * @default 16
-     */
-    rootFontSizePx?: number;
-
-    /**
      * Device-independent pixel ratio for the web conversion.
      * Set to `1` for the "1dp = 1px" convention on web.
      * @default 1
@@ -139,7 +132,6 @@ export interface GenerateComponentTokensOptions {
  * ```ts
  * const tokens = generateComponentTokens({
  *   webUnits: true,
- *   rootFontSizePx: 16,
  *   unit: "px"
  * });
  * ```
@@ -150,7 +142,6 @@ export function generateComponentTokens(
     const {
         excludes = [],
         webUnits = true,
-        rootFontSizePx = 16,
         dpPxRatio = 1,
         unit = "rem",
     } = options;
@@ -163,7 +154,6 @@ export function generateComponentTokens(
         ? filtered.map((entry) => ({
               name: entry.name,
               value: convertDpInTree(entry.value, {
-                  rootFontSizePx,
                   dpPxRatio,
                   unit,
               }) as Record<string, string | number>,

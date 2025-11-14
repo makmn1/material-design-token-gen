@@ -153,10 +153,4 @@ describe("generateTypographyTokens()", () => {
         expect(tokens["md.sys.typescale.emphasized.title-medium.weight"]).toBe("md.ref.typeface.weight-bold");
     });
 
-    it("uses rootFontSizePx to convert pt→rem", () => {
-        const tokens = generateTypographyTokens({ rootFontSizePx: 20 });
-        expect(tokens["md.sys.typescale.display-large.size"]).toBe("3.8rem");
-        expect(tokens["md.sys.typescale.display-large.line-height"]).toBe("4.2667rem");
-        expect(tokens["md.sys.typescale.display-large.tracking"]).toBe("-0.0044em");
-    });
 });

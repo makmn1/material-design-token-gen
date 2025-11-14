@@ -26,7 +26,6 @@ export interface ColorThemeAnswers {
 export interface TypographyAnswers {
     brandTypeface: string;
     plainTypeface: string;
-    rootFontSizePx: number;
     weightRegular: number;
     weightMedium: number;
     weightBold: number;

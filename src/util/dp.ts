@@ -1,6 +1,6 @@
 /**
  * Web output unit for converting `dp` strings.
- * - `"rem"`: `rem = (dp * dpPxRatio) / rootFontSizePx`
+ * - `"rem"`: `rem = (dp * dpPxRatio) / 16`
  * - `"px"`:  `px = dp * dpPxRatio`
  */
 export type DpUnit = "rem" | "px";
@@ -10,14 +10,8 @@ export type DpUnit = "rem" | "px";
  */
 export interface DpConvertOptions {
     /**
-     * Root font size in px when outputting `rem`.
-     * @default 16
-     */
-    rootFontSizePx?: number;
-
-    /**
      * Device-independent pixel ratio for conversion.
-     * Use `1` to follow the “1dp = 1px” convention on web.
+     * Use `1` to follow the "1dp = 1px" convention on web.
      * @default 1
      */
     dpPxRatio?: number;
@@ -30,7 +24,6 @@ export interface DpConvertOptions {
 }
 
 const DEFAULTS: Required<DpConvertOptions> = {
-    rootFontSizePx: 16,
     dpPxRatio: 1,
     unit: "rem",
 };
@@ -52,7 +45,7 @@ function trimZeros(n: number): string {
  * ```
  */
 export function dpNumberToUnit(dp: number, opts: DpConvertOptions = {}): string {
-    const { rootFontSizePx, dpPxRatio, unit } = { ...DEFAULTS, ...opts };
+    const { dpPxRatio, unit } = { ...DEFAULTS, ...opts };
     const px = dp * dpPxRatio;
 
     if (px === 0) return "0";
@@ -60,7 +53,7 @@ export function dpNumberToUnit(dp: number, opts: DpConvertOptions = {}): string 
     if (unit === "px") {
         return `${trimZeros(px)}px`;
     }
-    const rem = px / rootFontSizePx;
+    const rem = px / 16;
     return `${trimZeros(rem)}rem`;
 }
 

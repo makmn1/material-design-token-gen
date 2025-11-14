@@ -28,11 +28,11 @@ describe("dp utilities", () => {
             f: 42,
         };
 
-        const out = convertDpInTree(tree, { rootFontSizePx: 14 });
+        const out = convertDpInTree(tree);
         expect(out).toEqual({
-            a: "0.8571rem",
-            b: ["0.5714rem", "Circular", "0", "1.1429rem 0 1.1429rem 0"],
-            c: { d: "0", e: "0.2857rem 0.2857rem 0 0" },
+            a: "0.75rem",
+            b: ["0.5rem", "Circular", "0", "1rem 0 1rem 0"],
+            c: { d: "0", e: "0.25rem 0.25rem 0 0" },
             f: 42,
         });
     });
@@ -45,9 +45,5 @@ describe("dp utilities", () => {
     it("respects dpPxRatio", () => {
         expect(convertDpString("12dp", { dpPxRatio: 2 })).toBe("1.5rem");
         expect(convertDpString("12dp", { dpPxRatio: 2, unit: "px" })).toBe("24px");
-    });
-
-    it("respects custom rootFontSizePx", () => {
-        expect(convertDpString("20dp", { rootFontSizePx: 20 })).toBe("1rem");
     });
 });

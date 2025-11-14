@@ -4,7 +4,6 @@ export type TypographyOptions = {
     weightRegular?: number;
     weightMedium?: number;
     weightBold?: number;
-    rootFontSizePx?: number;
     /**
      * When true, typography tokens are generated with web units.
      * Note: Typography tokens already use rem/em units, so this option
@@ -122,7 +121,7 @@ export function generateTypographyTokens(opts: TypographyOptions = {}): Record<s
     const wRegular = opts.weightRegular ?? 400;
     const wMedium  = opts.weightMedium  ?? 500;
     const wBold    = opts.weightBold    ?? 700;
-    const rootPx   = opts.rootFontSizePx ?? 16;
+    const rootPx   = 16;
 
     const tokens: Record<string, string | number> = {};
 

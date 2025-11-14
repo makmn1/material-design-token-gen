@@ -45,13 +45,6 @@ export interface GenerateTokensOptions {
     webUnits?: boolean;
 
     /**
-     * Root font size in pixels used when converting to `rem`.
-     * `rem = (dp * dpPxRatio) / rootFontSizePx`
-     * @default 16
-     */
-    rootFontSizePx?: number;
-
-    /**
      * Device-independent pixel ratio for the web conversion.
      * Set to `1` for the "1dp = 1px" convention on web.
      * @default 1
@@ -184,7 +177,6 @@ export function generateTokens(
         dynamicScheme,
         expressiveMotion = true,
         webUnits = true,
-        rootFontSizePx = 16,
         dpPxRatio = 1,
         unit = "rem",
         typography: typographyOptions,
@@ -210,7 +202,7 @@ export function generateTokens(
     }
 
     if (shouldInclude("elevation")) {
-        bundle.elevation = generateElevationTokens({ webUnits, rootFontSizePx, dpPxRatio, unit });
+        bundle.elevation = generateElevationTokens({ webUnits, dpPxRatio, unit });
     }
 
     if (shouldInclude("motion")) {
@@ -218,19 +210,18 @@ export function generateTokens(
     }
 
     if (shouldInclude("shape")) {
-        bundle.shape = generateShapeTokens({ webUnits, rootFontSizePx, dpPxRatio, unit });
+        bundle.shape = generateShapeTokens({ webUnits, dpPxRatio, unit });
     }
 
     if (shouldInclude("typography")) {
         bundle.typography = generateTypographyTokens({
             webUnits,
-            rootFontSizePx,
             ...typographyOptions,
         });
     }
 
     if (shouldInclude("state")) {
-        bundle.state = generateStateTokens({ webUnits, rootFontSizePx, dpPxRatio, unit });
+        bundle.state = generateStateTokens({ webUnits, dpPxRatio, unit });
     }
 
     return bundle;

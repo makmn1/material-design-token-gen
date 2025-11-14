@@ -15,21 +15,6 @@ export async function promptTypography(): Promise<TypographyAnswers> {
         default: "Roboto",
     });
 
-    const rootFontSizePxStr = await input({
-        message: "What base font size do you want to use? Leave blank to use default of 16px",
-        default: "16",
-        validate: (value) => {
-            if (!value.trim()) return true;
-            const num = parseFloat(value.trim());
-            if (isNaN(num) || num <= 0) {
-                return "Please enter a valid positive number";
-            }
-            return true;
-        },
-    });
-
-    const rootFontSizePx = rootFontSizePxStr.trim() ? parseFloat(rootFontSizePxStr.trim()) : 16;
-
     const wantsWeightCustomization = await select({
         message: "Do you want to customize font weights (regular, medium, and bold)?",
         choices: [
@@ -90,7 +75,6 @@ export async function promptTypography(): Promise<TypographyAnswers> {
     return {
         brandTypeface: brandTypeface.trim() || "Roboto",
         plainTypeface: plainTypeface.trim() || "Roboto",
-        rootFontSizePx,
         weightRegular,
         weightMedium,
         weightBold,
