@@ -12,11 +12,11 @@ const EXPECTED_DP = {
 
 const EXPECTED_REM = {
     "md.sys.elevation.level0": 0,
-    "md.sys.elevation.level1": "0.0714rem",
-    "md.sys.elevation.level2": "0.2143rem",
-    "md.sys.elevation.level3": "0.4286rem",
-    "md.sys.elevation.level4": "0.5714rem",
-    "md.sys.elevation.level5": "0.8571rem",
+    "md.sys.elevation.level1": "0.0625rem",
+    "md.sys.elevation.level2": "0.1875rem",
+    "md.sys.elevation.level3": "0.375rem",
+    "md.sys.elevation.level4": "0.5rem",
+    "md.sys.elevation.level5": "0.75rem",
 };
 
 describe("generateElevationTokens()", () => {

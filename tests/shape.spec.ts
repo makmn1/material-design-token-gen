@@ -44,15 +44,15 @@ describe("generateShapeTokens()", () => {
 
     it("converts dp values to rem when webUnits is true (default)", () => {
         const tokens = generateShapeTokens({ webUnits: true });
-        expect(tokens["md.sys.shape.corner.medium"]).toBe("0.8571rem");
+        expect(tokens["md.sys.shape.corner.medium"]).toBe("0.75rem");
         expect(tokens["md.sys.shape.corner.none"]).toBe(0);
         expect(tokens["md.sys.shape.corner.full"]).toBe("9999rem");
-        expect(tokens["md.sys.shape.corner.extra-large.top"]).toBe("2rem 2rem 0 0");
+        expect(tokens["md.sys.shape.corner.extra-large.top"]).toBe("1.75rem 1.75rem 0 0");
     });
 
     it("defaults to webUnits true", () => {
         const tokens = generateShapeTokens();
-        expect(tokens["md.sys.shape.corner.medium"]).toBe("0.8571rem");
+        expect(tokens["md.sys.shape.corner.medium"]).toBe("0.75rem");
         expect(tokens["md.sys.shape.corner.full"]).toBe("9999rem");
     });
 

@@ -264,9 +264,9 @@ describe("component stylesheet generation", () => {
         });
         expect(buttonFile).toBeDefined();
 
-        expect(buttonFile!.content).toContain("2.8571rem");
-        expect(buttonFile!.content).toContain("1.4286rem");
-        expect(buttonFile!.content).toContain("1.7143rem");
+        expect(buttonFile!.content).toContain("2.5rem");
+        expect(buttonFile!.content).toContain("1.25rem");
+        expect(buttonFile!.content).toContain("1.5rem");
     });
 
     it("outputs hex color values without quotes in component CSS", async () => {

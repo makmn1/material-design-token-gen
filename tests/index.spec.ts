@@ -37,10 +37,10 @@ describe("generateTokens() smoke", () => {
         expect(colors!["md.sys.color.primary"]).toMatch(/^#([0-9a-f]{6}|[0-9a-f]{8})$/i);
 
         expectZeroOk(elevation!["md.sys.elevation.level0"]);
-        expect(elevation!["md.sys.elevation.level3"]).toBe("0.4286rem");
+        expect(elevation!["md.sys.elevation.level3"]).toBe("0.375rem");
 
-        expect(shape!["md.sys.shape.corner.medium"]).toBe("0.8571rem");
-        expect(shape!["md.sys.shape.corner.extra-large.top"]).toBe("2rem 2rem 0 0");
+        expect(shape!["md.sys.shape.corner.medium"]).toBe("0.75rem");
+        expect(shape!["md.sys.shape.corner.extra-large.top"]).toBe("1.75rem 1.75rem 0 0");
 
         expect(typeof motion!["md.sys.motion.spring.fast.spatial.damping"]).toBe("number");
 
@@ -82,12 +82,12 @@ describe("generateTokens() smoke", () => {
         const tokens = generateTokens();
 
         expect(tokens.shape).toBeDefined();
-        expect(tokens.shape!["md.sys.shape.corner.extra-large.top"]).toBe("2rem 2rem 0 0");
-        expect(tokens.shape!["md.sys.shape.corner.medium"]).toBe("0.8571rem");
+        expect(tokens.shape!["md.sys.shape.corner.extra-large.top"]).toBe("1.75rem 1.75rem 0 0");
+        expect(tokens.shape!["md.sys.shape.corner.medium"]).toBe("0.75rem");
 
         expect(tokens.elevation).toBeDefined();
         expectZeroOk(tokens.elevation!["md.sys.elevation.level0"]);
-        expect(tokens.elevation!["md.sys.elevation.level3"]).toBe("0.4286rem");
+        expect(tokens.elevation!["md.sys.elevation.level3"]).toBe("0.375rem");
     });
 
     it("when webUnits = false, leaves dp-tagged strings untouched", () => {

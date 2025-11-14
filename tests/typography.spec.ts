@@ -121,7 +121,7 @@ function expectedTokens(root = 16) {
 describe("generateTypographyTokens()", () => {
     it("emits ALL baseline + emphasized tokens with spec-correct values (455) and nothing extra", () => {
         const tokens = generateTypographyTokens({ webUnits: true });
-        const exp = expectedTokens(14);
+        const exp = expectedTokens(16);
 
         expect(Object.keys(tokens).length).toBe(455);
         expect(tokens).toEqual(exp);
