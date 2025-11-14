@@ -16,8 +16,8 @@ export async function promptTypography(): Promise<TypographyAnswers> {
     });
 
     const rootFontSizePxStr = await input({
-        message: "What base font size do you want to use? Leave blank to use Material Design default of 14px",
-        default: "14",
+        message: "What base font size do you want to use? Leave blank to use default of 16px",
+        default: "16",
         validate: (value) => {
             if (!value.trim()) return true;
             const num = parseFloat(value.trim());
@@ -28,7 +28,7 @@ export async function promptTypography(): Promise<TypographyAnswers> {
         },
     });
 
-    const rootFontSizePx = rootFontSizePxStr.trim() ? parseFloat(rootFontSizePxStr.trim()) : 14;
+    const rootFontSizePx = rootFontSizePxStr.trim() ? parseFloat(rootFontSizePxStr.trim()) : 16;
 
     const wantsWeightCustomization = await select({
         message: "Do you want to customize font weights (regular, medium, and bold)?",

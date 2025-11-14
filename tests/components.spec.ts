@@ -743,11 +743,13 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
         sampleTokens: [
             { key: "md.comp.tooltip.plain.container.color", expected: "md.sys.color.inverse-surface" },
             { key: "md.comp.tooltip.plain.container.shape", expected: "md.sys.shape.corner.extra-small" },
+            { key: "md.comp.tooltip.plain.container.width", expected: "14.2857rem" },
             { key: "md.comp.tooltip.plain.supporting.text.font", expected: "md.sys.typescale.body-small.font" },
             { key: "md.comp.tooltip.plain.supporting.text.weight", expected: "md.sys.typescale.body-small.weight" },
             { key: "md.comp.tooltip.plain.supporting.text.color", expected: "md.sys.color.inverse-on-surface" },
             { key: "md.comp.tooltip.rich.container.elevation", expected: "md.sys.elevation.level2" },
             { key: "md.comp.tooltip.rich.container.shadow.color", expected: "md.sys.color.shadow" },
+            { key: "md.comp.tooltip.rich.container.width", expected: "22.8571rem" },
             { key: "md.comp.tooltip.rich.action.label.text.tracking", expected: "md.sys.typescale.label-large.tracking" },
             { key: "md.comp.tooltip.rich.subhead.color", expected: "md.sys.color.on-surface-variant" },
             { key: "md.comp.tooltip.rich.supporting.text.size", expected: "md.sys.typescale.body-medium.size" },

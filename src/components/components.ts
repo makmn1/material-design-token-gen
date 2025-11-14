@@ -96,7 +96,7 @@ export interface GenerateComponentTokensOptions {
     /**
      * Root font size in pixels used when converting to `rem`.
      * `rem = (dp * dpPxRatio) / rootFontSizePx`
-     * @default 14
+     * @default 16
      */
     rootFontSizePx?: number;
 
@@ -150,7 +150,7 @@ export function generateComponentTokens(
     const {
         excludes = [],
         webUnits = true,
-        rootFontSizePx = 14,
+        rootFontSizePx = 16,
         dpPxRatio = 1,
         unit = "rem",
     } = options;

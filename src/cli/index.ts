@@ -36,7 +36,7 @@ export async function generateFromScaffold(
     const { generateFiles = true } = options;
 
     const expressiveMotion = answers.motionVariant === "Expressive (2025)";
-    const rootFontSizePx = answers.typography?.rootFontSizePx ?? 14;
+    const rootFontSizePx = answers.typography?.rootFontSizePx ?? 16;
 
     const nonColorBundle = generateTokens({
         expressiveMotion,

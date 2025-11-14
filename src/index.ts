@@ -47,7 +47,7 @@ export interface GenerateTokensOptions {
     /**
      * Root font size in pixels used when converting to `rem`.
      * `rem = (dp * dpPxRatio) / rootFontSizePx`
-     * @default 14
+     * @default 16
      */
     rootFontSizePx?: number;
 
@@ -184,7 +184,7 @@ export function generateTokens(
         dynamicScheme,
         expressiveMotion = true,
         webUnits = true,
-        rootFontSizePx = 14,
+        rootFontSizePx = 16,
         dpPxRatio = 1,
         unit = "rem",
         typography: typographyOptions,

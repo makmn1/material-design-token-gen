@@ -11,7 +11,7 @@ export type DpUnit = "rem" | "px";
 export interface DpConvertOptions {
     /**
      * Root font size in px when outputting `rem`.
-     * @default 14
+     * @default 16
      */
     rootFontSizePx?: number;
 
@@ -30,7 +30,7 @@ export interface DpConvertOptions {
 }
 
 const DEFAULTS: Required<DpConvertOptions> = {
-    rootFontSizePx: 14,
+    rootFontSizePx: 16,
     dpPxRatio: 1,
     unit: "rem",
 };

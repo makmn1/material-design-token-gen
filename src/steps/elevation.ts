@@ -8,7 +8,7 @@ export interface ElevationOptions {
     webUnits?: boolean;
     /**
      * Root font size in pixels used when converting to `rem`.
-     * @default 14
+     * @default 16
      */
     rootFontSizePx?: number;
     /**
@@ -43,7 +43,7 @@ export interface ElevationOptions {
 export function generateElevationTokens(opts: ElevationOptions = {}): Record<string, string | number> {
     const {
         webUnits = true,
-        rootFontSizePx = 14,
+        rootFontSizePx = 16,
         dpPxRatio = 1,
         unit = "rem"
     } = opts;

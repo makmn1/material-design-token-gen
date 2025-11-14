@@ -60,7 +60,7 @@ export function createTypographyAnswers(
     return {
         brandTypeface: "Roboto",
         plainTypeface: "Roboto",
-        rootFontSizePx: 14,
+        rootFontSizePx: 16,
         weightRegular: 400,
         weightMedium: 500,
         weightBold: 700,

@@ -118,12 +118,10 @@ export const iconButtonColorTonalEnabled: Record<string, string | number> = {
 };
 
 export const iconButtonColorTonalDisabled: Record<string, string | number> = {
-  "md.comp.icon-button.tonal.container.color": "md.sys.color.secondary-container",
-  "md.comp.icon-button.tonal.container.color.toggle.unselected": "md.sys.color.secondary-container",
-  "md.comp.icon-button.tonal.container.color.toggle.selected": "md.sys.color.secondary",
-  "md.comp.icon-button.tonal.icon.color": "md.sys.color.on-secondary-container",
-  "md.comp.icon-button.tonal.icon.color.toggle.unselected": "md.sys.color.on-secondary-container",
-  "md.comp.icon-button.tonal.icon.color.toggle.selected": "md.sys.color.on-secondary",
+  "md.comp.icon-button.tonal.disabled.container.color": "md.sys.color.on-surface",
+  "md.comp.icon-button.tonal.disabled.container.opacity": 0.1,
+  "md.comp.icon-button.tonal.disabled.icon.color": "md.sys.color.on-surface",
+  "md.comp.icon-button.tonal.disabled.icon.opacity": 0.38,
 };
 
 export const iconButtonColorTonalHovered: Record<string, string | number> = {

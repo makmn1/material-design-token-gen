@@ -36,7 +36,7 @@ export interface ShapeOptions {
     webUnits?: boolean;
     /**
      * Root font size in pixels used when converting to `rem`.
-     * @default 14
+     * @default 16
      */
     rootFontSizePx?: number;
     /**
@@ -72,7 +72,7 @@ export interface ShapeOptions {
 export function generateShapeTokens(opts: ShapeOptions = {}): Record<string, string | number> {
     const {
         webUnits = true,
-        rootFontSizePx = 14,
+        rootFontSizePx = 16,
         dpPxRatio = 1,
         unit = "rem"
     } = opts;

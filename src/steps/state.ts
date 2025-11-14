@@ -8,7 +8,7 @@ export interface StateOptions {
     webUnits?: boolean;
     /**
      * Root font size in pixels used when converting to `rem`.
-     * @default 14
+     * @default 16
      */
     rootFontSizePx?: number;
     /**
@@ -52,7 +52,7 @@ export interface StateOptions {
 export function generateStateTokens(opts: StateOptions = {}): Record<string, number | string> {
     const {
         webUnits = true,
-        rootFontSizePx = 14,
+        rootFontSizePx = 16,
         dpPxRatio = 1,
         unit = "rem"
     } = opts;

@@ -11,7 +11,7 @@ function strip(n: number) {
     const s = n.toString();
     return s.includes(".") ? s.replace(/\.?0+$/, "") : s;
 }
-function remFromPt(pt: number, root = 14) {
+function remFromPt(pt: number, root = 16) {
     const px = pt * PT_TO_PX;
     const rem = px / root;
     return `${strip(round(rem, 4))}rem`;
@@ -79,7 +79,7 @@ const weightPointer = (w: StyleRow["weight"]) =>
 const familyPointer = (f: StyleRow["family"]) =>
     f === "brand" ? "md.ref.typeface.brand" : "md.ref.typeface.plain";
 
-function expectedTokens(root = 14) {
+function expectedTokens(root = 16) {
     const expected: Record<string, string | number> = {};
 
     // refs

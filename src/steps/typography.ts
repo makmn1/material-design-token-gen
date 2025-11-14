@@ -122,7 +122,7 @@ export function generateTypographyTokens(opts: TypographyOptions = {}): Record<s
     const wRegular = opts.weightRegular ?? 400;
     const wMedium  = opts.weightMedium  ?? 500;
     const wBold    = opts.weightBold    ?? 700;
-    const rootPx   = opts.rootFontSizePx ?? 14;
+    const rootPx   = opts.rootFontSizePx ?? 16;
 
     const tokens: Record<string, string | number> = {};
 

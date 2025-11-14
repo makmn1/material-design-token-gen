@@ -1,6 +1,7 @@
 export const tooltipPlainEnabledContainer: Record<string, string | number> = {
     "md.comp.tooltip.plain.container.color": "md.sys.color.inverse-surface",
     "md.comp.tooltip.plain.container.shape": "md.sys.shape.corner.extra-small",
+    "md.comp.tooltip.plain.container.width": "200dp",
 };
 
 export const tooltipPlainEnabledSupportingText: Record<string, string | number> = {
@@ -17,6 +18,7 @@ export const tooltipRichEnabledContainer: Record<string, string | number> = {
     "md.comp.tooltip.rich.container.elevation": "md.sys.elevation.level2",
     "md.comp.tooltip.rich.container.shadow.color": "md.sys.color.shadow",
     "md.comp.tooltip.rich.container.shape": "md.sys.shape.corner.medium",
+    "md.comp.tooltip.rich.container.width": "320dp",
 };
 
 export const tooltipRichEnabledLabelText: Record<string, string | number> = {
