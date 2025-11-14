@@ -68,7 +68,7 @@ export function createTypographyAnswers(
 }
 
 /**
- * Create default theme-color answers with optional overrides.
+ * Create default create-material-theme-tokens answers with optional overrides.
  */
 export function createThemeColorAnswers(
     overrides: Partial<ThemeColorAnswers> = {}

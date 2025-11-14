@@ -45,7 +45,7 @@ That's because Angular Material does not expose this as an option and instead ch
 Before October 2024, Angular Material's [ng-generate m3-theme](https://github.com/angular/components/blob/a58e6f6711af48f7106ed675b4b996c41899a0be/src/material/schematics/ng-generate/m3-theme/index.ts#L58) schematic used the [SchemeContent](https://github.com/material-foundation/material-color-utilities/blob/691c9e34a997612718f892a8c99aefab1b8b4b21/typescript/scheme/scheme_content.ts#L38) class to generate a theme.
 By default, that class chooses the **CONTENT** variant.
 
-Since October 2024, Angular added the [ng generate theme-color](https://github.com/angular/components/blob/969a9abcc878cec760a3cea2f01d0a18aad72e50/src/material/schematics/ng-generate/theme-color/index.ts#L94)
+Since October 2024, Angular added the [ng generate create-material-theme-tokens](https://github.com/angular/components/blob/969a9abcc878cec760a3cea2f01d0a18aad72e50/src/material/schematics/ng-generate/create-material-theme-tokens/index.ts#L94)
 schematic which chooses the **FIDELITY** variant.
 
 Note that there is an **EXPRESSIVE** variant available which you can find [here](https://github.com/material-foundation/material-color-utilities/blob/691c9e34a997612718f892a8c99aefab1b8b4b21/typescript/dynamiccolor/variant.ts#L28),
@@ -59,6 +59,23 @@ to view different themes with different variants for either the 2021 or the 2025
 on the Material Expressive 3 color system is misleading--you don't need to set the variant to expressive for your color system
 to be "expressive". It's considered expressive by using the 2025 color spec version.
 
+## Install
+### Local
+```shell
+npm install @makmn1/material-design-token-gen
+```
+
+### CLI Only Usage
+If you only want to use the CLI, you can install the package globally or one-time
+
+```shell
+# Global
+npm install -g @makmn1/material-design-token-gen
+
+# One-time
+npx -y -p @makmn1/material-design-token-gen [COMMAND] # See CLI Usage section for available commands
+```
+
 ## CLI Usage
 
 This package includes an interactive CLI to generate Material Design token CSS files. You can run the CLI whether or not the package is installed locally.
@@ -69,10 +86,13 @@ Generate all token sets (colors, typography, elevation, motion, shape, state) wi
 
 ```sh
 # Run without installing
-npx @makmn1/material-design-token-gen
+npx -y -p @makmn1/material-design-token-gen scaffold-material-tokens
 
 # Or if installed locally
-npx material-token-gen
+npx scaffold-material-tokens
+
+# Or if installed globally
+scaffold-material-tokens
 ```
 
 This command will:
@@ -88,10 +108,13 @@ Generate only color token CSS files:
 
 ```sh
 # Run without installing
-npx @makmn1/material-design-token-gen theme-color
+npx -y -p @makmn1/material-design-token-gen create-material-theme-tokens
 
 # Or if installed locally
-npx theme-color
+npx create-material-theme-tokens
+
+# Or if installed globally
+create-material-theme-tokens
 ```
 
 This command will:

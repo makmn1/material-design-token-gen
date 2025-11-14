@@ -183,7 +183,7 @@ export async function generateFromScaffold(
 }
 
 /**
- * Generate tokens from theme-color answers (color only).
+ * Generate tokens from create-material-theme-tokens answers (color only).
  */
 export async function generateFromThemeColor(
     answers: ThemeColorAnswers,

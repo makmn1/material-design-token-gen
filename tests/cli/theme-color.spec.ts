@@ -70,7 +70,7 @@ describe("generateFromThemeColor", () => {
     });
 
     it("writes files when generateFiles is true", async () => {
-        const tempDir = path.join(tmpdir(), `test-theme-color-${Date.now()}`);
+        const tempDir = path.join(tmpdir(), `test-create-material-theme-tokens-${Date.now()}`);
         const answers = createThemeColorAnswers({
             outputPath: tempDir,
             colorTheme: {

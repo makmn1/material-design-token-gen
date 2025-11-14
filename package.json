@@ -28,8 +28,8 @@
     "prepublishOnly": "npm run clean && npm run build"
   },
   "bin": {
-    "material-token-gen": "./dist/bin/cli.js",
-    "theme-color": "./dist/bin/theme-color.js"
+    "scaffold-material-tokens": "./dist/bin/scaffold-material-tokens.js",
+    "create-material-theme-tokens": "./dist/bin/create-material-theme-tokens.js"
   },
   "peerDependencies": {
     "@materialx/material-color-utilities": "^0.4.8"

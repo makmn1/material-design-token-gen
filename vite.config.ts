@@ -17,8 +17,8 @@ export default defineConfig({
       ],
       input: {
         index: resolve(__dirname, 'src/index.ts'),
-        'bin/cli': resolve(__dirname, 'src/bin/cli.ts'),
-        'bin/theme-color': resolve(__dirname, 'src/bin/theme-color.ts'),
+        'bin/scaffold-material-tokens': resolve(__dirname, 'src/bin/scaffold-material-tokens.ts'),
+        'bin/create-material-theme-tokens': resolve(__dirname, 'src/bin/create-material-theme-tokens.ts'),
       },
       output: [
         {
