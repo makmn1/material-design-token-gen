@@ -49,8 +49,8 @@ describe("generateTokens() smoke", () => {
             /string|number/
         );
 
-        expect(state!["md.sys.state.hover.state-layer-opacity"]).toBeGreaterThanOrEqual(0);
-        expect(state!["md.sys.state.hover.state-layer-opacity"]).toBeLessThanOrEqual(1);
+        expect(typeof state!["md.sys.state.hover.state-layer-opacity"]).toBe("string");
+        expect(state!["md.sys.state.hover.state-layer-opacity"]).toMatch(/^\d+%$/);
     });
 
     it("uses the provided DynamicScheme when passed (colors match generateColorTokens)", () => {

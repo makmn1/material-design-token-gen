@@ -6,10 +6,10 @@ describe("generateStateTokens()", () => {
         const tokens = generateStateTokens({ webUnits: false });
 
         const expected: Record<string, number | string> = {
-            "md.sys.state.hover.state-layer-opacity": 0.08,
-            "md.sys.state.focus.state-layer-opacity": 0.1,
-            "md.sys.state.pressed.state-layer-opacity": 0.1,
-            "md.sys.state.dragged.state-layer-opacity": 0.16,
+            "md.sys.state.hover.state-layer-opacity": "8%",
+            "md.sys.state.focus.state-layer-opacity": "10%",
+            "md.sys.state.pressed.state-layer-opacity": "10%",
+            "md.sys.state.dragged.state-layer-opacity": "16%",
             "md.sys.state.focus-indicator.thickness": "3dp",
             "md.sys.state.focus-indicator.outer-offset": "2dp",
         };
@@ -18,13 +18,13 @@ describe("generateStateTokens()", () => {
         expect(tokens).toEqual(expected);
     });
 
-    it("emits opacity tokens as numbers and converts dp tokens to rem when webUnits is true (default)", () => {
+    it("emits opacity tokens as percentage strings and converts dp tokens to rem when webUnits is true (default)", () => {
         const tokens = generateStateTokens();
 
-        expect(tokens["md.sys.state.hover.state-layer-opacity"]).toBe(0.08);
-        expect(tokens["md.sys.state.focus.state-layer-opacity"]).toBe(0.1);
-        expect(tokens["md.sys.state.pressed.state-layer-opacity"]).toBe(0.1);
-        expect(tokens["md.sys.state.dragged.state-layer-opacity"]).toBe(0.16);
+        expect(tokens["md.sys.state.hover.state-layer-opacity"]).toBe("8%");
+        expect(tokens["md.sys.state.focus.state-layer-opacity"]).toBe("10%");
+        expect(tokens["md.sys.state.pressed.state-layer-opacity"]).toBe("10%");
+        expect(tokens["md.sys.state.dragged.state-layer-opacity"]).toBe("16%");
 
         expect(typeof tokens["md.sys.state.focus-indicator.thickness"]).toBe("string");
         expect(tokens["md.sys.state.focus-indicator.thickness"]).toMatch(/^\d+\.?\d*rem$/);
