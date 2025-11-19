@@ -11,7 +11,9 @@ or import it into your application for swapping CSS variables at runtime (or gen
 - Changing the dp to px ratio or the unit of measurement (e.g., px or rem)
 - Exporting a color set based on a specific theme, making dynamic theme switching easier with native CSS
 
-Found a bug? Want to add something? Let me know by opening an issue!
+> [!IMPORTANT]
+> This package is in its early stages. 
+> If you run into any problems or want to add something, please do not hesitate to open an issue.
 
 ## Install
 ### Local
