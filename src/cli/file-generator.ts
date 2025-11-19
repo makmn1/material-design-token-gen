@@ -170,7 +170,7 @@ export function buildNonColorCss(bundle: TokensBundle, group: NonColorGroup): st
 
 /**
  * Build ripples CSS (static styles for ripple effects).
- * Returns CSS content with WARNING header and all ripple styles.
+ * Returns CSS content with a WARNING header and all ripple styles.
  */
 export function buildRipplesCss(): string {
     return (
@@ -179,22 +179,32 @@ export function buildRipplesCss(): string {
         `  position: relative;\n` +
         `  overflow: hidden;\n` +
         `  -webkit-tap-highlight-color: transparent;\n` +
+        `  --sm-ripple-origin-x: 0.5;\n` +
+        `  --sm-ripple-origin-y: 0.5;\n` +
         `}\n\n` +
         `.sm-ripple__wave {\n` +
         `  position: absolute;\n` +
         `  pointer-events: none;\n` +
         `  border-radius: 50%;\n` +
-        `  background: currentColor;\n` +
-        `  transform: scale(0);\n` +
+        `  background: currentColor;\n\n` +
+        `  /* Position the center of the ripple using fractional origins from the directive */\n` +
+        `  left: calc(var(--sm-ripple-origin-x) * 100%);\n` +
+        `  top: calc(var(--sm-ripple-origin-y) * 100%);\n` +
+        `  transform: translate(-50%, -50%) scale(0);\n\n` +
         `  opacity: 0.25;\n` +
         `  animation-name: sm-ripple-wave;\n` +
-        `  animation-duration: 550ms;\n` +
-        `  animation-timing-function: cubic-bezier(0,0,0.2,1);\n` +
+        `  animation-duration: 1000ms;\n` +
+        `  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);\n` +
         `  animation-fill-mode: forwards;\n` +
         `}\n\n` +
         `@keyframes sm-ripple-wave {\n` +
-        `  60% { transform: scale(1); }      /* grow the circle */\n` +
-        `  100% { transform: scale(1); opacity: 0; }  /* then fade out */\n` +
+        `  60% {\n` +
+        `    transform: translate(-50%, -50%) scale(1);\n` +
+        `  } /* grow the circle */\n` +
+        `  100% {\n` +
+        `    transform: translate(-50%, -50%) scale(1);\n` +
+        `    opacity: 0;\n` +
+        `  } /* then fade out */\n` +
         `}\n\n` +
         `/* Respect reduced motion */\n` +
         `@media (prefers-reduced-motion: reduce) {\n` +
