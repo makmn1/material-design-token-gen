@@ -1,4 +1,5 @@
-Generate Material-style tokens (color, elevation, motion, shape, typography, state) as an object.
+Generate [Material Design tokens](https://m3.material.io/foundations/design-tokens/overview) (color, elevation, motion, shape, typography, state, component tokens) as either
+a JavaScript object or CSS files for use in your application.
 
 There's currently no official or community-maintained way to get all the current Material Design 3 baseline
 and expressive tokens. This package aims to fill that gap. You can use its CLI for one-time style generation
