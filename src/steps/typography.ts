@@ -13,16 +13,13 @@ export type TypographyOptions = {
     webUnits?: boolean;
 };
 
-const PT_TO_PX = 4 / 3;
-
 function round(n: number, decimals = 4): number {
     const p = Math.pow(10, decimals);
     return Math.round(n * p) / p;
 }
 
 function toRemFromPt(pt: number, rootPx: number): string {
-    const px = pt * PT_TO_PX;
-    const rem = px / rootPx;
+    const rem = pt / rootPx;
     return `${stripTrailingZeros(round(rem, 4))}rem`;
 }
 
@@ -111,7 +108,7 @@ const EMPH: StyleRow[] = [
  * ```ts
  * import { generateTypographyTokens } from "@makmn1/material-design-token-gen";
  * const type = generateTypographyTokens();
- * // type["md.sys.typescale.display-large.size"] -> "3.5625rem" (57pt -> 76px -> 4.75rem ? depending on the mapping)
+ * // type["md.sys.typescale.display-large.size"] -> "3.5625rem" (57pt -> 3.5625rem with 1:1 pt:px conversion)
  * // type["md.sys.typescale.display-large.font"] -> "md.ref.typeface.brand"
  * ```
  */

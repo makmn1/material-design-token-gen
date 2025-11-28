@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { generateTypographyTokens } from "../src";
 
 // helpers to build the expected dictionary identically to spec values
-const PT_TO_PX = 4/3;
 function round(n: number, d = 4) {
     const p = Math.pow(10, d);
     return Math.round(n * p) / p;
@@ -12,8 +11,7 @@ function strip(n: number) {
     return s.includes(".") ? s.replace(/\.?0+$/, "") : s;
 }
 function remFromPt(pt: number, root = 16) {
-    const px = pt * PT_TO_PX;
-    const rem = px / root;
+    const rem = pt / root;
     return `${strip(round(rem, 4))}rem`;
 }
 function emFromPt(trackingPt: number, sizePt: number) {
