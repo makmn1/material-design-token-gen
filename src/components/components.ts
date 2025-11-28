@@ -1,38 +1,38 @@
-import { convertDpInTree } from "../util/dp";
-import { buttonTokens } from "./tokens/buttonTokens";
-import { appBarTokens } from "./tokens/appBarTokens";
-import { badgeTokens } from "./tokens/badgeTokens";
-import { buttonGroupTokens } from "./tokens/buttonGroupTokens";
-import { fabTokens } from "./tokens/fabTokens";
-import { extendedFabTokens } from "./tokens/extendedFabTokens";
-import { fabMenuTokens } from "./tokens/fabMenuTokens";
-import { iconButtonTokens } from "./tokens/iconButtonTokens";
-import { splitButtonTokens } from "./tokens/splitButtonTokens";
-import { cardTokens } from "./tokens/cardTokens";
-import { carouselTokens } from "./tokens/carouselTokens";
-import { checkboxTokens } from "./tokens/checkboxTokens";
-import { chipTokens } from "./tokens/chipTokens";
-import { datePickerTokens } from "./tokens/datePickerTokens";
-import { timePickerTokens } from "./tokens/timePickerTokens";
-import { dialogTokens } from "./tokens/dialogTokens";
-import { dividerTokens } from "./tokens/dividerTokens";
-import { listTokens } from "./tokens/listTokens";
-import { loadingIndicatorTokens } from "./tokens/loadingIndicatorTokens";
-import { progressIndicatorTokens } from "./tokens/progressIndicatorTokens";
-import { menuTokens } from "./tokens/menuTokens";
-import { navigationBarTokens } from "./tokens/navigationBarTokens";
-import { navigationRailTokens } from "./tokens/navigationRailTokens";
-import { radioButtonTokens } from "./tokens/radioButtonTokens";
-import { searchTokens } from "./tokens/searchTokens";
-import { bottomSheetTokens } from "./tokens/bottomSheetTokens";
-import { sideSheetTokens } from "./tokens/sideSheetTokens";
-import { sliderTokens } from "./tokens/sliderTokens";
-import { snackbarTokens } from "./tokens/snackbarTokens";
-import { switchTokens } from "./tokens/switchTokens";
-import { tabsTokens } from "./tokens/tabsTokens";
-import { textFieldTokens } from "./tokens/textFieldTokens";
-import { toolbarTokens } from "./tokens/toolbarTokens";
-import { tooltipTokens } from "./tokens/tooltipTokens";
+import {convertDpInTree} from "../util/dp";
+import {buttonTokens} from "./tokens/buttonTokens";
+import {appBarTokens} from "./tokens/appBarTokens";
+import {badgeTokens} from "./tokens/badgeTokens";
+import {buttonGroupTokens} from "./tokens/buttonGroupTokens";
+import {fabTokens} from "./tokens/fabTokens";
+import {extendedFabTokens} from "./tokens/extendedFabTokens";
+import {fabMenuTokens} from "./tokens/fabMenuTokens";
+import {iconButtonTokens} from "./tokens/iconButtonTokens";
+import {splitButtonTokens} from "./tokens/splitButtonTokens";
+import {cardTokens} from "./tokens/cardTokens";
+import {carouselTokens} from "./tokens/carouselTokens";
+import {checkboxTokens} from "./tokens/checkboxTokens";
+import {chipTokens} from "./tokens/chipTokens";
+import {datePickerTokens} from "./tokens/datePickerTokens";
+import {timePickerTokens} from "./tokens/timePickerTokens";
+import {dialogTokens} from "./tokens/dialogTokens";
+import {dividerTokens} from "./tokens/dividerTokens";
+import {listTokens} from "./tokens/listTokens";
+import {loadingIndicatorTokens} from "./tokens/loadingIndicatorTokens";
+import {progressIndicatorTokens} from "./tokens/progressIndicatorTokens";
+import {menuTokens} from "./tokens/menuTokens";
+import {navigationBarTokens} from "./tokens/navigationBarTokens";
+import {navigationRailTokens} from "./tokens/navigationRailTokens";
+import {radioButtonTokens} from "./tokens/radioButtonTokens";
+import {searchTokens} from "./tokens/searchTokens";
+import {bottomSheetTokens} from "./tokens/bottomSheetTokens";
+import {sideSheetTokens} from "./tokens/sideSheetTokens";
+import {sliderTokens} from "./tokens/sliderTokens";
+import {snackbarTokens} from "./tokens/snackbarTokens";
+import {switchTokens} from "./tokens/switchTokens";
+import {tabsTokens} from "./tokens/tabsTokens";
+import {textFieldTokens} from "./tokens/textFieldTokens";
+import {toolbarTokens} from "./tokens/toolbarTokens";
+import {tooltipTokens} from "./tokens/tooltipTokens";
 
 const COMPONENT_TOKENS: Array<{
     name: string;
@@ -160,13 +160,29 @@ export function generateComponentTokens(
           }))
         : filtered;
 
-    const result = converted.reduce(
+        // We need to convert 50% corner tokens to 9999rem/px as that's this library signal that the corner
+        // is a circular corner. Using 50% for border radius only works for square shapes. Otherwise some vertical squishing occurs.
+        const postProcessed = converted.map((entry) => {
+        const processedValue: Record<string, string | number> = { ...entry.value };
+        for (const [key, value] of Object.entries(processedValue)) {
+            if (
+                (key.endsWith(".corner.size") || key.endsWith(".corner.selected.size")) &&
+                value === "50%"
+            ) {
+                processedValue[key] = `9999${unit}`;
+            }
+        }
+        return {
+            name: entry.name,
+            value: processedValue,
+        };
+    });
+
+    return postProcessed.reduce(
         (acc, entry) => {
             acc[entry.name] = entry.value;
             return acc;
         },
         {} as Record<string, Record<string, string | number>>,
     );
-
-    return result;
 }

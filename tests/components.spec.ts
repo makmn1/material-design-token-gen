@@ -133,7 +133,7 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.button-group.connected.xsmall.container.shape", expected: "md.sys.shape.corner.full" },
             { key: "md.comp.button-group.connected.xsmall.inner.corner.size", expected: "md.sys.shape.corner-value.small" },
             { key: "md.comp.button-group.connected.xsmall.pressed.inner.corner.size", expected: "md.sys.shape.corner-value.extra-small" },
-            { key: "md.comp.button-group.connected.xsmall.selected.inner.corner.size", expected: "50%" },
+            { key: "md.comp.button-group.connected.xsmall.selected.inner.corner.size", expected: "9999rem" },
             { key: "md.comp.button-group.connected.large.inner.corner.size", expected: "md.sys.shape.corner-value.large" },
             { key: "md.comp.button-group.connected.xlarge.inner.corner.size", expected: "md.sys.shape.corner-value.large-increased" },
         ],
@@ -229,7 +229,7 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.split-button.xsmall.between.space", expected: "0.125rem" },
             { key: "md.comp.split-button.xsmall.container.shape", expected: "md.sys.shape.corner.full" },
             { key: "md.comp.split-button.xsmall.inner.corner.size", expected: "md.sys.shape.corner-value.extra-small" },
-            { key: "md.comp.split-button.xsmall.outer.corner.size", expected: "50%" },
+            { key: "md.comp.split-button.xsmall.outer.corner.size", expected: "9999rem" },
             { key: "md.comp.split-button.small.container.height", expected: "2.5rem" },
             { key: "md.comp.split-button.small.leading.button.leading.space", expected: "1rem" },
             { key: "md.comp.split-button.small.trailing.button.icon.size", expected: "1.375rem" },
@@ -240,7 +240,7 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.split-button.large.trailing.button.icon.size", expected: "2.375rem" },
             { key: "md.comp.split-button.large.inner.corner.hovered.size", expected: "md.sys.shape.corner-value.large-increased" },
             { key: "md.comp.split-button.xlarge.container.height", expected: "8.5rem" },
-            { key: "md.comp.split-button.xlarge.trailing.button.inner.corner.selected.size", expected: "50%" },
+            { key: "md.comp.split-button.xlarge.trailing.button.inner.corner.selected.size", expected: "9999rem" },
         ],
     },
     {
@@ -884,5 +884,39 @@ describe("generateComponentTokens()", () => {
             expect(tokens1[component as keyof typeof tokens1]).toBeDefined();
             expect(Object.keys(tokens1[component as keyof typeof tokens1] as Record<string, unknown>).length).toBeGreaterThan(0);
         }
+    });
+
+    it("converts 50% corner tokens to 9999rem when unit is rem (default)", () => {
+        const tokens = generateComponentTokens();
+
+        expect(tokens["button-group"]["md.comp.button-group.connected.xsmall.selected.inner.corner.size"]).toBe("9999rem");
+        expect(tokens["button-group"]["md.comp.button-group.connected.small.selected.inner.corner.size"]).toBe("9999rem");
+        expect(tokens["button-group"]["md.comp.button-group.connected.medium.selected.inner.corner.size"]).toBe("9999rem");
+        expect(tokens["button-group"]["md.comp.button-group.connected.large.selected.inner.corner.size"]).toBe("9999rem");
+        expect(tokens["button-group"]["md.comp.button-group.connected.xlarge.selected.inner.corner.size"]).toBe("9999rem");
+
+        expect(tokens["split-button"]["md.comp.split-button.xsmall.outer.corner.size"]).toBe("9999rem");
+        expect(tokens["split-button"]["md.comp.split-button.xsmall.trailing.button.inner.corner.selected.size"]).toBe("9999rem");
+        expect(tokens["split-button"]["md.comp.split-button.small.trailing.button.inner.corner.selected.size"]).toBe("9999rem");
+        expect(tokens["split-button"]["md.comp.split-button.medium.trailing.button.inner.corner.selected.size"]).toBe("9999rem");
+        expect(tokens["split-button"]["md.comp.split-button.large.trailing.button.inner.corner.selected.size"]).toBe("9999rem");
+        expect(tokens["split-button"]["md.comp.split-button.xlarge.trailing.button.inner.corner.selected.size"]).toBe("9999rem");
+    });
+
+    it("converts 50% corner tokens to 9999px when unit is px", () => {
+        const tokens = generateComponentTokens({ unit: "px" });
+
+        expect(tokens["button-group"]["md.comp.button-group.connected.xsmall.selected.inner.corner.size"]).toBe("9999px");
+        expect(tokens["button-group"]["md.comp.button-group.connected.small.selected.inner.corner.size"]).toBe("9999px");
+        expect(tokens["button-group"]["md.comp.button-group.connected.medium.selected.inner.corner.size"]).toBe("9999px");
+        expect(tokens["button-group"]["md.comp.button-group.connected.large.selected.inner.corner.size"]).toBe("9999px");
+        expect(tokens["button-group"]["md.comp.button-group.connected.xlarge.selected.inner.corner.size"]).toBe("9999px");
+
+        expect(tokens["split-button"]["md.comp.split-button.xsmall.outer.corner.size"]).toBe("9999px");
+        expect(tokens["split-button"]["md.comp.split-button.xsmall.trailing.button.inner.corner.selected.size"]).toBe("9999px");
+        expect(tokens["split-button"]["md.comp.split-button.small.trailing.button.inner.corner.selected.size"]).toBe("9999px");
+        expect(tokens["split-button"]["md.comp.split-button.medium.trailing.button.inner.corner.selected.size"]).toBe("9999px");
+        expect(tokens["split-button"]["md.comp.split-button.large.trailing.button.inner.corner.selected.size"]).toBe("9999px");
+        expect(tokens["split-button"]["md.comp.split-button.xlarge.trailing.button.inner.corner.selected.size"]).toBe("9999px");
     });
 });
