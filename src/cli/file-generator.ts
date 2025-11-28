@@ -175,7 +175,7 @@ export function buildNonColorCss(bundle: TokensBundle, group: NonColorGroup): st
 export function buildRipplesCss(): string {
     return (
         `${WARNING}` +
-        `.sm-ripple {\n` +
+        `.simply-mat-ripple {\n` +
         `  position: relative;\n` +
         `  overflow: hidden;\n` +
         `  -webkit-tap-highlight-color: transparent;\n` +

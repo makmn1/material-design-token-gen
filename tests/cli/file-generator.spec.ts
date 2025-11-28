@@ -179,7 +179,7 @@ describe("file-generator", () => {
             const files = await generateRipplesFile("/tmp/test", false);
             const content = files[0].content;
             
-            expect(content).toContain(".sm-ripple");
+            expect(content).toContain(".simply-mat-ripple");
             expect(content).toContain("position: relative");
             expect(content).toContain("overflow: hidden");
             expect(content).toContain("-webkit-tap-highlight-color: transparent");
@@ -238,7 +238,7 @@ describe("file-generator", () => {
             
             const ripplesFile = files.find((f) => f.path.includes("ripples.css"));
             expect(ripplesFile).toBeDefined();
-            expect(ripplesFile!.content).toContain(".sm-ripple");
+            expect(ripplesFile!.content).toContain(".simply-mat-ripple");
         });
 
         it("creates ripples.css file on disk when generateFiles is true", async () => {
@@ -261,7 +261,7 @@ describe("file-generator", () => {
                 
                 const diskContent = await fs.readFile(ripplesFilePath, "utf-8");
                 expect(diskContent).toBe(ripplesFile!.content);
-                expect(diskContent).toContain(".sm-ripple");
+                expect(diskContent).toContain(".simply-mat-ripple");
                 expect(diskContent).toContain("@keyframes sm-ripple-wave");
                 expect(diskContent).toContain("@media (prefers-reduced-motion: reduce)");
                 
