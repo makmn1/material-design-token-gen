@@ -27,10 +27,10 @@ export const fabColorTonalPrimaryEnabled: Record<string, string | number> = {
 };
 
 export const fabColorTonalPrimaryHovered: Record<string, string | number> = {
-  "md.comp.fab.tonal.primary.container.color": "md.sys.color.primary-container",
-  "md.comp.fab.tonal.primary.container.shadow.color": "md.sys.color.shadow",
-  "md.comp.fab.tonal.primary.container.elevation": "md.sys.elevation.level3",
-  "md.comp.fab.tonal.primary.icon.color": "md.sys.color.on-primary-container",
+  "md.comp.fab.tonal.primary.hovered.container.elevation": "md.sys.elevation.level4",
+  "md.comp.fab.tonal.primary.hovered.state.layer.color": "md.sys.color.on-primary-container",
+  "md.comp.fab.tonal.primary.hovered.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
+  "md.comp.fab.tonal.primary.hovered.icon.color": "md.sys.color.on-primary-container",
 };
 
 export const fabColorTonalPrimaryFocused: Record<string, string | number> = {
@@ -55,10 +55,10 @@ export const fabColorTonalSecondaryEnabled: Record<string, string | number> = {
 };
 
 export const fabColorTonalSecondaryHovered: Record<string, string | number> = {
-  "md.comp.fab.tonal.secondary.container.color": "md.sys.color.secondary-container",
-  "md.comp.fab.tonal.secondary.container.shadow.color": "md.sys.color.shadow",
-  "md.comp.fab.tonal.secondary.container.elevation": "md.sys.elevation.level3",
-  "md.comp.fab.tonal.secondary.icon.color": "md.sys.color.on-secondary-container",
+  "md.comp.fab.tonal.secondary.hovered.container.elevation": "md.sys.elevation.level4",
+  "md.comp.fab.tonal.secondary.hovered.state.layer.color": "md.sys.color.on-secondary-container",
+  "md.comp.fab.tonal.secondary.hovered.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
+  "md.comp.fab.tonal.secondary.hovered.icon.color": "md.sys.color.on-secondary-container",
 };
 
 export const fabColorTonalSecondaryFocused: Record<string, string | number> = {
@@ -83,10 +83,10 @@ export const fabColorTonalTertiaryEnabled: Record<string, string | number> = {
 };
 
 export const fabColorTonalTertiaryHovered: Record<string, string | number> = {
-  "md.comp.fab.tonal.tertiary.container.color": "md.sys.color.tertiary-container",
-  "md.comp.fab.tonal.tertiary.container.shadow.color": "md.sys.color.shadow",
-  "md.comp.fab.tonal.tertiary.container.elevation": "md.sys.elevation.level3",
-  "md.comp.fab.tonal.tertiary.icon.color": "md.sys.color.on-tertiary-container",
+  "md.comp.fab.tonal.tertiary.hovered.container.elevation": "md.sys.elevation.level4",
+  "md.comp.fab.tonal.tertiary.hovered.state.layer.color": "md.sys.color.on-tertiary-container",
+  "md.comp.fab.tonal.tertiary.hovered.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
+  "md.comp.fab.tonal.tertiary.hovered.icon.color": "md.sys.color.on-tertiary-container",
 };
 
 export const fabColorTonalTertiaryFocused: Record<string, string | number> = {
@@ -111,10 +111,10 @@ export const fabColorPrimaryEnabled: Record<string, string | number> = {
 };
 
 export const fabColorPrimaryHovered: Record<string, string | number> = {
-  "md.comp.fab.primary.container.color": "md.sys.color.primary",
-  "md.comp.fab.primary.container.shadow.color": "md.sys.color.shadow",
-  "md.comp.fab.primary.container.elevation": "md.sys.elevation.level3",
-  "md.comp.fab.primary.icon.color": "md.sys.color.on-primary",
+  "md.comp.fab.primary.hovered.container.elevation": "md.sys.elevation.level4",
+  "md.comp.fab.primary.hovered.state.layer.color": "md.sys.color.on-primary",
+  "md.comp.fab.primary.hovered.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
+  "md.comp.fab.primary.hovered.icon.color": "md.sys.color.on-primary",
 };
 
 export const fabColorPrimaryFocused: Record<string, string | number> = {

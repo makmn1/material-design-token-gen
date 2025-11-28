@@ -113,11 +113,11 @@ export const extendedFabColorTonalTertiaryEnabled: Record<string, string | numbe
 };
 
 export const extendedFabColorTonalTertiaryHovered: Record<string, string | number> = {
-  "md.comp.extended-fab.tonal.tertiary.container.color": "md.sys.color.tertiary-container",
-  "md.comp.extended-fab.tonal.tertiary.container.elevation": "md.sys.elevation.level3",
-  "md.comp.extended-fab.tonal.tertiary.container.shadow.color": "md.sys.color.shadow",
-  "md.comp.extended-fab.tonal.tertiary.label.text.color": "md.sys.color.on-tertiary-container",
-  "md.comp.extended-fab.tonal.tertiary.container.icon.color": "md.sys.color.on-tertiary-container",
+  "md.comp.extended-fab.tonal.tertiary.hovered.container.elevation": "md.sys.elevation.level4",
+  "md.comp.extended-fab.tonal.tertiary.hovered.state.layer.color": "md.sys.color.on-tertiary-container",
+  "md.comp.extended-fab.tonal.tertiary.hovered.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
+  "md.comp.extended-fab.tonal.tertiary.hovered.label.text.color": "md.sys.color.on-tertiary-container",
+  "md.comp.extended-fab.tonal.tertiary.hovered.icon.color": "md.sys.color.on-tertiary-container",
 };
 
 export const extendedFabColorTonalTertiaryFocused: Record<string, string | number> = {
