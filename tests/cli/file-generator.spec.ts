@@ -181,10 +181,13 @@ describe("file-generator", () => {
             
             expect(content).toContain(".simply-mat-ripple");
             expect(content).toContain("position: relative");
-            expect(content).toContain("overflow: hidden");
+            expect(content).toContain("overflow: visible");
             expect(content).toContain("-webkit-tap-highlight-color: transparent");
             expect(content).toContain("--sm-ripple-origin-x: 0.5");
             expect(content).toContain("--sm-ripple-origin-y: 0.5");
+            expect(content).toContain(".simply-mat-ripple__surface");
+            expect(content).toContain("inset: 0");
+            expect(content).toContain("border-radius: inherit");
             expect(content).toContain(".sm-ripple__wave");
             expect(content).toContain("position: absolute");
             expect(content).toContain("pointer-events: none");

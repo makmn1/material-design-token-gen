@@ -177,10 +177,17 @@ export function buildRipplesCss(): string {
         `${WARNING}` +
         `.simply-mat-ripple {\n` +
         `  position: relative;\n` +
-        `  overflow: hidden;\n` +
+        `  overflow: visible;\n` +
         `  -webkit-tap-highlight-color: transparent;\n` +
         `  --sm-ripple-origin-x: 0.5;\n` +
         `  --sm-ripple-origin-y: 0.5;\n` +
+        `}\n\n` +
+        `.simply-mat-ripple__surface {\n` +
+        `  position: absolute;\n` +
+        `  inset: 0;\n` +
+        `  overflow: hidden;\n` +
+        `  border-radius: inherit;\n` +
+        `  pointer-events: none;\n` +
         `}\n\n` +
         `.sm-ripple__wave {\n` +
         `  position: absolute;\n` +
