@@ -160,3 +160,8 @@ Struggling to decide? Visit [MaterialKolor Builder](https://materialkolor.com/?c
 to view different themes with different variants for either the 2021 or the 2025 color spec. Note that its description
 on the Material Expressive 3 color system is misleading--you don't need to set the variant to expressive for your color system
 to be "expressive." It's considered expressive by using the 2025 color spec version.
+
+## Contributing Tips
+To view the generated files after making any changes, run `npm run build` and then any of the CLI commands using:
+
+`npm exec ACTION` where `ACTION` is any key in the `bin` object in `package.json`.
