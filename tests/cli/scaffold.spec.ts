@@ -175,7 +175,7 @@ describe("component stylesheet generation", () => {
         });
         expect(buttonFile).toBeDefined();
         expect(buttonFile!.content).toContain("@layer tokens");
-        expect(buttonFile!.content).toContain(":root");
+        expect(buttonFile!.content).toContain(":where(.md-button)");
     });
 
     it("does NOT generate component CSS files when wantsComponentStyles is false or undefined", async () => {

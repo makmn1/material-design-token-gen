@@ -327,7 +327,7 @@ export async function generateNonColorFiles(
 
 /**
  * Build component CSS for a single component type.
- * Generates :root variables in a tokens layer with token references converted to CSS variables.
+ * Generates :where(.md-{componentName}) variables in a tokens layer with token references converted to CSS variables.
  */
 export function buildComponentCss(componentName: string, tokens: Record<string, string | number>): string {
     const vars = Object.entries(tokens)
@@ -338,10 +338,11 @@ export function buildComponentCss(componentName: string, tokens: Record<string, 
         })
         .join("\n");
 
+    const className = `md-${componentName}`;
     return (
         `${WARNING}` +
         `@layer tokens {\n` +
-        `:root {\n` +
+        `:where(.${className}) {\n` +
         `${vars}\n` +
         `}\n` +
         `}\n`
