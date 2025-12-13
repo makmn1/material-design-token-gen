@@ -52,22 +52,6 @@ export function createColorThemeAnswers(
 }
 
 /**
- * Create default typography answers with optional overrides.
- */
-export function createTypographyAnswers(
-    overrides: Partial<TypographyAnswers> = {}
-): TypographyAnswers {
-    return {
-        brandTypeface: "Roboto",
-        plainTypeface: "Roboto",
-        weightRegular: 400,
-        weightMedium: 500,
-        weightBold: 700,
-        ...overrides,
-    };
-}
-
-/**
  * Create default create-material-theme-tokens answers with optional overrides.
  */
 export function createThemeColorAnswers(
@@ -116,21 +100,40 @@ export function assertHexColorsUnquoted(content: string): void {
  * Assert typography CSS formatting:
  * - String labels are quoted
  * - Reference tokens are converted to CSS variable references
- * - Ref tokens are defined before sys tokens
+ * - Core tokens are in :root block
+ * - System tokens are in the ":where(.md-typography)" block
  * - No duplicate ref tokens
  */
 export function assertTypographyFormatting(content: string): void {
+    // Verify selectors exist
+    expect(content).toContain(":root {");
+    expect(content).toContain(":where(.md-typography) {");
+    
+    // Verify string labels are quoted (system tokens in :where(.md-typography))
     expect(content).toContain('--md-sys-typescale-display-small: "Display Small";');
     expect(content).toContain('--md-sys-typescale-display-large: "Display Large";');
+    
+    // Verify reference tokens are converted to CSS variable references (system tokens in :where(.md-typography))
     expect(content).toContain('--md-sys-typescale-display-small-font: var(--md-ref-typeface-brand);');
     expect(content).toContain('--md-sys-typescale-title-medium-weight: var(--md-ref-typeface-weight-medium);');
     
+    // Verify core tokens are in :root block
+    const rootBlockStart = content.indexOf(":root {");
+    const rootBlockEnd = content.indexOf(":where(.md-typography) {");
     const refBrandIndex = content.indexOf("--md-ref-typeface-brand:");
-    const sysDisplaySmallFontIndex = content.indexOf("--md-sys-typescale-display-small-font:");
     expect(refBrandIndex).toBeGreaterThan(-1);
+    expect(refBrandIndex).toBeGreaterThan(rootBlockStart);
+    expect(refBrandIndex).toBeLessThan(rootBlockEnd);
+    
+    // Verify system tokens are in :where(.md-typography) block
+    const sysDisplaySmallFontIndex = content.indexOf("--md-sys-typescale-display-small-font:");
     expect(sysDisplaySmallFontIndex).toBeGreaterThan(-1);
+    expect(sysDisplaySmallFontIndex).toBeGreaterThan(rootBlockEnd);
+    
+    // Verify core tokens are defined before system tokens
     expect(refBrandIndex).toBeLessThan(sysDisplaySmallFontIndex);
     
+    // Verify no duplicate ref tokens
     const refBrandMatches = (content.match(/--md-ref-typeface-brand:/g) || []).length;
     expect(refBrandMatches).toBe(1);
 }

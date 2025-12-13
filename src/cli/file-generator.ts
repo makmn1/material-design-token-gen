@@ -125,8 +125,9 @@ export function buildColorsCss(bundle: TokensBundle): { light: string; dark: str
 }
 
 /**
- * Build a non-color group CSS (:root variables in a tokens layer).
+ * Build a non-color group CSS (:root variables in a CSS layer).
  * Handles ref tokens separately and converts references to CSS variables for all groups.
+ * For typography, core tokens go under :root and other tokens go under ":where(.md-typography)".
  */
 export function buildNonColorCss(bundle: TokensBundle, group: NonColorGroup): string {
     const map = bundle[group];
@@ -136,6 +137,53 @@ export function buildNonColorCss(bundle: TokensBundle, group: NonColorGroup): st
     
     const tokens = map as Record<string, string | number>;
     
+    // Special handling for typography
+    if (group === "typography") {
+        // Core tokens that go under :root
+        const coreTokens: Record<string, string | number> = {};
+        // All other tokens that go under :where(.md-typography)
+        const otherTokens: Record<string, string | number> = {};
+        
+        const coreTokenKeys = [
+            "md.ref.typeface.brand",
+            "md.ref.typeface.plain",
+            "md.ref.typeface.weight-regular",
+            "md.ref.typeface.weight-medium",
+            "md.ref.typeface.weight-bold",
+        ];
+        
+        for (const [key, value] of Object.entries(tokens)) {
+            if (coreTokenKeys.includes(key)) {
+                coreTokens[key] = value;
+            } else {
+                otherTokens[key] = value;
+            }
+        }
+        
+        const coreVars = toCssVars(coreTokens, 4);
+        
+        const otherVars = Object.entries(otherTokens)
+            .map(([k, v]) => {
+                const pad = " ".repeat(4);
+                const cssValue = formatCssValue(v);
+                return `${pad}--${toKebab(k)}: ${cssValue};`;
+            })
+            .join("\n");
+        
+        return (
+            `${WARNING}` +
+            `@layer tokens {\n` +
+            `:root {\n` +
+            `${coreVars}\n` +
+            `}\n` +
+            `:where(.md-typography) {\n` +
+            `${otherVars}\n` +
+            `}\n` +
+            `}\n`
+        );
+    }
+    
+    // For other groups, keep the original behavior
     const refTokens: Record<string, string | number> = {};
     const otherTokens: Record<string, string | number> = {};
     

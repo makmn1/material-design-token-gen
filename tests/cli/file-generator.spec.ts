@@ -309,6 +309,11 @@ describe("file-generator", () => {
             
             const content = typographyFile!.content;
             
+            // Verify core tokens are under :root
+            expect(content).toContain(":root {");
+            expect(content).toContain(":where(.md-typography) {");
+            
+            // Verify core tokens appear only once under :root
             const brandMatches = (content.match(/--md-ref-typeface-brand:/g) || []).length;
             const plainMatches = (content.match(/--md-ref-typeface-plain:/g) || []).length;
             const weightRegularMatches = (content.match(/--md-ref-typeface-weight-regular:/g) || []).length;
@@ -320,6 +325,12 @@ describe("file-generator", () => {
             expect(weightRegularMatches).toBe(1);
             expect(weightMediumMatches).toBe(1);
             expect(weightBoldMatches).toBe(1);
+            
+            // Verify core tokens are in :root block, not in :where(.md-typography) block
+            const rootBlockEnd = content.indexOf(":where(.md-typography) {");
+            const brandInRoot = content.indexOf("--md-ref-typeface-brand:");
+            expect(brandInRoot).toBeGreaterThan(-1);
+            expect(brandInRoot).toBeLessThan(rootBlockEnd);
         });
 
         it("handles custom typography options correctly", async () => {
@@ -341,11 +352,24 @@ describe("file-generator", () => {
             
             const content = typographyFile!.content;
             
+            // Verify core tokens with custom values are under :root
+            expect(content).toContain(":root {");
             expect(content).toContain('--md-ref-typeface-brand: "Inter";');
             expect(content).toContain('--md-ref-typeface-plain: "Roboto Flex";');
             expect(content).toContain("--md-ref-typeface-weight-regular: 400;");
+            
+            // Verify system tokens reference core tokens via CSS variables and are under :where(.md-typography)
+            expect(content).toContain(":where(.md-typography) {");
             expect(content).toContain('--md-sys-typescale-display-large-font: var(--md-ref-typeface-brand);');
             expect(content).toContain('--md-sys-typescale-body-large-font: var(--md-ref-typeface-plain);');
+            
+            // Verify core tokens are in :root block, system tokens are in :where(.md-typography) block
+            const rootBlockEnd = content.indexOf(":where(.md-typography) {");
+            const brandInRoot = content.indexOf('--md-ref-typeface-brand: "Inter";');
+            const displayLargeInTypography = content.indexOf('--md-sys-typescale-display-large-font:');
+            expect(brandInRoot).toBeGreaterThan(-1);
+            expect(brandInRoot).toBeLessThan(rootBlockEnd);
+            expect(displayLargeInTypography).toBeGreaterThan(rootBlockEnd);
         });
     });
 });
