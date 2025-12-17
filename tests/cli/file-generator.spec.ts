@@ -403,6 +403,56 @@ describe("file-generator", () => {
                 /--md-comp-tabs-primary-navigation-active-indicator-height:\s+"0\.1875rem";/,
             );
         });
+
+        it("does not quote cubic-bezier and ms duration values for component tokens", async () => {
+            const componentTokens = generateComponentTokens({ webUnits: true });
+            const tabsTokens = {
+                tabs: componentTokens["tabs"],
+            };
+
+            const files = await generateComponentFiles(tabsTokens, "/tmp/test", false);
+            const tabsFile = files.find((f) => f.path.endsWith("tabs.css"));
+
+            expect(tabsFile).toBeDefined();
+            const content = tabsFile!.content;
+
+            // Verify cubic-bezier values are not quoted
+            expect(content).toMatch(
+                /--sm-comp-tabs-active-indicator-animation-ease-standard:\s+cubic-bezier\(\.2,\s+0,\s+0,\s+1\);/,
+            );
+            expect(content).not.toMatch(
+                /--sm-comp-tabs-active-indicator-animation-ease-standard:\s+"cubic-bezier\(\.2,\s+0,\s+0,\s+1\)";/,
+            );
+
+            expect(content).toMatch(
+                /--sm-comp-tabs-active-indicator-animation-ease-in:\s+cubic-bezier\(\.4,\s+0,\s+1,\s+1\);/,
+            );
+            expect(content).not.toMatch(
+                /--sm-comp-tabs-active-indicator-animation-ease-in:\s+"cubic-bezier\(\.4,\s+0,\s+1,\s+1\)";/,
+            );
+
+            expect(content).toMatch(
+                /--sm-comp-tabs-panel-animation-easing:\s+cubic-bezier\(0\.2,\s+0,\s+0,\s+1\);/,
+            );
+            expect(content).not.toMatch(
+                /--sm-comp-tabs-panel-animation-easing:\s+"cubic-bezier\(0\.2,\s+0,\s+0,\s+1\)";/,
+            );
+
+            // Verify ms duration values are not quoted
+            expect(content).toMatch(
+                /--sm-comp-tabs-active-indicator-animation-duration:\s+400ms;/,
+            );
+            expect(content).not.toMatch(
+                /--sm-comp-tabs-active-indicator-animation-duration:\s+"400ms";/,
+            );
+
+            expect(content).toMatch(
+                /--sm-comp-tabs-active-indicator-animation-fade-duration:\s+150ms;/,
+            );
+            expect(content).not.toMatch(
+                /--sm-comp-tabs-active-indicator-animation-fade-duration:\s+"150ms";/,
+            );
+        });
     });
 });
 

@@ -159,6 +159,36 @@ export const tabsSecondaryNavigationPressedIcon: Record<string, string | number>
     "md.comp.tabs.secondary.navigation.pressed.icon.color": "md.sys.color.on-surface",
 };
 
+export const tabsTabContentPadding: Record<string, string | number> = {
+    "sm.comp.tabs.primary.padding.between.inline.icon.and.text": "2dp",
+    "sm.comp.tabs.secondary.padding.between.inline.icon.and.text": "8dp",
+    "sm.comp.tabs.tab.padding.start": "12dp",
+    "sm.comp.tabs.tab.padding.end": "12dp",
+};
+
+export const tabsActiveIndicator: Record<string, string | number> = {
+    "sm.comp.tabs.active.indicator.minimum.length": "24dp",
+    "sm.comp.tabs.primary.navigation.active.indicator.color": "md.sys.color.primary",
+    "sm.comp.tabs.secondary.navigation.active.indicator.color": "md.sys.color.on-surface",
+    "sm.comp.tabs.active.indicator.animation.ease.standard": "cubic-bezier(.2, 0, 0, 1)",
+    "sm.comp.tabs.active.indicator.animation.ease.out": "cubic-bezier(0, 0, .2, 1)",
+    "sm.comp.tabs.active.indicator.animation.ease.in": "cubic-bezier(.4, 0, 1, 1)",
+    "sm.comp.tabs.active.indicator.animation.duration": "400ms",
+    "sm.comp.tabs.active.indicator.animation.fade.duration": "150ms",
+    "sm.comp.tabs.primary.navigation.active.indicator.shape": "3dp",
+    "sm.comp.tabs.secondary.navigation.active.indicator.shape": "2dp",
+};
+
+export const tabsFocusRing: Record<string, string | number> = {
+    "sm.comp.tabs.focus.ring.shape": "md.sys.shape.corner-value.medium",
+    "sm.comp.tabs.focus.ring.active.indicator.spacing": "1dp",
+};
+
+export const tabsTabPanelAnimations: Record<string, string | number> = {
+    "sm.comp.tabs.panel.animation.easing": "cubic-bezier(0.2, 0, 0, 1)",
+    "sm.comp.tabs.panel.animation.duration.milliseconds": 400,
+};
+
 export const tabsTokens: Record<string, string | number> = Object.assign(
     {},
     tabsPrimaryNavigationEnabledContainer,
@@ -189,5 +219,9 @@ export const tabsTokens: Record<string, string | number> = Object.assign(
     tabsSecondaryNavigationPressedLabelText,
     tabsSecondaryNavigationPressedStateLayer,
     tabsSecondaryNavigationPressedIcon,
+    tabsTabContentPadding,
+    tabsActiveIndicator,
+    tabsFocusRing,
+    tabsTabPanelAnimations,
 );
 

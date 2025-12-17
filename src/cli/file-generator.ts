@@ -57,6 +57,12 @@ function isCssToken(value: string): boolean {
         return false;
     }
 
+    // CSS functions like cubic-bezier(), var(), calc(), etc.
+    // Pattern: function-name( ... ) where ... can contain numbers, commas, spaces, dots
+    if (/^[a-z-]+\([^)]*\)$/i.test(trimmed)) {
+        return true;
+    }
+
     // Bare numbers like "0", "1.5", "-2" are valid CSS values
     if (/^[0-9.+-]+$/.test(trimmed)) {
         return true;
@@ -76,6 +82,12 @@ function isCssValue(value: string): boolean {
     const trimmed = value.trim();
     if (!trimmed) {
         return false;
+    }
+
+    // First check if the entire value is a CSS function (like cubic-bezier(...))
+    // CSS functions can contain spaces, commas, etc. within parentheses
+    if (/^[a-z-]+\([^)]*\)$/i.test(trimmed)) {
+        return true;
     }
 
     // Split on whitespace and ensure every part is a valid CSS token
