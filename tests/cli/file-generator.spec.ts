@@ -6,12 +6,14 @@ import {
     generateConsolidatedFile,
     generateRipplesFile,
     generateAllFiles,
+    generateComponentFiles,
 } from "../../src/cli/file-generator";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { tmpdir } from "node:os";
 import prettier from "prettier";
 import { verifyFilesWritten, assertHexColorsUnquoted, assertTypographyFormatting } from "./test-utils";
+import { generateComponentTokens } from "../../src/components/components";
 
 describe("file-generator", () => {
     const bundle = generateTokens({ webUnits: true });
@@ -370,6 +372,36 @@ describe("file-generator", () => {
             expect(brandInRoot).toBeGreaterThan(-1);
             expect(brandInRoot).toBeLessThan(rootBlockEnd);
             expect(displayLargeInTypography).toBeGreaterThan(rootBlockEnd);
+        });
+    });
+
+    describe("component CSS value quoting", () => {
+        it("does not quote multi-measurement CSS values for component tokens", async () => {
+            const componentTokens = generateComponentTokens({ webUnits: true });
+            const tabsTokens = {
+                tabs: componentTokens["tabs"],
+            };
+
+            const files = await generateComponentFiles(tabsTokens, "/tmp/test", false);
+            const tabsFile = files.find((f) => f.path.endsWith("tabs.css"));
+
+            expect(tabsFile).toBeDefined();
+            const content = tabsFile!.content;
+
+            // md.comp.tabs.primary.navigation.active.indicator.shape comes from "3dp 3dp 0 0"
+            // and should be converted to "0.1875rem 0.1875rem 0 0" without quotes.
+            expect(content).toMatch(
+                /--md-comp-tabs-primary-navigation-active-indicator-shape:\s+0\.1875rem 0\.1875rem 0 0;/,
+            );
+            expect(content).not.toMatch(
+                /--md-comp-tabs-primary-navigation-active-indicator-shape:\s+"0\.1875rem 0\.1875rem 0 0";/,
+            );
+
+            // Single measurement CSS values remain unquoted
+            expect(content).toMatch(/--md-comp-tabs-primary-navigation-active-indicator-height:\s+0\.1875rem;/);
+            expect(content).not.toMatch(
+                /--md-comp-tabs-primary-navigation-active-indicator-height:\s+"0\.1875rem";/,
+            );
         });
     });
 });

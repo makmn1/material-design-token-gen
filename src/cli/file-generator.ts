@@ -48,11 +48,39 @@ function isHexColor(value: string): boolean {
 }
 
 /**
- * Check if a string is a CSS value (contains CSS units like rem, em, px, %, etc.).
+ * Check if a single token is a CSS value (numeric, or numeric with a unit).
+ * Used by {@link isCssValue} to validate space-separated value lists.
+ */
+function isCssToken(value: string): boolean {
+    const trimmed = value.trim();
+    if (!trimmed) {
+        return false;
+    }
+
+    // Bare numbers like "0", "1.5", "-2" are valid CSS values
+    if (/^[0-9.+-]+$/.test(trimmed)) {
+        return true;
+    }
+
+    // Numeric value with a CSS unit (rem, px, %, etc.)
+    return /^[0-9.+-]+\s*(rem|em|px|%|deg|rad|grad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx|fr|vw|vh|vmin|vmax|cm|mm|in|pt|pc|ex|ch|cap|ic|lh|rlh|vb|vi|svw|svh|lvw|lvh|dvw|dvh|cqw|cqh|cqi|cqb|cqmin|cqmax)\s*$/i.test(
+        trimmed,
+    );
+}
+
+/**
+ * Check if a string is a CSS value or a list of CSS values.
+ * Supports shorthands like `"0.1875rem 0.1875rem 0 0"`.
  */
 function isCssValue(value: string): boolean {
     const trimmed = value.trim();
-    return /[0-9.+\-]\s*(rem|em|px|%|deg|rad|grad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx|fr|vw|vh|vmin|vmax|cm|mm|in|pt|pc|ex|ch|cap|ic|lh|rlh|vb|vi|svw|svh|lvw|lvh|dvw|dvh|cqw|cqh|cqi|cqb|cqmin|cqmax)\s*$/i.test(trimmed);
+    if (!trimmed) {
+        return false;
+    }
+
+    // Split on whitespace and ensure every part is a valid CSS token
+    const parts = trimmed.split(/\s+/);
+    return parts.every(isCssToken);
 }
 
 /**
