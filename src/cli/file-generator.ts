@@ -112,6 +112,10 @@ function formatCssValue(value: string | number): string {
         return value;
     }
     
+    if (value.includes("rgba")) {
+        return value;
+    }
+    
     if (isCssValue(value)) {
         return value;
     }

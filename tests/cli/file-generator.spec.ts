@@ -454,5 +454,43 @@ describe("file-generator", () => {
             );
         });
     });
+
+    describe("elevation CSS value quoting", () => {
+        it("does not quote box-shadow values for elevation tokens", async () => {
+            const bundle = generateTokens({ webUnits: true });
+            const files = await generateNonColorFiles(
+                bundle,
+                {
+                    elevation: true,
+                    typography: false,
+                    motion: false,
+                    shape: false,
+                    state: false,
+                },
+                "/tmp/test",
+                false
+            );
+            const elevationFile = files.find((f) => f.path.includes("elevation.css"));
+
+            expect(elevationFile).toBeDefined();
+            const content = elevationFile!.content;
+
+            // Verify box-shadow values are not quoted
+            // Box-shadow values contain rgba() functions, px values, and commas
+            expect(content).toMatch(
+                /--sm-sys-elevation-box-shadow-level1:\s+rgba\(0,\s+0,\s+0,\s+0\.2\)\s+0px\s+2px\s+1px\s+-1px,\s+rgba\(0,\s+0,\s+0,\s+0\.14\)\s+0px\s+1px\s+1px\s+0px,\s+rgba\(0,\s+0,\s+0,\s+0\.12\)\s+0px\s+1px\s+3px\s+0px;/,
+            );
+            expect(content).not.toMatch(
+                /--sm-sys-elevation-box-shadow-level1:\s+"rgba\(0,\s+0,\s+0,\s+0\.2\)\s+0px\s+2px\s+1px\s+-1px,\s+rgba\(0,\s+0,\s+0,\s+0\.14\)\s+0px\s+1px\s+1px\s+0px,\s+rgba\(0,\s+0,\s+0,\s+0\.12\)\s+0px\s+1px\s+3px\s+0px";/,
+            );
+
+            expect(content).toMatch(
+                /--sm-sys-elevation-box-shadow-level3:\s+rgba\(0,\s+0,\s+0,\s+0\.2\)\s+0px\s+3px\s+5px\s+-1px,\s+rgba\(0,\s+0,\s+0,\s+0\.14\)\s+0px\s+6px\s+10px\s+0px,\s+rgba\(0,\s+0,\s+0,\s+0\.12\)\s+0px\s+1px\s+18px\s+0px;/,
+            );
+            expect(content).not.toMatch(
+                /--sm-sys-elevation-box-shadow-level3:\s+"rgba\(0,\s+0,\s+0,\s+0\.2\)\s+0px\s+3px\s+5px\s+-1px,\s+rgba\(0,\s+0,\s+0,\s+0\.14\)\s+0px\s+6px\s+10px\s+0px,\s+rgba\(0,\s+0,\s+0,\s+0\.12\)\s+0px\s+1px\s+18px\s+0px";/,
+            );
+        });
+    });
 });
 
