@@ -58,7 +58,7 @@ export function generateStateTokens(opts: StateOptions = {}): Record<string, num
         "md.sys.state.focus.state-layer-opacity": "10%",
         "md.sys.state.hover.state-layer-opacity": "8%",
         "md.sys.state.focus-indicator.thickness": "3dp",
-        "md.sys.state.focus-indicator.inner-offset": "3dp",
+        "md.sys.state.focus-indicator.inner-offset": "-3dp",
         "md.sys.state.focus-indicator.outer-offset": "2dp",
     };
 

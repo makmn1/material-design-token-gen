@@ -11,7 +11,7 @@ describe("generateStateTokens()", () => {
             "md.sys.state.pressed.state-layer-opacity": "10%",
             "md.sys.state.dragged.state-layer-opacity": "16%",
             "md.sys.state.focus-indicator.thickness": "3dp",
-            "md.sys.state.focus-indicator.inner-offset": "3dp",
+            "md.sys.state.focus-indicator.inner-offset": "-3dp",
             "md.sys.state.focus-indicator.outer-offset": "2dp",
         };
 
@@ -28,11 +28,11 @@ describe("generateStateTokens()", () => {
         expect(tokens["md.sys.state.dragged.state-layer-opacity"]).toBe("16%");
 
         expect(typeof tokens["md.sys.state.focus-indicator.thickness"]).toBe("string");
-        expect(tokens["md.sys.state.focus-indicator.thickness"]).toMatch(/^\d+\.?\d*rem$/);
+        expect(tokens["md.sys.state.focus-indicator.thickness"]).toMatch(/^-?\d+\.?\d*rem$/);
         expect(typeof tokens["md.sys.state.focus-indicator.inner-offset"]).toBe("string");
-        expect(tokens["md.sys.state.focus-indicator.inner-offset"]).toMatch(/^\d+\.?\d*rem$/);
+        expect(tokens["md.sys.state.focus-indicator.inner-offset"]).toBe("-0.1875rem");
         expect(typeof tokens["md.sys.state.focus-indicator.outer-offset"]).toBe("string");
-        expect(tokens["md.sys.state.focus-indicator.outer-offset"]).toMatch(/^\d+\.?\d*rem$/);
+        expect(tokens["md.sys.state.focus-indicator.outer-offset"]).toMatch(/^-?\d+\.?\d*rem$/);
 
         expect(Object.keys(tokens).length).toBe(7);
     });
@@ -41,10 +41,10 @@ describe("generateStateTokens()", () => {
         const tokens = generateStateTokens({ unit: "px" });
 
         expect(typeof tokens["md.sys.state.focus-indicator.thickness"]).toBe("string");
-        expect(tokens["md.sys.state.focus-indicator.thickness"]).toMatch(/^\d+px$/);
+        expect(tokens["md.sys.state.focus-indicator.thickness"]).toMatch(/^-?\d+px$/);
         expect(typeof tokens["md.sys.state.focus-indicator.inner-offset"]).toBe("string");
-        expect(tokens["md.sys.state.focus-indicator.inner-offset"]).toMatch(/^\d+px$/);
+        expect(tokens["md.sys.state.focus-indicator.inner-offset"]).toBe("-3px");
         expect(typeof tokens["md.sys.state.focus-indicator.outer-offset"]).toBe("string");
-        expect(tokens["md.sys.state.focus-indicator.outer-offset"]).toMatch(/^\d+px$/);
+        expect(tokens["md.sys.state.focus-indicator.outer-offset"]).toMatch(/^-?\d+px$/);
     });
 });
