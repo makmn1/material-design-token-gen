@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { generateStateTokens } from "../src";
 
 describe("generateStateTokens()", () => {
-    it("emits the 4 state-layer opacity tokens and 2 focus-indicator tokens with spec values (webUnits: false)", () => {
+    it("emits the 4 state-layer opacity tokens and 3 focus-indicator tokens with spec values (webUnits: false)", () => {
         const tokens = generateStateTokens({ webUnits: false });
 
         const expected: Record<string, number | string> = {
@@ -11,10 +11,11 @@ describe("generateStateTokens()", () => {
             "md.sys.state.pressed.state-layer-opacity": "10%",
             "md.sys.state.dragged.state-layer-opacity": "16%",
             "md.sys.state.focus-indicator.thickness": "3dp",
+            "md.sys.state.focus-indicator.inner-offset": "3dp",
             "md.sys.state.focus-indicator.outer-offset": "2dp",
         };
 
-        expect(Object.keys(tokens).length).toBe(6);
+        expect(Object.keys(tokens).length).toBe(7);
         expect(tokens).toEqual(expected);
     });
 
@@ -28,10 +29,12 @@ describe("generateStateTokens()", () => {
 
         expect(typeof tokens["md.sys.state.focus-indicator.thickness"]).toBe("string");
         expect(tokens["md.sys.state.focus-indicator.thickness"]).toMatch(/^\d+\.?\d*rem$/);
+        expect(typeof tokens["md.sys.state.focus-indicator.inner-offset"]).toBe("string");
+        expect(tokens["md.sys.state.focus-indicator.inner-offset"]).toMatch(/^\d+\.?\d*rem$/);
         expect(typeof tokens["md.sys.state.focus-indicator.outer-offset"]).toBe("string");
         expect(tokens["md.sys.state.focus-indicator.outer-offset"]).toMatch(/^\d+\.?\d*rem$/);
 
-        expect(Object.keys(tokens).length).toBe(6);
+        expect(Object.keys(tokens).length).toBe(7);
     });
 
     it("converts dp tokens to px when unit option is 'px'", () => {
@@ -39,6 +42,8 @@ describe("generateStateTokens()", () => {
 
         expect(typeof tokens["md.sys.state.focus-indicator.thickness"]).toBe("string");
         expect(tokens["md.sys.state.focus-indicator.thickness"]).toMatch(/^\d+px$/);
+        expect(typeof tokens["md.sys.state.focus-indicator.inner-offset"]).toBe("string");
+        expect(tokens["md.sys.state.focus-indicator.inner-offset"]).toMatch(/^\d+px$/);
         expect(typeof tokens["md.sys.state.focus-indicator.outer-offset"]).toBe("string");
         expect(tokens["md.sys.state.focus-indicator.outer-offset"]).toMatch(/^\d+px$/);
     });

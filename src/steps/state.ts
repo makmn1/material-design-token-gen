@@ -20,7 +20,7 @@ export interface StateOptions {
 
 /**
  * Generate **state-layer** tokens (opacities used for hover/focus/pressed/dragged)
- * and focus-indicator tokens (thickness and outer-offset).
+ * and focus-indicator tokens (thickness, inner-offset, and outer-offset).
  *
  * Values are:
  * - Percentage strings for opacities (e.g., `'8%'` for hover)
@@ -33,6 +33,7 @@ export interface StateOptions {
  *  - `md.sys.state.pressed.state-layer-opacity`
  *  - `md.sys.state.dragged.state-layer-opacity`
  *  - `md.sys.state.focus-indicator.thickness`
+ *  - `md.sys.state.focus-indicator.inner-offset`
  *  - `md.sys.state.focus-indicator.outer-offset`
  *
  * @example
@@ -57,6 +58,7 @@ export function generateStateTokens(opts: StateOptions = {}): Record<string, num
         "md.sys.state.focus.state-layer-opacity": "10%",
         "md.sys.state.hover.state-layer-opacity": "8%",
         "md.sys.state.focus-indicator.thickness": "3dp",
+        "md.sys.state.focus-indicator.inner-offset": "3dp",
         "md.sys.state.focus-indicator.outer-offset": "2dp",
     };
 
