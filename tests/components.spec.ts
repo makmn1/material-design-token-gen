@@ -408,6 +408,8 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
         sampleTokens: [
             { key: "md.comp.divider.container.thickness", expected: "0.0625rem" },
             { key: "md.comp.divider.container.color", expected: "md.sys.color.outline-variant" },
+            { key: "sm.comp.divider.inset.start", expected: 0 },
+            { key: "sm.comp.divider.inset.end", expected: 0 },
         ],
     },
     {
