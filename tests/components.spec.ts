@@ -156,6 +156,9 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.fab.primary.focused.container.elevation", expected: "md.sys.elevation.level3" },
             { key: "md.comp.fab.secondary.hovered.container.elevation", expected: "md.sys.elevation.level4" },
             { key: "md.comp.fab.tertiary.pressed.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "sm.comp.fab.primary.focus.ring.indicator.color", expected: "md.sys.color.primary" },
+            { key: "sm.comp.fab.secondary.focus.ring.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "sm.comp.fab.tertiary.focus.ring.outline.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
         ],
     },
     {
@@ -177,6 +180,9 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.extended-fab.primary.hovered.container.elevation", expected: "md.sys.elevation.level4" },
             { key: "md.comp.extended-fab.secondary.focused.container.elevation", expected: "md.sys.elevation.level3" },
             { key: "md.comp.extended-fab.tertiary.pressed.container.elevation", expected: "md.sys.elevation.level3" },
+            { key: "sm.comp.extended-fab.primary.focus.ring.indicator.color", expected: "md.sys.color.primary" },
+            { key: "sm.comp.extended-fab.secondary.focus.ring.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "sm.comp.extended-fab.tertiary.focus.ring.outline.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
         ],
     },
     {
@@ -198,6 +204,12 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.fab-menu.primary.list.item.hovered.container.elevation", expected: "md.sys.elevation.level4" },
             { key: "md.comp.fab-menu.secondary.list.item.focused.container.elevation", expected: "md.sys.elevation.level3" },
             { key: "md.comp.fab-menu.tertiary.list.item.pressed.label.text.color", expected: "md.sys.color.on-tertiary-container" },
+            { key: "sm.comp.fab-menu.primary.list.item.focus.ring.indicator.color", expected: "md.sys.color.primary" },
+            { key: "sm.comp.fab-menu.secondary.list.item.focus.ring.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "sm.comp.fab-menu.tertiary.list.item.focus.ring.outline.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
+            { key: "sm.comp.fab-menu.primary.close.button.focus.ring.indicator.color", expected: "md.sys.color.primary" },
+            { key: "sm.comp.fab-menu.secondary.close.button.focus.ring.indicator.thickness", expected: "md.sys.state.focus-indicator.thickness" },
+            { key: "sm.comp.fab-menu.tertiary.close.button.focus.ring.outline.offset", expected: "md.sys.state.focus-indicator.outer-offset" },
         ],
     },
     {

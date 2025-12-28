@@ -187,6 +187,18 @@ export const fabColorTertiaryPressed: Record<string, string | number> = {
   "md.comp.fab.tertiary.pressed.icon.color": "md.sys.color.on-tertiary",
 };
 
+export const fabFocusRing: Record<string, string | number> = {
+  "sm.comp.fab.primary.focus.ring.indicator.color": "md.sys.color.primary",
+  "sm.comp.fab.primary.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.fab.primary.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+  "sm.comp.fab.secondary.focus.ring.indicator.color": "md.sys.color.secondary",
+  "sm.comp.fab.secondary.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.fab.secondary.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+  "sm.comp.fab.tertiary.focus.ring.indicator.color": "md.sys.color.tertiary",
+  "sm.comp.fab.tertiary.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.fab.tertiary.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+};
+
 export const fabTokens: Record<string, string | number> = Object.assign(
   {},
   fabSizeBaseline,
@@ -216,5 +228,6 @@ export const fabTokens: Record<string, string | number> = Object.assign(
   fabColorTertiaryHovered,
   fabColorTertiaryFocused,
   fabColorTertiaryPressed,
+  fabFocusRing,
 );
 

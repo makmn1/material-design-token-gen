@@ -197,6 +197,30 @@ export const fabMenuListItemColorTertiaryPressed: Record<string, string | number
   "md.comp.fab-menu.tertiary.list.item.pressed.label.text.color": "md.sys.color.on-tertiary-container",
 };
 
+export const fabMenuListItemFocusRing: Record<string, string | number> = {
+  "sm.comp.fab-menu.primary.list.item.focus.ring.indicator.color": "md.sys.color.primary",
+  "sm.comp.fab-menu.primary.list.item.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.fab-menu.primary.list.item.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+  "sm.comp.fab-menu.secondary.list.item.focus.ring.indicator.color": "md.sys.color.secondary",
+  "sm.comp.fab-menu.secondary.list.item.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.fab-menu.secondary.list.item.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+  "sm.comp.fab-menu.tertiary.list.item.focus.ring.indicator.color": "md.sys.color.tertiary",
+  "sm.comp.fab-menu.tertiary.list.item.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.fab-menu.tertiary.list.item.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+};
+
+export const fabMenuCloseButtonFocusRing: Record<string, string | number> = {
+  "sm.comp.fab-menu.primary.close.button.focus.ring.indicator.color": "md.sys.color.primary",
+  "sm.comp.fab-menu.primary.close.button.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.fab-menu.primary.close.button.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+  "sm.comp.fab-menu.secondary.close.button.focus.ring.indicator.color": "md.sys.color.secondary",
+  "sm.comp.fab-menu.secondary.close.button.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.fab-menu.secondary.close.button.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+  "sm.comp.fab-menu.tertiary.close.button.focus.ring.indicator.color": "md.sys.color.tertiary",
+  "sm.comp.fab-menu.tertiary.close.button.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.fab-menu.tertiary.close.button.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+};
+
 export const fabMenuTokens: Record<string, string | number> = Object.assign(
   {},
   fabMenuCommonCloseButton,
@@ -225,5 +249,7 @@ export const fabMenuTokens: Record<string, string | number> = Object.assign(
   fabMenuListItemColorTertiaryHovered,
   fabMenuListItemColorTertiaryFocused,
   fabMenuListItemColorTertiaryPressed,
+  fabMenuListItemFocusRing,
+  fabMenuCloseButtonFocusRing,
 );
 

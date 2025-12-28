@@ -232,6 +232,18 @@ export const extendedFabColorTertiaryPressed: Record<string, string | number> = 
   "md.comp.extended-fab.tertiary.pressed.icon.color": "md.sys.color.on-tertiary",
 };
 
+export const extendedFabFocusRing: Record<string, string | number> = {
+  "sm.comp.extended-fab.primary.focus.ring.indicator.color": "md.sys.color.primary",
+  "sm.comp.extended-fab.primary.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.extended-fab.primary.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+  "sm.comp.extended-fab.secondary.focus.ring.indicator.color": "md.sys.color.secondary",
+  "sm.comp.extended-fab.secondary.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.extended-fab.secondary.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+  "sm.comp.extended-fab.tertiary.focus.ring.indicator.color": "md.sys.color.tertiary",
+  "sm.comp.extended-fab.tertiary.focus.ring.indicator.thickness": "md.sys.state.focus-indicator.thickness",
+  "sm.comp.extended-fab.tertiary.focus.ring.outline.offset": "md.sys.state.focus-indicator.outer-offset",
+};
+
 export const extendedFabTokens: Record<string, string | number> = Object.assign(
   {},
   extendedFabSizeSmall,
@@ -261,5 +273,6 @@ export const extendedFabTokens: Record<string, string | number> = Object.assign(
   extendedFabColorTertiaryHovered,
   extendedFabColorTertiaryFocused,
   extendedFabColorTertiaryPressed,
+  extendedFabFocusRing,
 );
 
