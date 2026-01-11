@@ -166,7 +166,9 @@ export function generateComponentTokens(
         const processedValue: Record<string, string | number> = { ...entry.value };
         for (const [key, value] of Object.entries(processedValue)) {
             if (
-                (key.endsWith(".corner.size") || key.endsWith(".corner.selected.size")) &&
+                (key.endsWith(".corner.size") || 
+                 key.endsWith(".corner.selected.size") ||
+                 key.endsWith(".corner-size")) &&
                 value === "50%"
             ) {
                 processedValue[key] = `9999${unit}`;

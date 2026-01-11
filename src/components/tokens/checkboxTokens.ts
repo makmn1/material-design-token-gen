@@ -16,8 +16,8 @@ export const checkboxEnabledIcon: Record<string, string | number> = {
 };
 
 export const checkboxEnabledStateLayer: Record<string, string | number> = {
-  "md.comp.checkbox.state.layer.size": "40dp",
-  "md.comp.checkbox.state.layer.shape": "md.sys.shape.corner.full",
+  "md.comp.checkbox.state-layer.size": "40dp",
+  "md.comp.checkbox.state-layer.shape": "md.sys.shape.corner.full",
 };
 
 export const checkboxDisabledContainer: Record<string, string | number> = {
@@ -43,12 +43,12 @@ export const checkboxHoveredContainer: Record<string, string | number> = {
 };
 
 export const checkboxHoveredStateLayer: Record<string, string | number> = {
-  "md.comp.checkbox.selected.hover.state.layer.color": "md.sys.color.primary",
-  "md.comp.checkbox.selected.hover.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
-  "md.comp.checkbox.unselected.hover.state.layer.color": "md.sys.color.on-surface",
-  "md.comp.checkbox.unselected.hover.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
-  "md.comp.checkbox.error.hover.state.layer.color": "md.sys.color.error",
-  "md.comp.checkbox.error.hover.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
+  "md.comp.checkbox.selected.hover.state-layer.color": "md.sys.color.primary",
+  "md.comp.checkbox.selected.hover.state-layer.opacity": "md.sys.state.hover.state-layer-opacity",
+  "md.comp.checkbox.unselected.hover.state-layer.color": "md.sys.color.on-surface",
+  "md.comp.checkbox.unselected.hover.state-layer.opacity": "md.sys.state.hover.state-layer-opacity",
+  "md.comp.checkbox.error.hover.state-layer.color": "md.sys.color.error",
+  "md.comp.checkbox.error.hover.state-layer.opacity": "md.sys.state.hover.state-layer-opacity",
 };
 
 export const checkboxHoveredIcon: Record<string, string | number> = {
@@ -59,7 +59,7 @@ export const checkboxHoveredIcon: Record<string, string | number> = {
 export const checkboxFocusedFocusIndicator: Record<string, string | number> = {
   "md.comp.checkbox.focus.indicator.color": "md.sys.color.secondary",
   "md.comp.checkbox.focus.indicator.thickness": "md.sys.state.focus-indicator.thickness",
-  "md.comp.checkbox.focus.indicator.offset": "md.sys.state.focus-indicator.outer-offset",
+  "md.comp.checkbox.focus.indicator.outline.offset": "md.sys.state.focus-indicator.outer-offset",
 };
 
 export const checkboxFocusedContainer: Record<string, string | number> = {
@@ -72,12 +72,12 @@ export const checkboxFocusedContainer: Record<string, string | number> = {
 };
 
 export const checkboxFocusedStateLayer: Record<string, string | number> = {
-  "md.comp.checkbox.error.focus.state.layer.opacity": "md.sys.state.focus.state-layer-opacity",
-  "md.comp.checkbox.selected.focus.state.layer.color": "md.sys.color.primary",
-  "md.comp.checkbox.selected.focus.state.layer.opacity": "md.sys.state.focus.state-layer-opacity",
-  "md.comp.checkbox.unselected.focus.state.layer.color": "md.sys.color.on-surface",
-  "md.comp.checkbox.unselected.focus.state.layer.opacity": "md.sys.state.focus.state-layer-opacity",
-  "md.comp.checkbox.error.focus.state.layer.color": "md.sys.color.error",
+  "md.comp.checkbox.error.focus.state-layer.opacity": "md.sys.state.focus.state-layer-opacity",
+  "md.comp.checkbox.selected.focus.state-layer.color": "md.sys.color.primary",
+  "md.comp.checkbox.selected.focus.state-layer.opacity": "md.sys.state.focus.state-layer-opacity",
+  "md.comp.checkbox.unselected.focus.state-layer.color": "md.sys.color.on-surface",
+  "md.comp.checkbox.unselected.focus.state-layer.opacity": "md.sys.state.focus.state-layer-opacity",
+  "md.comp.checkbox.error.focus.state-layer.color": "md.sys.color.error",
 };
 
 export const checkboxFocusedIcon: Record<string, string | number> = {
@@ -95,12 +95,12 @@ export const checkboxPressedContainer: Record<string, string | number> = {
 };
 
 export const checkboxPressedStateLayer: Record<string, string | number> = {
-  "md.comp.checkbox.unselected.pressed.state.layer.color": "md.sys.color.primary",
-  "md.comp.checkbox.unselected.pressed.state.layer.opacity": "md.sys.state.pressed.state-layer-opacity",
-  "md.comp.checkbox.selected.pressed.state.layer.color": "md.sys.color.on-surface",
-  "md.comp.checkbox.selected.pressed.state.layer.opacity": "md.sys.state.pressed.state-layer-opacity",
-  "md.comp.checkbox.error.pressed.state.layer.color": "md.sys.color.error",
-  "md.comp.checkbox.error.pressed.state.layer.opacity": "md.sys.state.pressed.state-layer-opacity",
+  "md.comp.checkbox.unselected.pressed.state-layer.color": "md.sys.color.primary",
+  "md.comp.checkbox.unselected.pressed.state-layer.opacity": "md.sys.state.pressed.state-layer-opacity",
+  "md.comp.checkbox.selected.pressed.state-layer.color": "md.sys.color.on-surface",
+  "md.comp.checkbox.selected.pressed.state-layer.opacity": "md.sys.state.pressed.state-layer-opacity",
+  "md.comp.checkbox.error.pressed.state-layer.color": "md.sys.color.error",
+  "md.comp.checkbox.error.pressed.state-layer.opacity": "md.sys.state.pressed.state-layer-opacity",
 };
 
 export const checkboxPressedIcon: Record<string, string | number> = {

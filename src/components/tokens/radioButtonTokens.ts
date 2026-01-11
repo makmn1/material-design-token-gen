@@ -1,11 +1,11 @@
 export const radioButtonEnabledIcon: Record<string, string | number> = {
-    "md.comp.radio-button.icon.selected.color": "md.sys.color.primary",
-    "md.comp.radio-button.icon.unselected.color": "md.sys.color.on-surface-variant",
+    "md.comp.radio-button.selected.icon.color": "md.sys.color.primary",
+    "md.comp.radio-button.unselected.icon.color": "md.sys.color.on-surface-variant",
     "md.comp.radio-button.icon.size": "20dp",
 };
 
 export const radioButtonEnabledStateLayer: Record<string, string | number> = {
-    "md.comp.radio-button.state.layer.size": "40dp",
+    "md.comp.radio-button.state-layer.size": "40dp",
 };
 
 export const radioButtonDisabledIcon: Record<string, string | number> = {
@@ -16,11 +16,11 @@ export const radioButtonDisabledIcon: Record<string, string | number> = {
 };
 
 export const radioButtonHoveredStateLayer: Record<string, string | number> = {
-    "md.comp.radio-button.selected.hover.state.layer.color": "md.sys.color.primary",
-    "md.comp.radio-button.selected.hover.state.layer.opacity":
+    "md.comp.radio-button.selected.hover.state-layer.color": "md.sys.color.primary",
+    "md.comp.radio-button.selected.hover.state-layer.opacity":
         "md.sys.state.hover.state-layer-opacity",
-    "md.comp.radio-button.unselected.hover.state.layer.color": "md.sys.color.on-surface",
-    "md.comp.radio-button.unselected.hover.state.layer.opacity":
+    "md.comp.radio-button.unselected.hover.state-layer.color": "md.sys.color.on-surface",
+    "md.comp.radio-button.unselected.hover.state-layer.opacity":
         "md.sys.state.hover.state-layer-opacity",
 };
 
@@ -30,11 +30,11 @@ export const radioButtonHoveredIcon: Record<string, string | number> = {
 };
 
 export const radioButtonFocusedStateLayer: Record<string, string | number> = {
-    "md.comp.radio-button.selected.focus.state.layer.color": "md.sys.color.primary",
-    "md.comp.radio-button.selected.focus.state.layer.opacity":
+    "md.comp.radio-button.selected.focus.state-layer.color": "md.sys.color.primary",
+    "md.comp.radio-button.selected.focus.state-layer.opacity":
         "md.sys.state.focus.state-layer-opacity",
-    "md.comp.radio-button.unselected.focus.state.layer.color": "md.sys.color.on-surface",
-    "md.comp.radio-button.unselected.focus.state.layer.opacity":
+    "md.comp.radio-button.unselected.focus.state-layer.color": "md.sys.color.on-surface",
+    "md.comp.radio-button.unselected.focus.state-layer.opacity":
         "md.sys.state.focus.state-layer-opacity",
 };
 
@@ -44,11 +44,11 @@ export const radioButtonFocusedIcon: Record<string, string | number> = {
 };
 
 export const radioButtonPressedStateLayer: Record<string, string | number> = {
-    "md.comp.radio-button.selected.pressed.state.layer.color": "md.sys.color.on-surface",
-    "md.comp.radio-button.selected.pressed.state.layer.opacity":
+    "md.comp.radio-button.selected.pressed.state-layer.color": "md.sys.color.on-surface",
+    "md.comp.radio-button.selected.pressed.state-layer.opacity":
         "md.sys.state.pressed.state-layer-opacity",
-    "md.comp.radio-button.unselected.pressed.state.layer.color": "md.sys.color.primary",
-    "md.comp.radio-button.unselected.pressed.state.layer.opacity":
+    "md.comp.radio-button.unselected.pressed.state-layer.color": "md.sys.color.primary",
+    "md.comp.radio-button.unselected.pressed.state-layer.opacity":
         "md.sys.state.pressed.state-layer-opacity",
 };
 

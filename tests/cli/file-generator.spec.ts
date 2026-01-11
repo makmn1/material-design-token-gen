@@ -388,19 +388,19 @@ describe("file-generator", () => {
             expect(tabsFile).toBeDefined();
             const content = tabsFile!.content;
 
-            // md.comp.tabs.primary.navigation.active.indicator.shape comes from "3dp 3dp 0 0"
+            // md.comp.primary-navigation-tab.active-indicator.shape comes from "3dp 3dp 0 0"
             // and should be converted to "0.1875rem 0.1875rem 0 0" without quotes.
             expect(content).toMatch(
-                /--md-comp-tabs-primary-navigation-active-indicator-shape:\s+0\.1875rem 0\.1875rem 0 0;/,
+                /--md-comp-primary-navigation-tab-active-indicator-shape:\s+0\.1875rem 0\.1875rem 0 0;/,
             );
             expect(content).not.toMatch(
-                /--md-comp-tabs-primary-navigation-active-indicator-shape:\s+"0\.1875rem 0\.1875rem 0 0";/,
+                /--md-comp-primary-navigation-tab-active-indicator-shape:\s+"0\.1875rem 0\.1875rem 0 0";/,
             );
 
             // Single measurement CSS values remain unquoted
-            expect(content).toMatch(/--md-comp-tabs-primary-navigation-active-indicator-height:\s+0\.1875rem;/);
+            expect(content).toMatch(/--md-comp-primary-navigation-tab-active-indicator-height:\s+0\.1875rem;/);
             expect(content).not.toMatch(
-                /--md-comp-tabs-primary-navigation-active-indicator-height:\s+"0\.1875rem";/,
+                /--md-comp-primary-navigation-tab-active-indicator-height:\s+"0\.1875rem";/,
             );
         });
 

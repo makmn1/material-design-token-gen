@@ -8,7 +8,7 @@ export const switchEnabledIcon: Record<string, string | number> = {
 export const switchEnabledTrack: Record<string, string | number> = {
     "md.comp.switch.track.height": "32dp",
     "md.comp.switch.track.width": "52dp",
-    "md.comp.switch.track.outline.color": "md.sys.color.outline",
+    "md.comp.switch.unselected.track.outline.color": "md.sys.color.outline",
     "md.comp.switch.track.outline.width": "2dp",
     "md.comp.switch.track.shape": "md.sys.shape.corner.full",
     "md.comp.switch.selected.track.color": "md.sys.color.primary",
@@ -30,8 +30,8 @@ export const switchEnabledHandle: Record<string, string | number> = {
 };
 
 export const switchEnabledStateLayer: Record<string, string | number> = {
-    "md.comp.switch.state.layer.size": "40dp",
-    "md.comp.switch.state.layer.shape": "md.sys.shape.corner.full",
+    "md.comp.switch.state-layer.size": "40dp",
+    "md.comp.switch.state-layer.shape": "md.sys.shape.corner.full",
 };
 
 export const switchDisabledIcon: Record<string, string | number> = {
@@ -62,12 +62,12 @@ export const switchHoveredIcon: Record<string, string | number> = {
 
 export const switchHoveredTrack: Record<string, string | number> = {
     "md.comp.switch.selected.hover.track.color": "md.sys.color.primary",
-    "md.comp.switch.selected.hover.state.layer.color": "md.sys.color.primary",
-    "md.comp.switch.selected.hover.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
+    "md.comp.switch.selected.hover.state-layer.color": "md.sys.color.primary",
+    "md.comp.switch.selected.hover.state-layer.opacity": "md.sys.state.hover.state-layer-opacity",
     "md.comp.switch.unselected.hover.track.color": "md.sys.color.surface-container-highest",
     "md.comp.switch.unselected.hover.track.outline.color": "md.sys.color.outline",
-    "md.comp.switch.unselected.hover.state.layer.color": "md.sys.color.on-surface",
-    "md.comp.switch.unselected.hover.state.layer.opacity": "md.sys.state.hover.state-layer-opacity",
+    "md.comp.switch.unselected.hover.state-layer.color": "md.sys.color.on-surface",
+    "md.comp.switch.unselected.hover.state-layer.opacity": "md.sys.state.hover.state-layer-opacity",
 };
 
 export const switchHoveredHandle: Record<string, string | number> = {
@@ -88,12 +88,12 @@ export const switchFocusedIcon: Record<string, string | number> = {
 
 export const switchFocusedTrack: Record<string, string | number> = {
     "md.comp.switch.selected.focus.track.color": "md.sys.color.primary",
-    "md.comp.switch.selected.focus.state.layer.color": "md.sys.color.primary",
-    "md.comp.switch.selected.focus.state.layer.opacity": "md.sys.state.focus.state-layer-opacity",
+    "md.comp.switch.selected.focus.state-layer.color": "md.sys.color.primary",
+    "md.comp.switch.selected.focus.state-layer.opacity": "md.sys.state.focus.state-layer-opacity",
     "md.comp.switch.unselected.focus.track.color": "md.sys.color.surface-container-highest",
     "md.comp.switch.unselected.focus.track.outline.color": "md.sys.color.outline",
-    "md.comp.switch.unselected.focus.state.layer.color": "md.sys.color.on-surface",
-    "md.comp.switch.unselected.focus.state.layer.opacity": "md.sys.state.focus.state-layer-opacity",
+    "md.comp.switch.unselected.focus.state-layer.color": "md.sys.color.on-surface",
+    "md.comp.switch.unselected.focus.state-layer.opacity": "md.sys.state.focus.state-layer-opacity",
 };
 
 export const switchFocusedHandle: Record<string, string | number> = {
@@ -108,12 +108,12 @@ export const switchPressedIcon: Record<string, string | number> = {
 
 export const switchPressedTrack: Record<string, string | number> = {
     "md.comp.switch.selected.pressed.track.color": "md.sys.color.primary",
-    "md.comp.switch.selected.pressed.state.layer.color": "md.sys.color.primary",
-    "md.comp.switch.selected.pressed.state.layer.opacity": "md.sys.state.pressed.state-layer-opacity",
+    "md.comp.switch.selected.pressed.state-layer.color": "md.sys.color.primary",
+    "md.comp.switch.selected.pressed.state-layer.opacity": "md.sys.state.pressed.state-layer-opacity",
     "md.comp.switch.unselected.pressed.track.color": "md.sys.color.surface-container-highest",
     "md.comp.switch.unselected.pressed.track.outline.color": "md.sys.color.outline",
-    "md.comp.switch.unselected.pressed.state.layer.color": "md.sys.color.on-surface",
-    "md.comp.switch.unselected.pressed.state.layer.opacity": "md.sys.state.pressed.state-layer-opacity",
+    "md.comp.switch.unselected.pressed.state-layer.color": "md.sys.color.on-surface",
+    "md.comp.switch.unselected.pressed.state-layer.opacity": "md.sys.state.pressed.state-layer-opacity",
 };
 
 export const switchPressedHandle: Record<string, string | number> = {

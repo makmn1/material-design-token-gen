@@ -302,9 +302,9 @@ describe("component stylesheet generation", () => {
         const content = buttonFile!.content;
         
         expect(content).toMatch(/--md-comp-button-disabled-container-opacity:\s+0\.1;/);
-        expect(content).toMatch(/--md-comp-button-disabled-label-opacity:\s+0\.38;/);
+        expect(content).toMatch(/--md-comp-button-disabled-label-text-opacity:\s+0\.38;/);
         expect(content).not.toMatch(/--md-comp-button-disabled-container-opacity:\s+"0\.1";/);
-        expect(content).not.toMatch(/--md-comp-button-disabled-label-opacity:\s+"0\.38";/);
+        expect(content).not.toMatch(/--md-comp-button-disabled-label-text-opacity:\s+"0\.38";/);
     });
 
     it("includes component files in consolidated tokens.css when generated", async () => {
