@@ -77,6 +77,17 @@ export const navigationRailItemVertical: Record<string, string | number> = {
     "md.comp.nav-rail.item.vertical.icon-label-space": "4dp",
     "md.comp.nav-rail.item.vertical.leading-space": "16dp",
     "md.comp.nav-rail.item.vertical.trailing-space": "16dp",
+
+    // The tokens for the leading space seem out of date, possibly for the old 80 dp container width size.
+    // However, for the new 96 dp Expressive collapsed rail, the leading and trailing space naturally computes to 20 dp.
+    // This should be the same in expanded mode too (since they were the same in the 80 dp version).
+    // We won't change the original tokens, but we'll introduce these alternatives for users who want to use the Expressive rail sizing.
+    // Note we also add convenience tokens here so users can adjust the spacing for labels separately if they want
+    // to squeeze in more text by lowering the label spacing independently
+    "sm.comp.nav.rail.item.vertical.leading.space": "20dp",
+    "sm.comp.nav.rail.item.vertical.trailing.space": "20dp",
+    "sm.comp.nav.rail.item.vertical.leading.label.space": "20dp",
+    "sm.comp.nav.rail.item.vertical.trailing.label.space": "20dp",
 };
 
 export const navigationRailItemHorizontal: Record<string, string | number> = {
@@ -91,7 +102,38 @@ export const navigationRailItemHorizontal: Record<string, string | number> = {
     "md.comp.nav-rail.item.horizontal.full-width.leading-space": "16dp",
     "md.comp.nav-rail.item.horizontal.full-width.trailing-space": "16dp",
     "md.comp.nav-rail.item.horizontal.icon-label-space": "8dp",
+
+    // The tokens for the leading space seem out of date, possibly for the old 80 dp container width size.
+    // However, for the new 96 dp Expressive collapsed rail, the leading and trailing space naturally computes to 20 dp.
+    // This should be the same in expanded mode too (since they were the same in the 80 dp version).
+    // We won't change the original tokens, but we'll introduce these alternatives for users who want to use the Expressive rail sizing
+    "sm.comp.nav.rail.item.horizontal.full.width.leading.space": "20dp",
+    "sm.comp.nav.rail.item.horizontal.full.width.trailing.space": "20dp",
 };
+
+export const navigationRailItemSectionHeader: Record<string, string | number> = {
+    // Not from the token table, but it's clearly shown in the measurements section
+    // Source: https://m3.material.io/components/navigation-rail/specs#5d3c368a-111d-4476-aa38-212838676b6f
+    "sm.comp.nav.rail.expanded.nav.rail.section.header.top.space": "12dp",
+    "sm.comp.nav.rail.expanded.nav.rail.section.header.bottom.space": "8dp",
+
+    // Not from the token table but here for convenience if users want to customize the section header styles
+    "sm.comp.nav.rail.item.horizontal.section-header-text.font":
+        "md.sys.typescale.label-medium.font",
+    "sm.comp.nav.rail.item.horizontal.section-header-text.line-height":
+        "md.sys.typescale.label-medium.line-height",
+    "sm.comp.nav.rail.item.horizontal.section-header-text.size":
+        "md.sys.typescale.label-medium.size",
+    "sm.comp.nav.rail.item.horizontal.section-header-text.tracking":
+        "md.sys.typescale.label-medium.tracking",
+    "sm.comp.nav.rail.item.horizontal.section-header-text.weight":
+        "md.sys.typescale.label-medium.weight",
+};
+
+export const navigationRailDefaults: Record<string, string | number> = {
+    // The vertical spacing between miscellaneous items in a navigation rail container (e.g., menu toggle, FAB)
+    "sm.comp.nav.rail.container.vertical.space": "16dp"
+}
 
 export const navigationRailTokens: Record<string, string | number> = Object.assign(
     {},
@@ -104,5 +146,7 @@ export const navigationRailTokens: Record<string, string | number> = Object.assi
     navigationRailExpanded,
     navigationRailItemVertical,
     navigationRailItemHorizontal,
+    navigationRailItemSectionHeader,
+    navigationRailDefaults,
 );
 

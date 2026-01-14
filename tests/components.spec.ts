@@ -533,6 +533,12 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.nav-rail.item.horizontal.active-indicator.height", expected: "3.5rem" },
             { key: "md.comp.nav-rail.item.horizontal.full-width.leading-space", expected: "1rem" },
             { key: "md.comp.nav-rail.item.horizontal.icon-label-space", expected: "0.5rem" },
+            { key: "sm.comp.nav.rail.item.vertical.leading.space", expected: "1.25rem" },
+            { key: "sm.comp.nav.rail.item.vertical.trailing.space", expected: "1.25rem" },
+            { key: "sm.comp.nav.rail.item.horizontal.full.width.leading.space", expected: "1.25rem" },
+            { key: "sm.comp.nav.rail.expanded.nav.rail.section.header.top.space", expected: "0.75rem" },
+            { key: "sm.comp.nav.rail.item.horizontal.section-header-text.font", expected: "md.sys.typescale.label-medium.font" },
+            { key: "sm.comp.nav.rail.container.vertical.space", expected: "1rem" },
         ],
     },
     {
