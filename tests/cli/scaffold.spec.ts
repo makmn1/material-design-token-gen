@@ -305,6 +305,52 @@ describe("component stylesheet generation", () => {
         expect(css).not.toMatch(/--md-comp-test-position:\s+"absolute";/);
     });
 
+    it("includes additional CSS rules for carousel component", async () => {
+        const { buildComponentCss } = await import("../../src/cli/file-generator");
+        
+        const testTokens: Record<string, string> = {
+            "md.comp.carousel.test": "value",
+        };
+        
+        const css = buildComponentCss("carousel", testTokens);
+        
+        expect(css).toContain(":where(.md-carousel)");
+        expect(css).toMatch(/--md-comp-carousel-test:\s+value;/);
+        
+        expect(css).toContain(":where(.md-carousel) button,");
+        expect(css).toContain(":where(.md-carousel) a {");
+        expect(css).toContain("width: 100%;");
+        expect(css).toContain("height: 100%;");
+        expect(css).toContain("padding: 0;");
+        expect(css).toContain("margin: 0;");
+        expect(css).toContain("border: none;");
+        expect(css).toContain("outline: none;");
+        expect(css).toContain("background: none;");
+        expect(css).toContain("color: inherit;");
+        expect(css).toContain("cursor: pointer;");
+        
+        expect(css).toMatch(/}\s*\n\s*\n\s+:where\(\.md-carousel\) button,/);
+    });
+
+    it("does not include additional CSS rules for components without them", async () => {
+        const { buildComponentCss } = await import("../../src/cli/file-generator");
+        
+        const testTokens: Record<string, string> = {
+            "md.comp.button.test": "value",
+        };
+        
+        const css = buildComponentCss("button", testTokens);
+        
+        expect(css).toContain(":where(.md-button)");
+        expect(css).toMatch(/--md-comp-button-test:\s+value;/);
+        
+        expect(css).not.toContain(":where(.md-button) button,");
+        expect(css).not.toContain(":where(.md-button) a {");
+        expect(css).not.toContain("width: 100%;");
+        expect(css).not.toContain("height: 100%;");
+        expect(css).not.toContain("padding: 0;");
+    });
+
     it("outputs carousel cursor token without quotes in generated CSS", async () => {
         const answers = createScaffoldAnswers({
             wantsCustomizations: false,
@@ -322,6 +368,36 @@ describe("component stylesheet generation", () => {
         
         expect(content).toMatch(/--sm-comp-carousel-container-cursor:\s+pointer;/);
         expect(content).not.toMatch(/--sm-comp-carousel-container-cursor:\s+"pointer";/);
+    });
+
+    it("includes button and anchor reset styles in generated carousel CSS", async () => {
+        const answers = createScaffoldAnswers({
+            wantsCustomizations: false,
+            wantsComponentStyles: true,
+        });
+        const files = await generateFromScaffold(answers, { generateFiles: false });
+
+        const carouselFile = files.find((f) => {
+            const normalizedPath = f.path.replace(/\\/g, "/");
+            return normalizedPath.includes("components/carousel.css");
+        });
+        expect(carouselFile).toBeDefined();
+
+        const content = carouselFile!.content;
+        
+        expect(content).toContain(":where(.md-carousel) button,");
+        expect(content).toContain(":where(.md-carousel) a {");
+        expect(content).toContain("width: 100%;");
+        expect(content).toContain("height: 100%;");
+        expect(content).toContain("padding: 0;");
+        expect(content).toContain("margin: 0;");
+        expect(content).toContain("border: none;");
+        expect(content).toContain("outline: none;");
+        expect(content).toContain("background: none;");
+        expect(content).toContain("color: inherit;");
+        expect(content).toContain("cursor: pointer;");
+        
+        expect(content).toMatch(/}\s*\n\s*\n\s+:where\(\.md-carousel\) button,/);
     });
 
     it("outputs numeric opacity values without quotes in component CSS", async () => {

@@ -21,6 +21,14 @@ export const GROUP_FILES = {
     state: ["state.css"],
 } as const;
 
+/**
+ * Component-specific additional CSS rules that are appended after the CSS variables block.
+ * These rules are still within the @layer tokens block.
+ */
+const COMPONENT_ADDITIONAL_CSS: Record<string, string> = {
+    carousel: `  :where(.md-carousel) button,\n  :where(.md-carousel) a {\n    width: 100%;\n    height: 100%;\n    padding: 0;\n    margin: 0;\n    border: none;\n    outline: none;\n\n    background: none;\n    color: inherit;\n\n    cursor: pointer;\n  }`,
+};
+
 export function toKebab(s: string): string {
     return s.replace(/\./g, "-").replace(/_/g, "-");
 }
@@ -428,6 +436,7 @@ export async function generateNonColorFiles(
 /**
  * Build component CSS for a single component type.
  * Generates :where(.md-{componentName}) variables in a tokens layer with token references converted to CSS variables.
+ * Optionally appends component-specific additional CSS rules if defined in COMPONENT_ADDITIONAL_CSS.
  */
 export function buildComponentCss(componentName: string, tokens: Record<string, string | number>): string {
     const vars = Object.entries(tokens)
@@ -439,12 +448,15 @@ export function buildComponentCss(componentName: string, tokens: Record<string, 
         .join("\n");
 
     const className = `md-${componentName}`;
+    const additionalCss = COMPONENT_ADDITIONAL_CSS[componentName] || "";
+    const additionalCssBlock = additionalCss ? `\n\n${additionalCss}\n` : "";
+    
     return (
         `${WARNING}` +
         `@layer tokens {\n` +
         `:where(.${className}) {\n` +
         `${vars}\n` +
-        `}\n` +
+        `}${additionalCssBlock}` +
         `}\n`
     );
 }
