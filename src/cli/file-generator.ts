@@ -68,6 +68,14 @@ function isCssToken(value: string): boolean {
         return true;
     }
 
+    // CSS keywords (single-word lowercase valid CSS identifiers like "pointer", "auto", "none", etc.)
+    // Pattern: single word, all lowercase, starting with letter or underscore, contains only letters, numbers, hyphens, underscores
+    // Exclude values with spaces (which are likely string labels like "Display Small" or font names)
+    // Exclude values starting with capital letters (which are likely font names like "Inter" or labels like "Display Small")
+    if (!trimmed.includes(" ") && /^[a-z_][a-z0-9_-]*$/.test(trimmed)) {
+        return true;
+    }
+
     // Numeric value with a CSS unit (rem, px, %, etc.)
     return /^[0-9.+-]+\s*(rem|em|px|%|deg|rad|grad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx|fr|vw|vh|vmin|vmax|cm|mm|in|pt|pc|ex|ch|cap|ic|lh|rlh|vb|vi|svw|svh|lvw|lvh|dvw|dvh|cqw|cqh|cqi|cqb|cqmin|cqmax)\s*$/i.test(
         trimmed,

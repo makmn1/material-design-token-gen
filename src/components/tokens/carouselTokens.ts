@@ -66,6 +66,31 @@ export const carouselDisabledOutline: Record<string, string | number> = {
   "md.comp.carousel-item.with-outline.disabled.outline.opacity": 0.12,
 };
 
+/**
+ * Simply Material (SM) component-scoped tokens present in the generated CSS.
+ * These are not Material Design (md.*) tokens, but they are token-like CSS custom properties
+ * that library users may want to override at the host level.
+ */
+export const simplyMatCarouselTokens: Record<string, string | number> = {
+    "sm.comp.carousel.main-axis.leading-space": 0,
+    "sm.comp.carousel.main-axis.trailing-space": 0,
+    "sm.comp.carousel.cross-axis.leading-space": 0,
+    "sm.comp.carousel.cross-axis.trailing-space": 0,
+    "sm.comp.carousel.container.cursor": "pointer",
+
+    // Runtime/mask state vars (initialized in generated CSS)
+    "sm.carousel.masked-fraction": 0,
+    "sm.carousel.masked-percentage": "0%",
+    "sm.carousel.mask-start-fraction": 0,
+    "sm.carousel.mask-start-percentage": "0%",
+    "sm.carousel.mask-end-fraction": 0,
+    "sm.carousel.mask-end-percentage": "0%",
+    "sm.carousel.unmasked-main-axis-size-px": 0,
+    "sm.carousel.visible-main-axis-size-px": 0,
+    "sm.carousel.mask-start-px": 0,
+    "sm.carousel.mask-end-px": 0,
+};
+
 export const carouselTokens: Record<string, string | number> = Object.assign(
   {},
   carouselEnabledOutline,
@@ -82,5 +107,6 @@ export const carouselTokens: Record<string, string | number> = Object.assign(
   carouselPressedStateLayer,
   carouselDisabledContainer,
   carouselDisabledOutline,
+  simplyMatCarouselTokens
 );
 

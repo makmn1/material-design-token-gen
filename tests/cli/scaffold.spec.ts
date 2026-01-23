@@ -286,6 +286,44 @@ describe("component stylesheet generation", () => {
         expect(css).not.toMatch(/--md-comp-test-background:\s+"#ffffff";/);
     });
 
+    it("outputs CSS keyword values without quotes in component CSS", async () => {
+        const { buildComponentCss } = await import("../../src/cli/file-generator");
+        
+        const testTokens: Record<string, string> = {
+            "sm.comp.carousel.container.cursor": "pointer",
+            "md.comp.test.display": "none",
+            "md.comp.test.position": "absolute",
+        };
+        
+        const css = buildComponentCss("test", testTokens);
+        
+        expect(css).toMatch(/--sm-comp-carousel-container-cursor:\s+pointer;/);
+        expect(css).toMatch(/--md-comp-test-display:\s+none;/);
+        expect(css).toMatch(/--md-comp-test-position:\s+absolute;/);
+        expect(css).not.toMatch(/--sm-comp-carousel-container-cursor:\s+"pointer";/);
+        expect(css).not.toMatch(/--md-comp-test-display:\s+"none";/);
+        expect(css).not.toMatch(/--md-comp-test-position:\s+"absolute";/);
+    });
+
+    it("outputs carousel cursor token without quotes in generated CSS", async () => {
+        const answers = createScaffoldAnswers({
+            wantsCustomizations: false,
+            wantsComponentStyles: true,
+        });
+        const files = await generateFromScaffold(answers, { generateFiles: false });
+
+        const carouselFile = files.find((f) => {
+            const normalizedPath = f.path.replace(/\\/g, "/");
+            return normalizedPath.includes("components/carousel.css");
+        });
+        expect(carouselFile).toBeDefined();
+
+        const content = carouselFile!.content;
+        
+        expect(content).toMatch(/--sm-comp-carousel-container-cursor:\s+pointer;/);
+        expect(content).not.toMatch(/--sm-comp-carousel-container-cursor:\s+"pointer";/);
+    });
+
     it("outputs numeric opacity values without quotes in component CSS", async () => {
         const answers = createScaffoldAnswers({
             wantsCustomizations: false,
