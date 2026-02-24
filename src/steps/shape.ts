@@ -28,14 +28,22 @@ const SHAPE_TOKENS: Record<string, string> = {
     "md.sys.shape.corner-value.extra-extra-large": "48dp",
 };
 
+/**
+ * Configuration options for defining shape styles used in {@link generateShapeTokens}.
+ */
 export interface ShapeOptions {
+
     /**
-     * When true, convert `...dp` strings to web units (`rem` or `px`).
+     * When true, convert `...dp` strings to web units.
+     * Unlike `dp` units, web units can be used in CSS.
+     * For configuring the type of web unit, see {@link unit}.
+     *
      * @default true
      */
     webUnits?: boolean;
+
     /**
-     * Output unit for `dp` conversion.
+     * Output unit for `dp` conversion. Used if {@link webUnits} is true. 1rem = 16px.
      * @default "rem"
      */
     unit?: "rem" | "px";

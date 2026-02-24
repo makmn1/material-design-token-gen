@@ -1,10 +1,23 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import dts from 'vite-plugin-dts';
+import dts from 'unplugin-dts/vite';
 
 export default defineConfig({
   build: {
+    target: 'node18',
+    lib: {
+      entry: {
+        index: resolve(__dirname, 'src/index.ts'),
+        'bin/scaffold-material-tokens': resolve(__dirname, 'src/bin/scaffold-material-tokens.ts'),
+        'bin/create-material-theme-tokens': resolve(__dirname, 'src/bin/create-material-theme-tokens.ts'),
+      },
+      formats: ['es'],
+      fileName: (_format, entryName) => `${entryName}.js`,
+    },
+    minify: false,
+    sourcemap: true,
     rollupOptions: {
+      preserveEntrySignatures: 'strict',
       external: [
         '@materialx/material-color-utilities',
         '@inquirer/prompts',
@@ -15,29 +28,10 @@ export default defineConfig({
         'node:path',
         'node:os',
       ],
-      input: {
-        index: resolve(__dirname, 'src/index.ts'),
-        'bin/scaffold-material-tokens': resolve(__dirname, 'src/bin/scaffold-material-tokens.ts'),
-        'bin/create-material-theme-tokens': resolve(__dirname, 'src/bin/create-material-theme-tokens.ts'),
-      },
-      output: [
-        {
-          format: 'es',
-          entryFileNames: (chunkInfo) => {
-            if (chunkInfo.name === 'index') return 'index.js';
-            return `${chunkInfo.name}.js`;
-          },
-          dir: 'dist',
-        },
-      ],
     },
-    sourcemap: true,
   },
   plugins: [
-    dts({
-      include: ['src/**/*'],
-      outDir: 'dist',
-    }),
+    dts(),
   ],
 });
 
