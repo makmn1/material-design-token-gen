@@ -20,7 +20,7 @@ import {
  *  - convert `dp` values found in string tokens to web units (`rem` or `px`)
  */
 
-export interface GenerateTokensOptions {
+export type GenerateTokensOptions = {
 
     /**
      * DynamicScheme object from `@materialx/material-color-utilities`.
@@ -37,22 +37,15 @@ export interface GenerateTokensOptions {
 
     /**
      * When true, walk the returned bundle and convert any string segments tagged
-     * with `dp` (e.g., `"12dp"` or `"16dp 0 16dp 0"`) into `rem`/`px` using
-     * {@link DpConvertOptions}.
-     * Numbers and non-`dp` strings are left untouched.
+     * with `dp` (e.g., `"12dp"` or `"16dp 0 16dp 0"`) into the unit specified by {@link unit}.
+     * Unitless numbers and non-`dp` strings are left untouched.
+     *
      * @default true
      */
     webUnits?: boolean;
 
     /**
-     * Device-independent pixel ratio for the web conversion.
-     * Set to `1` for the "1dp = 1px" convention on web.
-     * @default 1
-     */
-    dpPxRatio?: number;
-
-    /**
-     * Output unit for `dp` conversion.
+     * Output unit for `dp` conversion. Used if {@link webUnits} is true. 1rem = 16px.
      * @default "rem"
      */
     unit?: "rem" | "px";
@@ -94,7 +87,7 @@ export interface GenerateTokensOptions {
  * Shape of the aggregated token bundle.
  * Properties are optional - only included token types will be present based on the `include` option.
  */
-export interface TokensBundle {
+export type TokensBundle = {
 
     /** Material System colors; values are hex strings (e.g., `#6750a4`). */
     colors?: Record<string, string>;
@@ -177,7 +170,6 @@ export function generateTokens(
         dynamicScheme,
         expressiveMotion = true,
         webUnits = true,
-        dpPxRatio = 1,
         unit = "rem",
         typography: typographyOptions,
         include,
@@ -202,7 +194,7 @@ export function generateTokens(
     }
 
     if (shouldInclude("elevation")) {
-        bundle.elevation = generateElevationTokens({ webUnits, dpPxRatio, unit });
+        bundle.elevation = generateElevationTokens({ webUnits, unit });
     }
 
     if (shouldInclude("motion")) {
@@ -210,18 +202,19 @@ export function generateTokens(
     }
 
     if (shouldInclude("shape")) {
-        bundle.shape = generateShapeTokens({ webUnits, dpPxRatio, unit });
+        bundle.shape = generateShapeTokens({ webUnits, unit });
     }
 
     if (shouldInclude("typography")) {
         bundle.typography = generateTypographyTokens({
-            webUnits,
+            webUnits: webUnits,
+            unit: unit,
             ...typographyOptions,
         });
     }
 
     if (shouldInclude("state")) {
-        bundle.state = generateStateTokens({ webUnits, dpPxRatio, unit });
+        bundle.state = generateStateTokens({ webUnits, unit });
     }
 
     return bundle;
@@ -229,13 +222,16 @@ export function generateTokens(
 
 export { generateColorTokens } from "./steps/colors";
 export { generateElevationTokens } from "./steps/elevation";
+export type { ElevationOptions } from "./steps/elevation";
 export { generateMotionTokens } from "./steps/motion";
+export type { MotionVariant } from "./steps/motion";
 export { generateShapeTokens } from "./steps/shape";
+export type { ShapeOptions } from "./steps/shape";
 export { generateTypographyTokens } from "./steps/typography";
+export type { TypographyOptions } from "./steps/typography";
 export { generateStateTokens } from "./steps/state";
-
-export { convertDpInTree, convertDpString, dpNumberToUnit } from "./util/dp";
-export type { DpConvertOptions } from "./util/dp";
+export type { StateOptions } from "./steps/state";
+export * from "./components"
 
 // noinspection JSUnusedGlobalSymbols
 export default generateTokens;

@@ -113,6 +113,35 @@ describe("generateTokens() smoke", () => {
         expect(tokens.elevation!["md.sys.elevation.level3"]).toBe("6dp");
     });
 
+    it("applies webUnits + unit to typography tokens (pt/rem/px paths)", () => {
+        const ptTokens = generateTokens({
+            include: { typography: true },
+            webUnits: false,
+            unit: "px",
+        });
+        expect(ptTokens.typography).toBeDefined();
+        expect(ptTokens.typography!["md.sys.typescale.body-large.size"]).toBe("16pt");
+        expect(ptTokens.typography!["md.sys.typescale.body-large.line-height"]).toBe("24pt");
+
+        const remTokens = generateTokens({
+            include: { typography: true },
+            webUnits: true,
+            unit: "rem",
+        });
+        expect(remTokens.typography).toBeDefined();
+        expect(remTokens.typography!["md.sys.typescale.body-large.size"]).toBe("1rem");
+        expect(remTokens.typography!["md.sys.typescale.body-large.line-height"]).toBe("1.5rem");
+
+        const pxTokens = generateTokens({
+            include: { typography: true },
+            webUnits: true,
+            unit: "px",
+        });
+        expect(pxTokens.typography).toBeDefined();
+        expect(pxTokens.typography!["md.sys.typescale.body-large.size"]).toBe("16px");
+        expect(pxTokens.typography!["md.sys.typescale.body-large.line-height"]).toBe("24px");
+    });
+
     it("exposes both default and named exports that point to the same function", () => {
         expect(typeof generateTokens).toBe("function");
         expect(typeof generateTokensNamed).toBe("function");

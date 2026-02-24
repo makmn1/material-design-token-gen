@@ -35,11 +35,6 @@ export interface ShapeOptions {
      */
     webUnits?: boolean;
     /**
-     * Device-independent pixel ratio for the web conversion.
-     * @default 1
-     */
-    dpPxRatio?: number;
-    /**
      * Output unit for `dp` conversion.
      * @default "rem"
      */
@@ -67,14 +62,13 @@ export interface ShapeOptions {
 export function generateShapeTokens(opts: ShapeOptions = {}): Record<string, string | number> {
     const {
         webUnits = true,
-        dpPxRatio = 1,
         unit = "rem"
     } = opts;
 
     const tokens = { ...SHAPE_TOKENS };
 
     if (webUnits) {
-        const dpOptions: DpConvertOptions = { dpPxRatio, unit };
+        const dpOptions: DpConvertOptions = { unit };
         const converted: Record<string, string | number> = {};
         for (const [key, value] of Object.entries(tokens)) {
             if (value === "Circular") {

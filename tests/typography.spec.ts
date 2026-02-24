@@ -14,6 +14,12 @@ function remFromPt(pt: number, root = 16) {
     const rem = pt / root;
     return `${strip(round(rem, 4))}rem`;
 }
+function pxFromPt(pt: number) {
+    return `${strip(round(pt, 4))}px`;
+}
+function ptFromPt(pt: number) {
+    return `${strip(round(pt, 4))}pt`;
+}
 function emFromPt(trackingPt: number, sizePt: number) {
     if (sizePt === 0) return "0em";
     return `${strip(round(trackingPt / sizePt, 4))}em`;
@@ -77,7 +83,7 @@ const weightPointer = (w: StyleRow["weight"]) =>
 const familyPointer = (f: StyleRow["family"]) =>
     f === "brand" ? "md.ref.typeface.brand" : "md.ref.typeface.plain";
 
-function expectedTokens(root = 16) {
+function expectedTokens(root = 16, webUnits = true, unit: "rem" | "px" = "rem") {
     const expected: Record<string, string | number> = {};
 
     // refs
@@ -87,6 +93,14 @@ function expectedTokens(root = 16) {
     expected["md.ref.typeface.weight-medium"]  = 500;
     expected["md.ref.typeface.weight-bold"]    = 700;
 
+    const fromPt = (pt: number) => {
+        if (!webUnits) {
+            return ptFromPt(pt);
+        }
+
+        return unit === "px" ? pxFromPt(pt) : remFromPt(pt, root);
+    };
+
     function emit(prefix: "" | "emphasized", row: StyleRow) {
         const ns = prefix ? `md.sys.typescale.${prefix}.${row.key}` : `md.sys.typescale.${row.key}`;
         const labelKey = prefix ? `md.sys.typescale.${prefix}.${row.key}` : `md.sys.typescale.${row.key}`;
@@ -94,9 +108,9 @@ function expectedTokens(root = 16) {
 
         expected[`${ns}.font`] = familyPointer(row.family);
         expected[`${ns}.weight`] = weightPointer(row.weight);
-        expected[`${ns}.size`] = remFromPt(row.sizePt, root);
+        expected[`${ns}.size`] = fromPt(row.sizePt);
         expected[`${ns}.tracking`] = emFromPt(row.trackingPt, row.sizePt);
-        expected[`${ns}.line-height`] = remFromPt(row.linePt, root);
+        expected[`${ns}.line-height`] = fromPt(row.linePt);
 
         // axes
         expected[`${ns}.wght`] = row.weight === "regular" ? 400 : row.weight === "medium" ? 500 : 700;
@@ -117,18 +131,37 @@ function expectedTokens(root = 16) {
 }
 
 describe("generateTypographyTokens()", () => {
-    it("emits ALL baseline + emphasized tokens with spec-correct values (455) and nothing extra", () => {
-        const tokens = generateTypographyTokens({ webUnits: true });
-        const exp = expectedTokens(16);
+    it("emits ALL baseline + emphasized tokens with rem values when webUnits is true and unit is rem", () => {
+        const tokens = generateTypographyTokens({ webUnits: true, unit: "rem" });
+        const exp = expectedTokens(16, true, "rem");
 
         expect(Object.keys(tokens).length).toBe(455);
         expect(tokens).toEqual(exp);
+        expect(tokens["md.sys.typescale.body-large.size"]).toBe("1rem");
+        expect(tokens["md.sys.typescale.body-large.line-height"]).toBe("1.5rem");
     });
 
-    it("accepts webUnits option (though it doesn't affect output since typography already uses rem/em)", () => {
-        const tokens1 = generateTypographyTokens({ webUnits: true });
-        const tokens2 = generateTypographyTokens({ webUnits: false });
-        expect(tokens1).toEqual(tokens2);
+    it("uses pt units for size and line-height when webUnits is false", () => {
+        const tokens = generateTypographyTokens({ webUnits: false, unit: "px" });
+        const expectedPt = expectedTokens(16, false, "px");
+
+        expect(tokens).toEqual(expectedPt);
+        expect(tokens["md.sys.typescale.body-large.size"]).toBe("16pt");
+        expect(tokens["md.sys.typescale.body-large.line-height"]).toBe("24pt");
+        expect(tokens["md.sys.typescale.body-large.tracking"]).toBe("0.0313em");
+
+        const remTokens = generateTypographyTokens({ webUnits: true, unit: "rem" });
+        expect(tokens).not.toEqual(remTokens);
+    });
+
+    it("uses px units for size and line-height when webUnits is true and unit is px", () => {
+        const tokens = generateTypographyTokens({ webUnits: true, unit: "px" });
+        const expectedPx = expectedTokens(16, true, "px");
+
+        expect(tokens).toEqual(expectedPx);
+        expect(tokens["md.sys.typescale.body-large.size"]).toBe("16px");
+        expect(tokens["md.sys.typescale.body-large.line-height"]).toBe("24px");
+        expect(tokens["md.sys.typescale.body-large.tracking"]).toBe("0.0313em");
     });
 
     it("keeps pointer tokens stable when overriding ref values", () => {

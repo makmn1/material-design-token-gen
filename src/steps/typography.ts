@@ -1,16 +1,50 @@
+/**
+ * Configuration options for defining typography styles used in {@link generateTypographyTokens}.
+ */
 export type TypographyOptions = {
-    brandTypeface?: string;
-    plainTypeface?: string;
-    weightRegular?: number;
-    weightMedium?: number;
-    weightBold?: number;
+
     /**
-     * When true, typography tokens are generated with web units.
-     * Note: Typography tokens already use rem/em units, so this option
-     * is included for consistency but doesn't affect output.
+     * Font family to use for brand styles. The brand font is used for `display`, `headline`, and `title` tokens.
+     * @default "Roboto"
+     */
+    brandTypeface?: string;
+
+    /**
+     * Font family to use for plain styles. The plain font is used for `body` and `label` tokens.
+     * @default "Roboto"
+     */
+    plainTypeface?: string;
+
+    /**
+     * The regular font weight.
+     * @default 400
+     */
+    weightRegular?: number;
+
+    /**
+     * The medium font weight. Defaults to 500.
+     * @default 500
+     */
+    weightMedium?: number;
+
+    /**
+     * The bold font weight.
+     * @default 700
+     */
+    weightBold?: number;
+
+    /**
+     * When true, typography tokens are generated with web units instead of `pt`.
+     * Unlike `pt` units, web units can be used in CSS. For configuring the type of web unit, see {@link unit}.
      * @default true
      */
     webUnits?: boolean;
+
+    /**
+     * Output unit for `pt` conversion. Used if {@link webUnits} is true. Defaults to `rem`. 1rem = 16px.
+     * @default "rem"
+     */
+    unit?: "rem" | "px";
 };
 
 function round(n: number, decimals = 4): number {
@@ -21,6 +55,14 @@ function round(n: number, decimals = 4): number {
 function toRemFromPt(pt: number, rootPx: number): string {
     const rem = pt / rootPx;
     return `${stripTrailingZeros(round(rem, 4))}rem`;
+}
+
+function toPxFromPt(pt: number): string {
+    return `${stripTrailingZeros(round(pt, 4))}px`;
+}
+
+function toPt(pt: number): string {
+    return `${stripTrailingZeros(round(pt, 4))}pt`;
 }
 
 function toEmFromPt(trackingPt: number, sizePt: number): string {
@@ -96,9 +138,8 @@ const EMPH: StyleRow[] = [
  * Generate **typography** tokens for both **baseline** and **emphasized** sets.
  *
  * - Values are CSS-ready wherever possible:
- *   - font sizes in `rem`
+ *   - font sizes and line-heights in `rem`/`px` when `webUnits` is true, otherwise `pt`
  *   - letter-spacing in `em`
- *   - line-height unitless (ratios) or `rem` depending on configuration
  * - Typeface pointers are expressed via `md.ref.typeface.*` so consumers can
  *   override brand/plain families and weights.
  *
@@ -118,6 +159,8 @@ export function generateTypographyTokens(opts: TypographyOptions = {}): Record<s
     const wRegular = opts.weightRegular ?? 400;
     const wMedium  = opts.weightMedium  ?? 500;
     const wBold    = opts.weightBold    ?? 700;
+    const webUnits = opts.webUnits ?? true;
+    const unit = opts.unit ?? "rem";
     const rootPx   = 16;
 
     const tokens: Record<string, string | number> = {};
@@ -139,14 +182,22 @@ export function generateTypographyTokens(opts: TypographyOptions = {}): Record<s
     const familyPointer = (f: StyleRow["family"]) =>
         f === "brand" ? "md.ref.typeface.brand" : "md.ref.typeface.plain";
 
+    const fromPt = (pt: number) => {
+        if (!webUnits) {
+            return toPt(pt);
+        }
+
+        return unit === "px" ? toPxFromPt(pt) : toRemFromPt(pt, rootPx);
+    };
+
     function emitStyle(prefix: string, row: StyleRow) {
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}`] = row.label;
 
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.font`]        = familyPointer(row.family);
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.weight`]      = weightPointer(row.weight);
-        tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.size`]        = toRemFromPt(row.sizePt, rootPx);
+        tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.size`]        = fromPt(row.sizePt);
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.tracking`]    = toEmFromPt(row.trackingPt, row.sizePt);
-        tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.line-height`] = toRemFromPt(row.linePt, rootPx);
+        tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.line-height`] = fromPt(row.linePt);
 
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.wght`] = weightAxis(row.weight);
         tokens[`md.sys.typescale.${prefix ? prefix + "." : ""}${row.key}.grad`] = 0;

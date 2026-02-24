@@ -1,21 +1,14 @@
 /**
  * Web output unit for converting `dp` strings.
- * - `"rem"`: `rem = (dp * dpPxRatio) / 16`
- * - `"px"`:  `px = dp * dpPxRatio`
+ * - `"rem"`: `rem = dp / 16`
+ * - `"px"`:  `px = dp`
  */
 export type DpUnit = "rem" | "px";
 
 /**
  * Options for converting `dp` to web units.
  */
-export interface DpConvertOptions {
-    /**
-     * Device-independent pixel ratio for conversion.
-     * Use `1` to follow the "1dp = 1px" convention on web.
-     * @default 1
-     */
-    dpPxRatio?: number;
-
+export type DpConvertOptions = {
     /**
      * Output unit.
      * @default "rem"
@@ -24,7 +17,6 @@ export interface DpConvertOptions {
 }
 
 const DEFAULTS: Required<DpConvertOptions> = {
-    dpPxRatio: 1,
     unit: "rem",
 };
 
@@ -41,12 +33,11 @@ function trimZeros(n: number): string {
  * ```ts
  * dpNumberToUnit(12) // "0.75rem" (12px / 16)
  * dpNumberToUnit(12, { unit: "px" }) // "12px"
- * dpNumberToUnit(12, { dpPxRatio: 2 }) // "1.5rem"
  * ```
  */
 export function dpNumberToUnit(dp: number, opts: DpConvertOptions = {}): string {
-    const { dpPxRatio, unit } = { ...DEFAULTS, ...opts };
-    const px = dp * dpPxRatio;
+    const { unit } = { ...DEFAULTS, ...opts };
+    const px = dp;
 
     if (px === 0) return "0";
 

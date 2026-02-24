@@ -1,18 +1,21 @@
 import { DpConvertOptions, convertDpString } from "../util/dp";
 
-export interface StateOptions {
+/**
+ * Configuration options for defining state styles used in {@link generateStateTokens}.
+ */
+export type StateOptions = {
+
     /**
-     * When true, convert `...dp` strings to web units (`rem` or `px`).
+     * When true, convert `...dp` strings to web units.
+     * Unlike `dp` units, web units can be used in CSS.
+     * For configuring the type of web unit, see {@link unit}.
+     *
      * @default true
      */
     webUnits?: boolean;
+
     /**
-     * Device-independent pixel ratio for the web conversion.
-     * @default 1
-     */
-    dpPxRatio?: number;
-    /**
-     * Output unit for `dp` conversion.
+     * Output unit for `dp` conversion. Used if {@link webUnits} is true. 1rem = 16px.
      * @default "rem"
      */
     unit?: "rem" | "px";
@@ -48,7 +51,6 @@ export interface StateOptions {
 export function generateStateTokens(opts: StateOptions = {}): Record<string, number | string> {
     const {
         webUnits = true,
-        dpPxRatio = 1,
         unit = "rem"
     } = opts;
 
@@ -63,7 +65,7 @@ export function generateStateTokens(opts: StateOptions = {}): Record<string, num
     };
 
     if (webUnits) {
-        const dpOptions: DpConvertOptions = { dpPxRatio, unit };
+        const dpOptions: DpConvertOptions = { unit };
         const converted: Record<string, number | string> = {};
         for (const [key, value] of Object.entries(tokens)) {
             if (typeof value === "number") {

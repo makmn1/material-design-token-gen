@@ -34,8 +34,15 @@ import {textFieldTokens} from "./tokens/textFieldTokens";
 import {toolbarTokens} from "./tokens/toolbarTokens";
 import {tooltipTokens} from "./tokens/tooltipTokens";
 
+export type ComponentName =
+    'button' | 'app-bar' | 'badge' | 'button-group' | 'fab' | 'extended-fab' | 'fab-menu' | 'icon-button' |
+    'split-button' | 'card' | 'carousel' | 'checkbox' | 'chip' | 'date-picker' | 'time-picker' | 'dialog' | 'divider' |
+    'drawer' | 'grid-list' | 'icon' | 'image-list' | 'list' | 'loading-indicator' | 'menu' | 'navigation-bar' |
+    'navigation-rail' | 'progress-indicator' | 'radio-button' | 'search' | 'bottom-sheet' | 'side-sheet' | 'slider' |
+    'snackbar' | 'switch' | 'tabs' | 'text-field' | 'toolbar' | 'tooltip';
+
 const COMPONENT_TOKENS: Array<{
-    name: string;
+    name: ComponentName;
     value: Record<string, string | number>;
 }> = [
     { name: "button", value: buttonTokens },
@@ -77,31 +84,27 @@ const COMPONENT_TOKENS: Array<{
 /**
  * Options for generating component tokens.
  */
-export interface GenerateComponentTokensOptions {
+export type GenerateComponentTokensOptions = {
+
     /**
      * Array of component types to exclude from generation.
      * If omitted, all available component types are generated.
+     *
+     * @default []
      */
-    excludes?: string[];
+    excludes?: ComponentName[];
 
     /**
      * When true, walk the returned bundle and convert any string segments tagged
-     * with `dp` (e.g., `"12dp"` or `"16dp 0 16dp 0"`) into `rem`/`px` using
-     * the conversion options.
-     * Numbers and non-`dp` strings are left untouched.
+     * with `dp` (e.g., `"12dp"` or `"16dp 0 16dp 0"`) into the unit specified by {@link unit}.
+     * Unitless numbers and non-`dp` strings are left untouched.
+     *
      * @default true
      */
     webUnits?: boolean;
 
     /**
-     * Device-independent pixel ratio for the web conversion.
-     * Set to `1` for the "1dp = 1px" convention on web.
-     * @default 1
-     */
-    dpPxRatio?: number;
-
-    /**
-     * Output unit for `dp` conversion.
+     * Output unit for `dp` conversion. Used if {@link webUnits} is true. 1rem = 16px.
      * @default "rem"
      */
     unit?: "rem" | "px";
@@ -142,7 +145,6 @@ export function generateComponentTokens(
     const {
         excludes = [],
         webUnits = true,
-        dpPxRatio = 1,
         unit = "rem",
     } = options;
 
@@ -154,14 +156,13 @@ export function generateComponentTokens(
         ? filtered.map((entry) => ({
               name: entry.name,
               value: convertDpInTree(entry.value, {
-                  dpPxRatio,
                   unit,
               }) as Record<string, string | number>,
           }))
         : filtered;
 
         // We need to convert 50% corner tokens to 9999rem/px as that's this library signal that the corner
-        // is a circular corner. Using 50% for border radius only works for square shapes. Otherwise some vertical squishing occurs.
+        // is a circular corner. Using 50% for border radius only works for square shapes. Otherwise, some vertical squishing occurs.
         const postProcessed = converted.map((entry) => {
         const processedValue: Record<string, string | number> = { ...entry.value };
         for (const [key, value] of Object.entries(processedValue)) {

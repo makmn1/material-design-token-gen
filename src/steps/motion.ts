@@ -1,3 +1,6 @@
+/**
+ * The type of motion tokens to generate with {@link generateMotionTokens}.
+ */
 export type MotionVariant = "expressive" | "standard";
 
 const STANDARD: Record<string, number> = {
@@ -37,8 +40,8 @@ const EXPRESSIVE: Record<string, number> = {
 /**
  * Generate **motion** tokens (spring/duration/curves), optionally in "expressive" mode.
  *
- * - When `mode` is `"expressive"`, damping/stiffness and durations align with the
- *   MD3 Expressive update.
+ * - When `mode` is `"expressive"`, damping/stiffness and durations align with
+ *   MD3 Expressive.
  * - When `"standard"`, values follow the baseline set.
  *
  * All values are numeric; unit semantics depend on the token (e.g., ms for duration).

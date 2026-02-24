@@ -9,7 +9,7 @@ or import it into your application for swapping CSS variables at runtime (or gen
 - Exporting the complete token set as an object to be used in CSS files
 - Support for all modern Material Design 3 tokens (colors, elevation, motion, shape, typography, state)
 - Exporting a subset of the complete token set (e.g., colors or typography only)
-- Changing the dp to px ratio or the unit of measurement (e.g., px or rem)
+- Changing the output unit of measurement (e.g., px or rem)
 - Exporting a color set based on a specific theme, making dynamic theme switching easier with native CSS
 
 > [!IMPORTANT]
@@ -133,12 +133,16 @@ import {
   generateMotionTokens,
   generateElevationTokens,
   generateStateTokens,
-  convertDpInTree,
+  generateComponentTokens
 } from "@makmn1/material-design-token-gen";
 ```
 
-Most users can use `generateTokens` which executes all the steps and handles conversions through a configuration options
-object. For users with more specific needs or who want to generate a subset of tokens, those utilities are available.
+For the base tokens, most users can use `generateTokens` which executes all the steps and handles conversions through a
+configuration options object. For users with more specific needs or who want to generate a subset of tokens, those 
+utilities are available.
+
+For component tokens, you can use `generateComponentTokens` to generate tokens for each component 
+(or filter out components you don't want).
 
 ### What theme variant does Angular Material use? What theme variant should I use?
 If you're coming from Angular Material, you might be confused to see a variant option here.

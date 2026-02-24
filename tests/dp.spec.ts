@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { convertDpInTree, convertDpString, dpNumberToUnit } from "../src/util/dp";
 
 describe("dp utilities", () => {
-    it("dpNumberToUnit converts dp to rem with defaults (16px root, ratio 1)", () => {
+    it("dpNumberToUnit converts dp to rem with defaults (16px root)", () => {
         expect(dpNumberToUnit(16)).toBe("1rem");
         expect(dpNumberToUnit(12)).toBe("0.75rem");
         expect(dpNumberToUnit(0)).toBe("0");
@@ -40,10 +40,5 @@ describe("dp utilities", () => {
     it("supports px output unit", () => {
         expect(convertDpString("12dp", { unit: "px" })).toBe("12px");
         expect(convertDpString("16dp 0 4dp", { unit: "px" })).toBe("16px 0 4px");
-    });
-
-    it("respects dpPxRatio", () => {
-        expect(convertDpString("12dp", { dpPxRatio: 2 })).toBe("1.5rem");
-        expect(convertDpString("12dp", { dpPxRatio: 2, unit: "px" })).toBe("24px");
     });
 });

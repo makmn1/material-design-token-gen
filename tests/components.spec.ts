@@ -884,19 +884,6 @@ describe("generateComponentTokens()", () => {
         );
     });
 
-
-    it("respects custom dpPxRatio", () => {
-        const tokens = generateComponentTokens({
-            dpPxRatio: 2,
-            webUnits: true,
-        });
-
-        expect(tokens.button["md.comp.button.container.height"]).toBe(
-            "5rem"
-        );
-        expect(tokens.button["md.comp.button.icon.size"]).toBe("2.5rem");
-    });
-
     it("respects custom unit option (px)", () => {
         const tokens = generateComponentTokens({
             unit: "px",
@@ -906,17 +893,6 @@ describe("generateComponentTokens()", () => {
         expect(tokens.button["md.comp.button.container.height"]).toBe("40px");
         expect(tokens.button["md.comp.button.icon.size"]).toBe("20px");
         expect(tokens.button["md.comp.button.leading-space"]).toBe("24px");
-    });
-
-    it("respects custom unit option (px) with custom dpPxRatio", () => {
-        const tokens = generateComponentTokens({
-            unit: "px",
-            dpPxRatio: 2,
-            webUnits: true,
-        });
-
-        expect(tokens.button["md.comp.button.container.height"]).toBe("80px");
-        expect(tokens.button["md.comp.button.icon.size"]).toBe("40px");
     });
 
     it("does not convert non-dp strings", () => {

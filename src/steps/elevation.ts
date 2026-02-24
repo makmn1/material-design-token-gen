@@ -1,18 +1,21 @@
 import { DpConvertOptions, convertDpString } from "../util/dp";
 
-export interface ElevationOptions {
+/**
+ * Configuration options for defining elevation styles used in {@link generateElevationTokens}.
+ */
+export type ElevationOptions = {
+
     /**
-     * When true, convert `...dp` strings to web units (`rem` or `px`).
+     * When true, convert `...dp` strings to web units.
+     * Unlike `dp` units, web units can be used in CSS.
+     * For configuring the type of web unit, see {@link unit}.
+     *
      * @default true
      */
     webUnits?: boolean;
+
     /**
-     * Device-independent pixel ratio for the web conversion.
-     * @default 1
-     */
-    dpPxRatio?: number;
-    /**
-     * Output unit for `dp` conversion.
+     * Output unit for `dp` conversion. Used if {@link webUnits} is true. 1rem = 16px.
      * @default "rem"
      */
     unit?: "rem" | "px";
@@ -37,14 +40,13 @@ export interface ElevationOptions {
  * import { generateElevationTokens } from "@makmn1/material-design-token-gen";
  * const elevation = generateElevationTokens();
  * // elevation["md.sys.elevation.level3"] === "6dp" (if webUnits is false)
- * // elevation["md.sys.elevation.level3"] === "0.4286rem" (if webUnits is true)
+ * // elevation["md.sys.elevation.level3"] === "0.375rem" (if webUnits is true)
  * // elevation["sm.sys.elevation.box-shadow.level3"] === "rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, ..."
  * ```
  */
 export function generateElevationTokens(opts: ElevationOptions = {}): Record<string, string | number> {
     const {
         webUnits = true,
-        dpPxRatio = 1,
         unit = "rem"
     } = opts;
 
@@ -68,7 +70,7 @@ export function generateElevationTokens(opts: ElevationOptions = {}): Record<str
     };
 
     if (webUnits) {
-        const dpOptions: DpConvertOptions = { dpPxRatio, unit };
+        const dpOptions: DpConvertOptions = { unit };
         const converted: Record<string, string | number> = {};
         for (const [key, value] of Object.entries(tokens)) {
             if (value === "0") {
