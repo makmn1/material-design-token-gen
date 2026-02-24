@@ -161,9 +161,7 @@ This new spec results in these variants having more saturated colors and removes
 with when using Material Design themes.
 
 Struggling to decide? Visit [MaterialKolor Builder](https://materialkolor.com/?color_seed=FF68A500&dark_mode=true&selected_preset_id=res-0&package_name=com.example.app)
-to view different themes with different variants for either the 2021 or the 2025 color spec. Note that its description
-on the Material Expressive 3 color system is misleading--you don't need to set the variant to expressive for your color system
-to be "expressive." It's considered expressive by using the 2025 color spec version.
+to view different themes with different variants for either the 2021 or the 2025 color spec.
 
 ## Contributing Tips
 To view the generated files after making any changes, run `npm run build` and then any of the CLI commands using:
