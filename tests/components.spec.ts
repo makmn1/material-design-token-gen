@@ -482,6 +482,14 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "md.comp.progress-indicator.linear.active-indicator.wave.amplitude", expected: "0.1875rem" },
             { key: "md.comp.progress-indicator.circular.size", expected: "2.5rem" },
             { key: "md.comp.progress-indicator.circular.active-indicator.wave.amplitude", expected: "0.1rem" },
+            { key: "md.comp.progress-indicator.motion.duration.long2", expected: "500ms" },
+            { key: "sm.comp.progress-indicator.linear.transition.duration", expected: "500ms" },
+            { key: "sm.comp.progress-indicator.linear.with-wave.cycle.duration", expected: "1000ms" },
+            { key: "sm.comp.progress-indicator.circular.indeterminate.progress.duration", expected: "6000ms" },
+            {
+                key: "sm.comp.progress-indicator.circular.with-wave.indeterminate.additional-rotation.easing",
+                expected: "linear",
+            },
         ],
     },
     {
