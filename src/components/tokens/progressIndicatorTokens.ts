@@ -23,6 +23,13 @@ export const progressIndicatorLinearBaseline: Record<string, string | number> = 
     "md.comp.progress-indicator.linear.indeterminate.active-indicator.wave.wavelength": "20dp",
 };
 
+export const progressIndicatorLinearWidths: Record<string, string | number> = {
+    "sm.comp.progress-indicator.linear.width": "100%",
+    "sm.comp.progress-indicator.linear.width.minimum": "40dp",
+    "sm.comp.progress-indicator.linear.with-wave.width": "100%",
+    "sm.comp.progress-indicator.linear.with-wave.width.minimum": "40dp",
+};
+
 export const progressIndicatorCircularBaseline: Record<string, string | number> = {
     "md.comp.progress-indicator.circular.size": "40dp",
     "md.comp.progress-indicator.circular.with-wave.size": "48dp",
@@ -99,6 +106,7 @@ export const progressIndicatorTokens: Record<string, string | number> = Object.a
     progressIndicatorColor,
     progressIndicatorShape,
     progressIndicatorLinearBaseline,
+    progressIndicatorLinearWidths,
     progressIndicatorCircularBaseline,
     progressIndicatorMotion,
     progressIndicatorLinearMotion,
@@ -106,4 +114,3 @@ export const progressIndicatorTokens: Record<string, string | number> = Object.a
     progressIndicatorCircularMotion,
     progressIndicatorCircularWithWaveMotion,
 );
-
