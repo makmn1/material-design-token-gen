@@ -491,6 +491,22 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
             { key: "sm.comp.progress-indicator.linear.with-wave.cycle.duration", expected: "1000ms" },
             { key: "sm.comp.progress-indicator.circular.indeterminate.progress.duration", expected: "6000ms" },
             {
+                key: "sm.comp.progress-indicator.circular.indeterminate.progress.easing.grow",
+                expected: "var(--md-comp-progress-indicator-motion-easing-linear)",
+            },
+            {
+                key: "sm.comp.progress-indicator.circular.indeterminate.progress.easing.shrink",
+                expected: "var(--md-comp-progress-indicator-motion-easing-standard)",
+            },
+            {
+                key: "sm.comp.progress-indicator.circular.with-wave.indeterminate.progress.easing.grow",
+                expected: "var(--md-comp-progress-indicator-motion-easing-linear)",
+            },
+            {
+                key: "sm.comp.progress-indicator.circular.with-wave.indeterminate.progress.easing.shrink",
+                expected: "var(--md-comp-progress-indicator-motion-easing-standard)",
+            },
+            {
                 key: "sm.comp.progress-indicator.circular.with-wave.indeterminate.additional-rotation.easing",
                 expected: "linear",
             },

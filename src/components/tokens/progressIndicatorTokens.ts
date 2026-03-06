@@ -74,9 +74,9 @@ export const progressIndicatorCircularMotion: Record<string, string | number> = 
     "sm.comp.progress-indicator.circular.transition.easing": "linear",
     "sm.comp.progress-indicator.circular.indeterminate.progress.duration": "6000ms",
     "sm.comp.progress-indicator.circular.indeterminate.progress.easing.grow":
-        "var(--md-comp-progress-indicator-motion-easing-standard)",
-    "sm.comp.progress-indicator.circular.indeterminate.progress.easing.shrink":
         "var(--md-comp-progress-indicator-motion-easing-linear)",
+    "sm.comp.progress-indicator.circular.indeterminate.progress.easing.shrink":
+        "var(--md-comp-progress-indicator-motion-easing-standard)",
     "sm.comp.progress-indicator.circular.indeterminate.global-rotation.duration": "6000ms",
     "sm.comp.progress-indicator.circular.indeterminate.global-rotation.easing":
         "var(--md-comp-progress-indicator-motion-easing-linear)",
@@ -89,9 +89,9 @@ export const progressIndicatorCircularWithWaveMotion: Record<string, string | nu
     "sm.comp.progress-indicator.circular.with-wave.transition.easing": "linear",
     "sm.comp.progress-indicator.circular.with-wave.indeterminate.progress.duration": "6000ms",
     "sm.comp.progress-indicator.circular.with-wave.indeterminate.progress.easing.grow":
-        "var(--md-comp-progress-indicator-motion-easing-standard)",
-    "sm.comp.progress-indicator.circular.with-wave.indeterminate.progress.easing.shrink":
         "var(--md-comp-progress-indicator-motion-easing-linear)",
+    "sm.comp.progress-indicator.circular.with-wave.indeterminate.progress.easing.shrink":
+        "var(--md-comp-progress-indicator-motion-easing-standard)",
     "sm.comp.progress-indicator.circular.with-wave.indeterminate.global-rotation.duration": "6000ms",
     "sm.comp.progress-indicator.circular.with-wave.indeterminate.global-rotation.easing":
         "var(--md-comp-progress-indicator-motion-easing-linear)",
