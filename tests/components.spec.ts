@@ -51,11 +51,6 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
         name: "button",
         key: "button",
         sampleTokens: [
-            { key: "md.comp.button.container.color", expected: "md.sys.color.primary" },
-            { key: "md.comp.button.disabled.container.color", expected: "md.sys.color.on-surface" },
-            { key: "md.comp.button.hovered.state-layer.color", expected: "md.sys.color.on-primary" },
-            { key: "md.comp.button.focused.state-layer.color", expected: "md.sys.color.on-primary" },
-            { key: "md.comp.button.pressed.state-layer.color", expected: "md.sys.color.on-primary" },
             { key: "md.comp.button.filled.container.color", expected: "md.sys.color.primary" },
             { key: "md.comp.button.filled.disabled.container.color", expected: "md.sys.color.on-surface" },
             { key: "md.comp.button.elevated.container.color", expected: "md.sys.color.surface-container-low" },
@@ -212,13 +207,6 @@ const COMPONENT_TEST_DATA: ComponentTestData[] = [
         name: "icon-button",
         key: "icon-button",
         sampleTokens: [
-            { key: "md.comp.icon-button.container.height", expected: "2.5rem" },
-            { key: "md.comp.icon-button.icon.size", expected: "1.5rem" },
-            { key: "md.comp.icon-button.container.color", expected: "md.sys.color.primary" },
-            { key: "md.comp.icon-button.unselected.container.color", expected: "md.sys.color.surface-container" },
-            { key: "md.comp.icon-button.disabled.container.opacity", expected: 0.1 },
-            { key: "md.comp.icon-button.disabled.icon.opacity", expected: 0.38 },
-            { key: "md.comp.icon-button.hovered.state-layer.opacity", expected: "md.sys.state.hover.state-layer-opacity" },
             { key: "md.comp.icon-button.filled.container.color", expected: "md.sys.color.primary" },
             { key: "md.comp.icon-button.tonal.selected.container.color", expected: "md.sys.color.secondary" },
             { key: "md.comp.icon-button.outlined.selected.container.color", expected: "md.sys.color.inverse-surface" },
@@ -895,19 +883,19 @@ describe("generateComponentTokens()", () => {
     it("converts dp to rem when webUnits is true (default)", () => {
         const tokens = generateComponentTokens();
 
-        expect(tokens.button["md.comp.button.container.height"]).toBe("2.5rem");
-        expect(tokens.button["md.comp.button.icon.size"]).toBe("1.25rem");
-        expect(tokens.button["md.comp.button.leading-space"]).toBe("1.5rem");
-        expect(tokens.button["md.comp.button.icon-label-space"]).toBe("0.5rem");
+        expect(tokens.button["md.comp.button.small.container.height"]).toBe("2.5rem");
+        expect(tokens.button["md.comp.button.small.icon.size"]).toBe("1.25rem");
+        expect(tokens.button["md.comp.button.small.leading-space"]).toBe("1rem");
+        expect(tokens.button["md.comp.button.small.icon-label-space"]).toBe("0.5rem");
     });
 
     it("leaves dp strings untouched when webUnits is false", () => {
         const tokens = generateComponentTokens({ webUnits: false });
 
-        expect(tokens.button["md.comp.button.container.height"]).toBe("40dp");
-        expect(tokens.button["md.comp.button.icon.size"]).toBe("20dp");
-        expect(tokens.button["md.comp.button.leading-space"]).toBe("24dp");
-        expect(tokens.button["md.comp.button.icon-label-space"]).toBe(
+        expect(tokens.button["md.comp.button.small.container.height"]).toBe("40dp");
+        expect(tokens.button["md.comp.button.small.icon.size"]).toBe("20dp");
+        expect(tokens.button["md.comp.button.small.leading-space"]).toBe("16dp");
+        expect(tokens.button["md.comp.button.small.icon-label-space"]).toBe(
             "8dp"
         );
     });
@@ -918,21 +906,21 @@ describe("generateComponentTokens()", () => {
             webUnits: true,
         });
 
-        expect(tokens.button["md.comp.button.container.height"]).toBe("40px");
-        expect(tokens.button["md.comp.button.icon.size"]).toBe("20px");
-        expect(tokens.button["md.comp.button.leading-space"]).toBe("24px");
+        expect(tokens.button["md.comp.button.small.container.height"]).toBe("40px");
+        expect(tokens.button["md.comp.button.small.icon.size"]).toBe("20px");
+        expect(tokens.button["md.comp.button.small.leading-space"]).toBe("16px");
     });
 
     it("does not convert non-dp strings", () => {
         const tokens = generateComponentTokens({ webUnits: true });
 
-        expect(tokens.button["md.comp.button.container.color"]).toBe(
+        expect(tokens.button["md.comp.button.filled.container.color"]).toBe(
             "md.sys.color.primary"
         );
-        expect(tokens.button["md.comp.button.container.elevation"]).toBe(
+        expect(tokens.button["md.comp.button.filled.container.elevation"]).toBe(
             "md.sys.elevation.level0"
         );
-        expect(tokens.button["md.comp.button.label-text"]).toBe(
+        expect(tokens.button["md.comp.button.small.label-text"]).toBe(
             "md.sys.typescale.label-large"
         );
     });
@@ -940,9 +928,9 @@ describe("generateComponentTokens()", () => {
     it("keeps numeric opacity values as numbers", () => {
         const tokens = generateComponentTokens({ webUnits: true });
 
-        expect(tokens.button["md.comp.button.disabled.container.opacity"]).toBe(0.1);
-        expect(tokens.button["md.comp.button.disabled.label-text.opacity"]).toBe(0.38);
-        expect(typeof tokens.button["md.comp.button.disabled.container.opacity"]).toBe("number");
+        expect(tokens.button["md.comp.button.filled.disabled.container.opacity"]).toBe(0.1);
+        expect(tokens.button["md.comp.button.filled.disabled.label-text.opacity"]).toBe(0.38);
+        expect(typeof tokens.button["md.comp.button.filled.disabled.container.opacity"]).toBe("number");
     });
 
     it("generates all tokens when excludes is omitted or empty", () => {
@@ -991,3 +979,4 @@ describe("generateComponentTokens()", () => {
         expect(tokens["split-button"]["md.comp.split-button.xlarge.trailing-button.inner-corner.selected.corner-size"]).toBe("9999px");
     });
 });
+

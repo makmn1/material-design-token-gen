@@ -246,8 +246,8 @@ describe("component stylesheet generation", () => {
         expect(buttonFile!.content).toContain("var(--md-sys-typescale-label-large)");
         expect(buttonFile!.content).toContain("var(--md-sys-shape-corner-full)");
         expect(buttonFile!.content).toContain("var(--md-sys-state-hover-state-layer-opacity)");
-        expect(buttonFile!.content).toContain("--md-comp-button-container-color:");
-        expect(buttonFile!.content).toContain("--md-comp-button-container-height:");
+        expect(buttonFile!.content).toContain("--md-comp-button-filled-container-color:");
+        expect(buttonFile!.content).toContain("--md-comp-button-small-container-height:");
     });
 
     it("converts dp values to rem in component CSS", async () => {
@@ -415,10 +415,10 @@ describe("component stylesheet generation", () => {
 
         const content = buttonFile!.content;
         
-        expect(content).toMatch(/--md-comp-button-disabled-container-opacity:\s+0\.1;/);
-        expect(content).toMatch(/--md-comp-button-disabled-label-text-opacity:\s+0\.38;/);
-        expect(content).not.toMatch(/--md-comp-button-disabled-container-opacity:\s+"0\.1";/);
-        expect(content).not.toMatch(/--md-comp-button-disabled-label-text-opacity:\s+"0\.38";/);
+        expect(content).toMatch(/--md-comp-button-filled-disabled-container-opacity:\s+0\.1;/);
+        expect(content).toMatch(/--md-comp-button-filled-disabled-label-text-opacity:\s+0\.38;/);
+        expect(content).not.toMatch(/--md-comp-button-filled-disabled-container-opacity:\s+"0\.1";/);
+        expect(content).not.toMatch(/--md-comp-button-filled-disabled-label-text-opacity:\s+"0\.38";/);
     });
 
     it("includes component files in consolidated tokens.css when generated", async () => {
@@ -494,4 +494,5 @@ describe("component stylesheet generation", () => {
         }
     });
 });
+
 

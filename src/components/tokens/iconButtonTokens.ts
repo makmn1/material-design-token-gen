@@ -1,67 +1,3 @@
-export const iconButtonEnabled: Record<string, string | number> = {
-  "md.comp.icon-button.container.color": "md.sys.color.primary",
-  "md.comp.icon-button.unselected.container.color": "md.sys.color.surface-container",
-  "md.comp.icon-button.selected.container.color": "md.sys.color.primary",
-  "md.comp.icon-button.icon.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.unselected.icon.color": "md.sys.color.on-surface-variant",
-  "md.comp.icon-button.selected.icon.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.container.height": "40dp",
-  "md.comp.icon-button.icon.size": "24dp",
-  "md.comp.icon-button.narrow.leading-space": "4dp",
-  "md.comp.icon-button.narrow.trailing-space": "4dp",
-  "md.comp.icon-button.default.leading-space": "8dp",
-  "md.comp.icon-button.default.trailing-space": "8dp",
-  "md.comp.icon-button.wide.leading-space": "14dp",
-  "md.comp.icon-button.wide.trailing-space": "14dp",
-  "md.comp.icon-button.container.shape.round": "md.sys.shape.corner.full",
-  "md.comp.icon-button.container.shape.square": "md.sys.shape.corner.medium",
-  "md.comp.icon-button.pressed.container.shape": "md.sys.shape.corner.small",
-  "md.comp.icon-button.pressed.container.corner-size.motion.spring.damping": "md.sys.motion.spring.fast.spatial.damping",
-  "md.comp.icon-button.pressed.container.corner-size.motion.spring.stiffness": "md.sys.motion.spring.fast.spatial.stiffness",
-  "md.comp.icon-button.selected.container.shape.round": "md.sys.shape.corner.medium",
-  "md.comp.icon-button.selected.container.shape.square": "md.sys.shape.corner.full",
-  "md.comp.icon-button.focus.indicator.color": "md.sys.color.secondary",
-  "md.comp.icon-button.focus.indicator.thickness": "md.sys.state.focus-indicator.thickness",
-  "md.comp.icon-button.focus.indicator.outline.offset": "md.sys.state.focus-indicator.outer-offset",
-};
-
-export const iconButtonDisabled: Record<string, string | number> = {
-  "md.comp.icon-button.disabled.container.color": "md.sys.color.on-surface",
-  "md.comp.icon-button.disabled.container.opacity": 0.1,
-  "md.comp.icon-button.disabled.icon.color": "md.sys.color.on-surface",
-  "md.comp.icon-button.disabled.icon.opacity": 0.38,
-};
-
-export const iconButtonHovered: Record<string, string | number> = {
-  "md.comp.icon-button.hovered.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.unselected.hovered.state-layer.color": "md.sys.color.on-surface-variant",
-  "md.comp.icon-button.selected.hovered.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.hovered.state-layer.opacity": "md.sys.state.hover.state-layer-opacity",
-  "md.comp.icon-button.hovered.icon.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.unselected.hovered.icon.color": "md.sys.color.on-surface-variant",
-  "md.comp.icon-button.selected.hovered.icon.color": "md.sys.color.on-primary",
-};
-
-export const iconButtonFocused: Record<string, string | number> = {
-  "md.comp.icon-button.focused.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.unselected.focused.state-layer.color": "md.sys.color.on-surface-variant",
-  "md.comp.icon-button.selected.focused.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.focused.state-layer.opacity": "md.sys.state.focus.state-layer-opacity",
-  "md.comp.icon-button.focused.icon.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.unselected.focused.icon.color": "md.sys.color.on-surface-variant",
-  "md.comp.icon-button.selected.focused.icon.color": "md.sys.color.on-primary",
-};
-
-export const iconButtonPressed: Record<string, string | number> = {
-  "md.comp.icon-button.pressed.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.unselected.pressed.state-layer.color": "md.sys.color.on-surface-variant",
-  "md.comp.icon-button.selected.pressed.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.pressed.state-layer.opacity": "md.sys.state.pressed.state-layer-opacity",
-  "md.comp.icon-button.pressed.icon.color": "md.sys.color.on-primary",
-  "md.comp.icon-button.unselected.pressed.icon.color": "md.sys.color.on-surface-variant",
-  "md.comp.icon-button.selected.pressed.icon.color": "md.sys.color.on-primary",
-};
-
 export const iconButtonColorFilledEnabled: Record<string, string | number> = {
   "md.comp.icon-button.filled.container.color": "md.sys.color.primary",
   "md.comp.icon-button.filled.unselected.container.color": "md.sys.color.surface-container",
@@ -340,11 +276,6 @@ export const iconButtonSizeXlarge: Record<string, string | number> = {
 
 export const iconButtonTokens: Record<string, string | number> = Object.assign(
   {},
-  iconButtonEnabled,
-  iconButtonDisabled,
-  iconButtonHovered,
-  iconButtonFocused,
-  iconButtonPressed,
   iconButtonColorFilledEnabled,
   iconButtonColorFilledDisabled,
   iconButtonColorFilledHovered,
@@ -371,4 +302,5 @@ export const iconButtonTokens: Record<string, string | number> = Object.assign(
   iconButtonSizeLarge,
   iconButtonSizeXlarge,
 );
+
 

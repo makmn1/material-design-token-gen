@@ -122,7 +122,7 @@ export type GenerateComponentTokensOptions = {
  * ```ts
  * import { generateComponentTokens } from "@makmn1/material-design-token-gen/components";
  * const tokens = generateComponentTokens();
- * // { button: { "md.comp.button.container.color": "md.sys.color.primary", ... } }
+ * // { button: { "md.comp.button.filled.container.color": "md.sys.color.primary", ... } }
  * ```
  *
  * @example Exclude specific component types
@@ -189,3 +189,4 @@ export function generateComponentTokens(
         {} as Record<string, Record<string, string | number>>,
     );
 }
+

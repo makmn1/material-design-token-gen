@@ -1,89 +1,3 @@
-export const buttonColorDefaultEnabled: Record<string, string | number> = {
-  "md.comp.button.container.color": "md.sys.color.primary",
-  "md.comp.button.unselected.container.color": "md.sys.color.surface-container",
-  "md.comp.button.selected.container.color": "md.sys.color.primary",
-  "md.comp.button.container.shadow-color": "md.sys.color.shadow",
-  "md.comp.button.container.elevation": "md.sys.elevation.level0",
-  "md.comp.button.label-text.color": "md.sys.color.on-primary",
-  "md.comp.button.label-text.unselected.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.label-text.selected.color": "md.sys.color.on-primary",
-  "md.comp.button.icon.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.icon.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.icon.color": "md.sys.color.on-primary",
-  "md.comp.button.container.height": "40dp",
-  "md.comp.button.label-text": "md.sys.typescale.label-large",
-  "md.comp.button.label-text.font": "md.sys.typescale.label-large.font",
-  "md.comp.button.label-text.weight": "md.sys.typescale.label-large.weight",
-  "md.comp.button.label-text.size": "md.sys.typescale.label-large.size",
-  "md.comp.button.label-text.line-height": "md.sys.typescale.label-large.line-height",
-  "md.comp.button.label-text.tracking": "md.sys.typescale.label-large.tracking",
-  "md.comp.button.icon.size": "20dp",
-  "md.comp.button.container.shape.round": "md.sys.shape.corner.full",
-  "md.comp.button.container.shape.square": "md.sys.shape.corner.medium",
-  "md.comp.button.leading-space": "24dp",
-  "md.comp.button.icon-label-space": "8dp",
-  "md.comp.button.trailing-space": "24dp",
-  "md.comp.button.pressed.container.shape": "md.sys.shape.corner.small",
-  "md.comp.button.pressed.container.corner-size.motion.spring.damping": "md.sys.motion.spring.fast.spatial.damping",
-  "md.comp.button.pressed.container.corner-size.motion.spring.stiffness": "md.sys.motion.spring.fast.spatial.stiffness",
-  "md.comp.button.selected.container.shape.round": "md.sys.shape.corner.medium",
-  "md.comp.button.selected.container.shape.square": "md.sys.shape.corner.full",
-  "md.comp.button.focus.indicator.color": "md.sys.color.secondary",
-  "md.comp.button.focus.indicator.thickness": "md.sys.state.focus-indicator.thickness",
-  "md.comp.button.focus.indicator.outline.offset": "md.sys.state.focus-indicator.outer-offset",
-};
-
-export const buttonColorDefaultDisabled: Record<string, string | number> = {
-  "md.comp.button.disabled.container.color": "md.sys.color.on-surface",
-  "md.comp.button.disabled.container.opacity": 0.1,
-  "md.comp.button.disabled.container.elevation": "md.sys.elevation.level0",
-  "md.comp.button.disabled.label-text.color": "md.sys.color.on-surface",
-  "md.comp.button.disabled.label-text.opacity": 0.38,
-  "md.comp.button.disabled.icon.color": "md.sys.color.on-surface",
-  "md.comp.button.disabled.icon.opacity": 0.38,
-};
-
-export const buttonColorDefaultHovered: Record<string, string | number> = {
-  "md.comp.button.hovered.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.hovered.state-layer.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.hovered.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.button.hovered.state-layer.opacity": "md.sys.state.hover.state-layer-opacity",
-  "md.comp.button.hovered.label-text.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.hovered.label-text.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.hovered.label-text.color": "md.sys.color.on-primary",
-  "md.comp.button.hovered.icon.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.hovered.icon.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.hovered.icon.color": "md.sys.color.on-primary",
-};
-
-export const buttonColorDefaultFocused: Record<string, string | number> = {
-  "md.comp.button.focused.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.focused.state-layer.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.focused.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.button.focused.state-layer.opacity": "md.sys.state.focus.state-layer-opacity",
-  "md.comp.button.focused.container.elevation": "md.sys.elevation.level0",
-  "md.comp.button.focused.label-text.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.focused.label-text.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.focused.label-text.color": "md.sys.color.on-primary",
-  "md.comp.button.focused.icon.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.focused.icon.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.focused.icon.color": "md.sys.color.on-primary",
-};
-
-export const buttonColorDefaultPressed: Record<string, string | number> = {
-  "md.comp.button.pressed.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.pressed.state-layer.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.pressed.state-layer.color": "md.sys.color.on-primary",
-  "md.comp.button.pressed.state-layer.opacity": "md.sys.state.pressed.state-layer-opacity",
-  "md.comp.button.pressed.container.elevation": "md.sys.elevation.level0",
-  "md.comp.button.pressed.label-text.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.pressed.label-text.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.pressed.label-text.color": "md.sys.color.on-primary",
-  "md.comp.button.pressed.icon.color": "md.sys.color.on-primary",
-  "md.comp.button.unselected.pressed.icon.color": "md.sys.color.on-surface-variant",
-  "md.comp.button.selected.pressed.icon.color": "md.sys.color.on-primary",
-};
-
 export const buttonColorFilledEnabled: Record<string, string | number> = {
   "md.comp.button.filled.container.color": "md.sys.color.primary",
   "md.comp.button.filled.selected.container.color": "md.sys.color.primary",
@@ -496,11 +410,6 @@ export const buttonSizeXLarge: Record<string, string | number> = {
 
 export const buttonTokens: Record<string, string | number> = Object.assign(
   {},
-  buttonColorDefaultEnabled,
-  buttonColorDefaultDisabled,
-  buttonColorDefaultHovered,
-  buttonColorDefaultFocused,
-  buttonColorDefaultPressed,
   buttonColorFilledEnabled,
   buttonColorFilledDisabled,
   buttonColorFilledHovered,
